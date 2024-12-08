@@ -11,27 +11,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF616161),
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.yellow,
           brightness: Brightness.dark,
         ),
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF616161),// Set AppBar color to black
-          foregroundColor: Colors.white,
-          shadowColor: Colors.black, // Ensure the text/icons are white
+          foregroundColor: Colors.white, // Ensure the text/icons are white
         ),
         useMaterial3: true,
       ),
-      themeMode: ThemeMode.dark,
-      home: const MyHomePage(title: 'IMC CALCULATOR'),
+      themeMode: ThemeMode.dark, // Use dark mode
+      home: const MyHomePage(title: 'CALCULADORA DE IMC'),
     );
   }
 }
@@ -57,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
       body: Center(
