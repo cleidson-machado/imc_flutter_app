@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //### Constants-Variables
 const heightBottomPageContainer = 90.0;
 const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
+const TextStyle textStyleTagTitleName = TextStyle(fontSize: 20.0, color: Colors.black);
 
 class MyDefaultHomePage extends StatefulWidget {
   const MyDefaultHomePage({super.key, required this.title});
@@ -35,9 +36,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                       cardChildContent: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(FontAwesomeIcons.mars, size: 95.0,),
-                          SizedBox(height: 15.0,),
-                          Text('MASCULINO', style: TextStyle(fontSize: 20.0, color: Colors.black),),
+                          Icon(FontAwesomeIcons.mars, size: 95.0),
+                          SizedBox(height: 15.0),
+                          Text('MASCULINO', style: textStyleTagTitleName),
                         ],
                       ),
                     ),
@@ -46,8 +47,11 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     child: DefaultCardContainer(
                       cardColor: colorForActiveDefaultContainerCard,
                       cardChildContent: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Content ToDo...'),
+                          Icon(FontAwesomeIcons.venus, size: 95.0),
+                          SizedBox(height: 15.0),
+                          Text('FEMININO', style: textStyleTagTitleName),
                         ],
                       ),
                     ),
@@ -59,10 +63,10 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
               child: DefaultCardContainer(
                 cardColor: colorForActiveDefaultContainerCard,
                 cardChildContent: Column(
-                        children: [
-                          Text('Content ToDo...'),
-                        ],
-                      ),
+                  children: [
+                    Text('Content ToDo...'),
+                  ],
+                ),
               ),
             ),
             const Expanded(
@@ -92,17 +96,17 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
               ),
             ),
             Container(
-              color: Theme.of(context).colorScheme.inversePrimary,
-              margin: const EdgeInsets.only(top: 10.0),
-              height: heightBottomPageContainer
-            ),
+                color: Theme.of(context).colorScheme.inversePrimary,
+                margin: const EdgeInsets.only(top: 10.0),
+                height: heightBottomPageContainer),
           ],
         ));
   }
 }
 
 class DefaultCardContainer extends StatelessWidget {
-  const DefaultCardContainer({required this.cardColor, required this.cardChildContent});
+  const DefaultCardContainer(
+      {required this.cardColor, required this.cardChildContent});
 
   final Color cardColor;
   final Widget cardChildContent;
