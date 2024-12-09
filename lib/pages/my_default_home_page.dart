@@ -33,6 +33,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     child: DefaultCardContainer(
                       cardColor: colorForActiveDefaultContainerCard,
                       cardChildContent: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(FontAwesomeIcons.mars, size: 95.0,),
                           SizedBox(height: 15.0,),
