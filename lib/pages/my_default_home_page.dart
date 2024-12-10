@@ -9,6 +9,7 @@ import 'package:my_imc_calc_app/pages/components/default_column_icon_component.d
 const heightBottomPageContainer = 90.0;
 const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
 const colorForInactiveDefaultContainerCard = Color(0xFF383838);
+const String defaultOnOffTxtStatus = '( OFF )';
 
 class MyDefaultHomePage extends StatefulWidget {
   const MyDefaultHomePage({super.key, required this.title});
@@ -20,7 +21,11 @@ class MyDefaultHomePage extends StatefulWidget {
 
 class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
   Color maleCardColor = colorForInactiveDefaultContainerCard;
+  String onOffTextMsnMale = defaultOnOffTxtStatus;
+
   Color femaleCardColor = colorForInactiveDefaultContainerCard;
+  String onOffTextMsnMaleFemale = defaultOnOffTxtStatus;
+  
 
   //### Business Logic Using Traditional Way of coding #############################
   void updateCardColorbyGenderChice(int gender) {
@@ -29,9 +34,12 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
       //print('Passei aqui; $gender');
       if (maleCardColor == colorForInactiveDefaultContainerCard) {
         maleCardColor = colorForActiveDefaultContainerCard;
+        onOffTextMsnMale = '( ON )';
+        onOffTextMsnMaleFemale = defaultOnOffTxtStatus;
         femaleCardColor = colorForInactiveDefaultContainerCard;
       } else {
         maleCardColor = colorForInactiveDefaultContainerCard;
+        onOffTextMsnMale = defaultOnOffTxtStatus;
       }
     }
 
@@ -39,9 +47,12 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
       //print('Passei aqui; $gender');
       if (femaleCardColor == colorForInactiveDefaultContainerCard) {
         femaleCardColor = colorForActiveDefaultContainerCard;
+        onOffTextMsnMaleFemale = '( ON )';
+        onOffTextMsnMale = defaultOnOffTxtStatus;
         maleCardColor = colorForInactiveDefaultContainerCard;
       } else {
         femaleCardColor = colorForInactiveDefaultContainerCard;
+        onOffTextMsnMaleFemale = defaultOnOffTxtStatus;
       }
     }
   }
@@ -69,8 +80,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                       },
                       child: DefaultCardContainerComponent(
                         cardColor: maleCardColor,
-                        cardChildContent: const DefaultColumnIconComponent(
+                        cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'MASCULINO',
+                          txtInfoOnOff: onOffTextMsnMale,
                           iconTypeInfo: FontAwesomeIcons.mars,
                         ),
                       ),
@@ -85,8 +97,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                       },
                       child: DefaultCardContainerComponent(
                         cardColor: femaleCardColor,
-                        cardChildContent: const DefaultColumnIconComponent(
+                        cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'FEMININO',
+                          txtInfoOnOff: onOffTextMsnMaleFemale,
                           iconTypeInfo: FontAwesomeIcons.venus,
                         ),
                       ),
