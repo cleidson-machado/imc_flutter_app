@@ -6,7 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //### Constants-Variables
 const heightBottomPageContainer = 90.0;
 const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
-const TextStyle textStyleTagTitleName = TextStyle(fontSize: 20.0, color: Colors.black);
+const TextStyle textStyleTagTitleName =
+    TextStyle(fontSize: 20.0, color: Colors.black);
 
 class MyDefaultHomePage extends StatefulWidget {
   const MyDefaultHomePage({super.key, required this.title});
@@ -33,26 +34,18 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                   Expanded(
                     child: DefaultCardContainer(
                       cardColor: colorForActiveDefaultContainerCard,
-                      cardChildContent: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(FontAwesomeIcons.mars, size: 95.0),
-                          SizedBox(height: 15.0),
-                          Text('MASCULINO', style: textStyleTagTitleName),
-                        ],
+                      cardChildContent: DefaultColumnIcon(
+                        txtGenderTitle: 'MASCULINO',
+                        iconTypeInfo: FontAwesomeIcons.mars,
                       ),
                     ),
                   ),
                   Expanded(
                     child: DefaultCardContainer(
                       cardColor: colorForActiveDefaultContainerCard,
-                      cardChildContent: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(FontAwesomeIcons.venus, size: 95.0),
-                          SizedBox(height: 15.0),
-                          Text('FEMININO', style: textStyleTagTitleName),
-                        ],
+                      cardChildContent: DefaultColumnIcon(
+                        txtGenderTitle: 'FEMININO',
+                        iconTypeInfo: FontAwesomeIcons.venus,
                       ),
                     ),
                   ),
@@ -101,6 +94,30 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 height: heightBottomPageContainer),
           ],
         ));
+  }
+}
+
+class DefaultColumnIcon extends StatelessWidget {
+  final String txtGenderTitle;
+  final IconData iconTypeInfo;
+
+  const DefaultColumnIcon(
+      {required this.txtGenderTitle, required this.iconTypeInfo});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(iconTypeInfo, size: 95.0),
+        const SizedBox(height: 15.0),
+        Text(txtGenderTitle,
+            style: const TextStyle(
+              fontSize: 20.0,
+              color: Colors.black,
+            )),
+      ],
+    );
   }
 }
 
