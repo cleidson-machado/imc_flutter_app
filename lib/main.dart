@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter IMC CALC Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), //### NOTE: This code don't do nothing at this level!.. Review!
         useMaterial3: true,
       ),
       darkTheme: ThemeData(
