@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
+import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
 
 //### Constants-Variables
 const heightBottomPageContainer = 90.0;
 const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
-const TextStyle textStyleTagTitleName =
-    TextStyle(fontSize: 20.0, color: Colors.black);
-
+  
 class MyDefaultHomePage extends StatefulWidget {
   const MyDefaultHomePage({super.key, required this.title});
   final String title;
@@ -30,20 +30,20 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
           children: [
             const Expanded(
               child: Row(
-                children: [
+                children: <Widget> [
                   Expanded(
-                    child: DefaultCardContainer(
+                    child: DefaultCardContainerComponent(
                       cardColor: colorForActiveDefaultContainerCard,
-                      cardChildContent: DefaultColumnIcon(
+                      cardChildContent: DefaultColumnIconComponent(
                         txtGenderTitle: 'MASCULINO',
                         iconTypeInfo: FontAwesomeIcons.mars,
                       ),
                     ),
                   ),
                   Expanded(
-                    child: DefaultCardContainer(
+                    child: DefaultCardContainerComponent(
                       cardColor: colorForActiveDefaultContainerCard,
-                      cardChildContent: DefaultColumnIcon(
+                      cardChildContent: DefaultColumnIconComponent(
                         txtGenderTitle: 'FEMININO',
                         iconTypeInfo: FontAwesomeIcons.venus,
                       ),
@@ -53,7 +53,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
               ),
             ),
             const Expanded(
-              child: DefaultCardContainer(
+              child: DefaultCardContainerComponent(
                 cardColor: colorForActiveDefaultContainerCard,
                 cardChildContent: Column(
                   children: [
@@ -66,7 +66,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: DefaultCardContainer(
+                    child: DefaultCardContainerComponent(
                       cardColor: colorForActiveDefaultContainerCard,
                       cardChildContent: Column(
                         children: [
@@ -76,7 +76,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     ),
                   ),
                   Expanded(
-                    child: DefaultCardContainer(
+                    child: DefaultCardContainerComponent(
                       cardColor: colorForActiveDefaultContainerCard,
                       cardChildContent: Column(
                         children: [
@@ -94,49 +94,5 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 height: heightBottomPageContainer),
           ],
         ));
-  }
-}
-
-class DefaultColumnIcon extends StatelessWidget {
-  final String txtGenderTitle;
-  final IconData iconTypeInfo;
-
-  const DefaultColumnIcon(
-      {required this.txtGenderTitle, required this.iconTypeInfo});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(iconTypeInfo, size: 95.0),
-        const SizedBox(height: 15.0),
-        Text(txtGenderTitle,
-            style: const TextStyle(
-              fontSize: 20.0,
-              color: Colors.black,
-            )),
-      ],
-    );
-  }
-}
-
-class DefaultCardContainer extends StatelessWidget {
-  const DefaultCardContainer(
-      {required this.cardColor, required this.cardChildContent});
-
-  final Color cardColor;
-  final Widget cardChildContent;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(20.0),
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: cardChildContent,
-    );
   }
 }
