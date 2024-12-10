@@ -11,6 +11,11 @@ const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
 const colorForInactiveDefaultContainerCard = Color(0xFF383838);
 const String defaultOnOffTxtStatus = '( OFF )';
 
+enum Gender {
+  male,
+  female,
+}
+
 class MyDefaultHomePage extends StatefulWidget {
   const MyDefaultHomePage({super.key, required this.title});
   final String title;
@@ -28,9 +33,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
   
 
   //### Business Logic Using Traditional Way of coding #############################
-  void updateCardColorbyGenderChice(int gender) {
+  void updateCardColorbyGenderChice(Gender genderSelected) {
 
-    if (gender == 1) {
+    if (genderSelected == Gender.male) {
       //print('Passei aqui; $gender');
       if (maleCardColor == colorForInactiveDefaultContainerCard) {
         maleCardColor = colorForActiveDefaultContainerCard;
@@ -43,7 +48,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
       }
     }
 
-    if (gender == 2) {
+    if (genderSelected == Gender.female) {
       //print('Passei aqui; $gender');
       if (femaleCardColor == colorForInactiveDefaultContainerCard) {
         femaleCardColor = colorForActiveDefaultContainerCard;
@@ -75,7 +80,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateCardColorbyGenderChice(1);
+                          updateCardColorbyGenderChice(Gender.male);
                         });
                       },
                       child: DefaultCardContainerComponent(
@@ -92,7 +97,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateCardColorbyGenderChice(2);
+                          updateCardColorbyGenderChice(Gender.female);
                         });
                       },
                       child: DefaultCardContainerComponent(
