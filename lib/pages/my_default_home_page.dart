@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,7 +8,8 @@ import 'package:my_imc_calc_app/pages/components/default_column_icon_component.d
 //### Constants-Variables
 const heightBottomPageContainer = 90.0;
 const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
-  
+const colorForInactiveDefaultContainerCard = Color(0xFF383838);
+
 class MyDefaultHomePage extends StatefulWidget {
   const MyDefaultHomePage({super.key, required this.title});
   final String title;
@@ -18,6 +19,34 @@ class MyDefaultHomePage extends StatefulWidget {
 }
 
 class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
+  Color maleCardColor = colorForInactiveDefaultContainerCard;
+  Color femaleCardColor = colorForInactiveDefaultContainerCard;
+
+  //### Business Logic Using Traditional Way of coding #############################
+  void updateCardColorbyGenderChice(int gender) {
+
+    if (gender == 1) {
+      //print('Passei aqui; $gender');
+      if (maleCardColor == colorForInactiveDefaultContainerCard) {
+        maleCardColor = colorForActiveDefaultContainerCard;
+        femaleCardColor = colorForInactiveDefaultContainerCard;
+      } else {
+        maleCardColor = colorForInactiveDefaultContainerCard;
+      }
+    }
+
+    if (gender == 2) {
+      //print('Passei aqui; $gender');
+      if (femaleCardColor == colorForInactiveDefaultContainerCard) {
+        femaleCardColor = colorForActiveDefaultContainerCard;
+        maleCardColor = colorForInactiveDefaultContainerCard;
+      } else {
+        femaleCardColor = colorForInactiveDefaultContainerCard;
+      }
+    }
+  }
+  //### END - Business Logic Using Traditional Way of coding #########################
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,24 +57,38 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
         ),
         body: Column(
           children: [
-            const Expanded(
+            Expanded(
               child: Row(
-                children: <Widget> [
+                children: <Widget>[
                   Expanded(
-                    child: DefaultCardContainerComponent(
-                      cardColor: colorForActiveDefaultContainerCard,
-                      cardChildContent: DefaultColumnIconComponent(
-                        txtGenderTitle: 'MASCULINO',
-                        iconTypeInfo: FontAwesomeIcons.mars,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateCardColorbyGenderChice(1);
+                        });
+                      },
+                      child: DefaultCardContainerComponent(
+                        cardColor: maleCardColor,
+                        cardChildContent: const DefaultColumnIconComponent(
+                          txtGenderTitle: 'MASCULINO',
+                          iconTypeInfo: FontAwesomeIcons.mars,
+                        ),
                       ),
                     ),
                   ),
                   Expanded(
-                    child: DefaultCardContainerComponent(
-                      cardColor: colorForActiveDefaultContainerCard,
-                      cardChildContent: DefaultColumnIconComponent(
-                        txtGenderTitle: 'FEMININO',
-                        iconTypeInfo: FontAwesomeIcons.venus,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          updateCardColorbyGenderChice(2);
+                        });
+                      },
+                      child: DefaultCardContainerComponent(
+                        cardColor: femaleCardColor,
+                        cardChildContent: const DefaultColumnIconComponent(
+                          txtGenderTitle: 'FEMININO',
+                          iconTypeInfo: FontAwesomeIcons.venus,
+                        ),
                       ),
                     ),
                   ),
