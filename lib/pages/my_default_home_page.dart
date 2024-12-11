@@ -25,20 +25,20 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
   String onOffTextMsnMale = kOffStatusLabel;
   String onOffTextMsnFemale = kOffStatusLabel;
   Gender selectedGender = Gender.none;
-  
+  int peopleBodyHeight = 180;
 
   //### Business Logic Using Traditional Way of coding #############################
   void maleCardLabelUpdate(String txtLabel) {
-    if(txtLabel == kOffStatusLabel){
-        onOffTextMsnMale = kOnStatusLabel;
-        onOffTextMsnFemale = kOffStatusLabel;
+    if (txtLabel == kOffStatusLabel) {
+      onOffTextMsnMale = kOnStatusLabel;
+      onOffTextMsnFemale = kOffStatusLabel;
     }
   }
 
   void femaleCardLabelUpdate(String txtLabel) {
-    if(txtLabel == kOffStatusLabel){
-        onOffTextMsnFemale = kOnStatusLabel;
-        onOffTextMsnMale = kOffStatusLabel;
+    if (txtLabel == kOffStatusLabel) {
+      onOffTextMsnFemale = kOnStatusLabel;
+      onOffTextMsnMale = kOffStatusLabel;
     }
   }
   //### END - Business Logic Using Traditional Way of coding #########################
@@ -52,6 +52,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
           title: Text(widget.title),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               child: Row(
@@ -65,7 +66,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                         });
                       },
                       child: DefaultCardContainerComponent(
-                        cardColor: selectedGender == Gender.male ? kColorForActiveDefaultContainerCard : kColorForInactiveDefaultContainerCard,
+                        cardColor: selectedGender == Gender.male
+                            ? kColorForActiveDefaultContainerCard
+                            : kColorForInactiveDefaultContainerCard,
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'MASCULINO',
                           txtInfoOnOff: onOffTextMsnMale,
@@ -83,7 +86,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                         });
                       },
                       child: DefaultCardContainerComponent(
-                        cardColor: selectedGender == Gender.female ? kColorForActiveDefaultContainerCard : kColorForInactiveDefaultContainerCard,
+                        cardColor: selectedGender == Gender.female
+                            ? kColorForActiveDefaultContainerCard
+                            : kColorForInactiveDefaultContainerCard,
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'FEMININO',
                           txtInfoOnOff: onOffTextMsnFemale,
@@ -95,10 +100,45 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 ],
               ),
             ),
-            const Expanded(
+            Expanded(
               child: DefaultCardContainerComponent(
                 cardColor: kColorForActiveDefaultContainerCard,
-                cardChildContent: null,
+                cardChildContent: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      '( ALTURA )',
+                      style: kTxtGenderTitleStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          peopleBodyHeight.toString(),
+                          style: kBigNumberTextStyle,
+                        ),
+                        const Text(
+                          ' cm',
+                          style: kMetricTextStyle,
+                        ),
+                      ],
+                    ),
+                    Slider(
+                      activeColor: Colors.lightGreenAccent,
+                      inactiveColor: Colors.black12,
+                      onChanged: (double sliderDynamicValue) {
+                        setState(() {
+                            peopleBodyHeight = sliderDynamicValue.round();
+                        });
+                      },
+                      value: peopleBodyHeight.toDouble(),
+                      min: 120.0,
+                      max: 220.0,
+                    )
+                  ],
+                ),
               ),
             ),
             const Expanded(
