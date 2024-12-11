@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-
-//### Constants-Variables
-const txtGenderTitleStyle = TextStyle(
-  fontSize: 20.0,
-  fontWeight: FontWeight.bold,
-  color: Colors.black,
-);
+import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 class DefaultColumnIconComponent extends StatelessWidget {
   final String txtGenderTitle;

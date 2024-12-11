@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class DefaultCardContainerComponent extends StatelessWidget {
   const DefaultCardContainerComponent(
-      {super.key, required this.cardColor, required this.cardChildContent});
+      {super.key, required this.cardColor, this.cardChildContent});
 
   final Color cardColor;
-  final Widget cardChildContent;
+  final Widget? cardChildContent;
 
   @override
   Widget build(BuildContext context) {

@@ -4,13 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
-
-//### Constants-Variables
-const heightBottomPageContainer = 90.0;
-const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
-const colorForInactiveDefaultContainerCard = Color(0xFF383838);
-const String offStatusLabel = '( OFF )';
-const String onStatusLabel = '( ON )';
+import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 //### ADD Operador Ternário no Código em Substituição ao método clássico
 enum Gender {
@@ -104,11 +98,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             const Expanded(
               child: DefaultCardContainerComponent(
                 cardColor: colorForActiveDefaultContainerCard,
-                cardChildContent: Column(
-                  children: [
-                    Text('Content ToDo...'),
-                  ],
-                ),
+                cardChildContent: null,
               ),
             ),
             const Expanded(
