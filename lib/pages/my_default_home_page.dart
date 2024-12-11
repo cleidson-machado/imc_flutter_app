@@ -22,23 +22,23 @@ class MyDefaultHomePage extends StatefulWidget {
 }
 
 class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
-  String onOffTextMsnMale = offStatusLabel;
-  String onOffTextMsnFemale = offStatusLabel;
+  String onOffTextMsnMale = kOffStatusLabel;
+  String onOffTextMsnFemale = kOffStatusLabel;
   Gender selectedGender = Gender.none;
   
 
   //### Business Logic Using Traditional Way of coding #############################
   void maleCardLabelUpdate(String txtLabel) {
-    if(txtLabel == offStatusLabel){
-        onOffTextMsnMale = onStatusLabel;
-        onOffTextMsnFemale = offStatusLabel;
+    if(txtLabel == kOffStatusLabel){
+        onOffTextMsnMale = kOnStatusLabel;
+        onOffTextMsnFemale = kOffStatusLabel;
     }
   }
 
   void femaleCardLabelUpdate(String txtLabel) {
-    if(txtLabel == offStatusLabel){
-        onOffTextMsnFemale = onStatusLabel;
-        onOffTextMsnMale = offStatusLabel;
+    if(txtLabel == kOffStatusLabel){
+        onOffTextMsnFemale = kOnStatusLabel;
+        onOffTextMsnMale = kOffStatusLabel;
     }
   }
   //### END - Business Logic Using Traditional Way of coding #########################
@@ -65,7 +65,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                         });
                       },
                       child: DefaultCardContainerComponent(
-                        cardColor: selectedGender == Gender.male ? colorForActiveDefaultContainerCard : colorForInactiveDefaultContainerCard,
+                        cardColor: selectedGender == Gender.male ? kColorForActiveDefaultContainerCard : kColorForInactiveDefaultContainerCard,
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'MASCULINO',
                           txtInfoOnOff: onOffTextMsnMale,
@@ -83,7 +83,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                         });
                       },
                       child: DefaultCardContainerComponent(
-                        cardColor: selectedGender == Gender.female ? colorForActiveDefaultContainerCard : colorForInactiveDefaultContainerCard,
+                        cardColor: selectedGender == Gender.female ? kColorForActiveDefaultContainerCard : kColorForInactiveDefaultContainerCard,
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'FEMININO',
                           txtInfoOnOff: onOffTextMsnFemale,
@@ -97,7 +97,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             ),
             const Expanded(
               child: DefaultCardContainerComponent(
-                cardColor: colorForActiveDefaultContainerCard,
+                cardColor: kColorForActiveDefaultContainerCard,
                 cardChildContent: null,
               ),
             ),
@@ -106,7 +106,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 children: [
                   Expanded(
                     child: DefaultCardContainerComponent(
-                      cardColor: colorForActiveDefaultContainerCard,
+                      cardColor: kColorForActiveDefaultContainerCard,
                       cardChildContent: Column(
                         children: [
                           Text('Content ToDo...'),
@@ -116,7 +116,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                   ),
                   Expanded(
                     child: DefaultCardContainerComponent(
-                      cardColor: colorForActiveDefaultContainerCard,
+                      cardColor: kColorForActiveDefaultContainerCard,
                       cardChildContent: Column(
                         children: [
                           Text('Content ToDo...'),
@@ -130,7 +130,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             Container(
                 color: Theme.of(context).colorScheme.inversePrimary,
                 margin: const EdgeInsets.only(top: 10.0),
-                height: heightBottomPageContainer),
+                height: kHeightBottomPageContainer),
           ],
         ));
   }

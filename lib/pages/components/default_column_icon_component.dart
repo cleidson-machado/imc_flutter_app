@@ -19,7 +19,7 @@ class DefaultColumnIconComponent extends StatelessWidget {
       children: [
         Icon(iconTypeInfo, size: 95.0),
         const SizedBox(height: 15.0),
-        Text(txtGenderTitle, style: txtGenderTitleStyle),
+        Text(txtGenderTitle, style: kTxtGenderTitleStyle),
         const SizedBox(
           height: 10.0,
         ),
