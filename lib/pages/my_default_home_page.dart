@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, avoid_print
+// ignore_for_file: use_key_in_widget_constructors, avoid_print, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,11 +9,14 @@ import 'package:my_imc_calc_app/pages/components/default_column_icon_component.d
 const heightBottomPageContainer = 90.0;
 const colorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
 const colorForInactiveDefaultContainerCard = Color(0xFF383838);
-const String defaultOnOffTxtStatus = '( OFF )';
+const String offStatusLabel = '( OFF )';
+const String onStatusLabel = '( ON )';
 
+//### ADD Operador Ternário no Código em Substituição ao método clássico
 enum Gender {
   male,
   female,
+  none,
 }
 
 class MyDefaultHomePage extends StatefulWidget {
@@ -25,40 +28,23 @@ class MyDefaultHomePage extends StatefulWidget {
 }
 
 class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
-  Color maleCardColor = colorForInactiveDefaultContainerCard;
-  String onOffTextMsnMale = defaultOnOffTxtStatus;
-
-  Color femaleCardColor = colorForInactiveDefaultContainerCard;
-  String onOffTextMsnMaleFemale = defaultOnOffTxtStatus;
+  String onOffTextMsnMale = offStatusLabel;
+  String onOffTextMsnFemale = offStatusLabel;
+  Gender selectedGender = Gender.none;
   
 
   //### Business Logic Using Traditional Way of coding #############################
-  void updateCardColorbyGenderChice(Gender genderSelected) {
-
-    if (genderSelected == Gender.male) {
-      //print('Passei aqui; $gender');
-      if (maleCardColor == colorForInactiveDefaultContainerCard) {
-        maleCardColor = colorForActiveDefaultContainerCard;
-        onOffTextMsnMale = '( ON )';
-        onOffTextMsnMaleFemale = defaultOnOffTxtStatus;
-        femaleCardColor = colorForInactiveDefaultContainerCard;
-      } else {
-        maleCardColor = colorForInactiveDefaultContainerCard;
-        onOffTextMsnMale = defaultOnOffTxtStatus;
-      }
+  void maleCardLabelUpdate(String txtLabel) {
+    if(txtLabel == offStatusLabel){
+        onOffTextMsnMale = onStatusLabel;
+        onOffTextMsnFemale = offStatusLabel;
     }
+  }
 
-    if (genderSelected == Gender.female) {
-      //print('Passei aqui; $gender');
-      if (femaleCardColor == colorForInactiveDefaultContainerCard) {
-        femaleCardColor = colorForActiveDefaultContainerCard;
-        onOffTextMsnMaleFemale = '( ON )';
-        onOffTextMsnMale = defaultOnOffTxtStatus;
-        maleCardColor = colorForInactiveDefaultContainerCard;
-      } else {
-        femaleCardColor = colorForInactiveDefaultContainerCard;
-        onOffTextMsnMaleFemale = defaultOnOffTxtStatus;
-      }
+  void femaleCardLabelUpdate(String txtLabel) {
+    if(txtLabel == offStatusLabel){
+        onOffTextMsnFemale = onStatusLabel;
+        onOffTextMsnMale = offStatusLabel;
     }
   }
   //### END - Business Logic Using Traditional Way of coding #########################
@@ -80,11 +66,12 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateCardColorbyGenderChice(Gender.male);
+                          selectedGender = Gender.male;
+                          maleCardLabelUpdate(onOffTextMsnMale);
                         });
                       },
                       child: DefaultCardContainerComponent(
-                        cardColor: maleCardColor,
+                        cardColor: selectedGender == Gender.male ? colorForActiveDefaultContainerCard : colorForInactiveDefaultContainerCard,
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'MASCULINO',
                           txtInfoOnOff: onOffTextMsnMale,
@@ -97,14 +84,15 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
-                          updateCardColorbyGenderChice(Gender.female);
+                          selectedGender = Gender.female;
+                          femaleCardLabelUpdate(onOffTextMsnFemale);
                         });
                       },
                       child: DefaultCardContainerComponent(
-                        cardColor: femaleCardColor,
+                        cardColor: selectedGender == Gender.female ? colorForActiveDefaultContainerCard : colorForInactiveDefaultContainerCard,
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'FEMININO',
-                          txtInfoOnOff: onOffTextMsnMaleFemale,
+                          txtInfoOnOff: onOffTextMsnFemale,
                           iconTypeInfo: FontAwesomeIcons.venus,
                         ),
                       ),
