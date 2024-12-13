@@ -25,7 +25,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
   String onOffTextMsnMale = kOffStatusLabel;
   String onOffTextMsnFemale = kOffStatusLabel;
   Gender selectedGender = Gender.none;
-  int peopleBodyHeight = 180;
+  int peopleBodyHeight = 175;
+  int peopleBodyWeight = 60;
+  int peopleBodyAge= 18;
 
   //### Business Logic Using Traditional Way of coding #############################
   void maleCardLabelUpdate(String txtLabel) {
@@ -141,15 +143,17 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 ),
               ),
             ),
-            const Expanded(
+            Expanded(
               child: Row(
                 children: [
                   Expanded(
                     child: DefaultCardContainerComponent(
                       cardColor: kColorForActiveDefaultContainerCard,
                       cardChildContent: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Content ToDo...'),
+                          const Text('( PESO )', style: kTxtGenderTitleStyle,),
+                          Text(peopleBodyWeight.toString(), style: kBigNumberTextStyle,),
                         ],
                       ),
                     ),
@@ -158,8 +162,10 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     child: DefaultCardContainerComponent(
                       cardColor: kColorForActiveDefaultContainerCard,
                       cardChildContent: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Content ToDo...'),
+                          const Text('( IDADE )', style: kTxtGenderTitleStyle,),
+                          Text(peopleBodyAge.toString(), style: kBigNumberTextStyle,),
                         ],
                       ),
                     ),
