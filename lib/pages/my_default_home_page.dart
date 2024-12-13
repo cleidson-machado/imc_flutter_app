@@ -170,7 +170,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                             children: [
                               CustomRoundedButton(
                                 theIcon: FontAwesomeIcons.plus,
-                                onAction: (){
+                                onAction: () {
                                   setState(() {
                                     peopleBodyWeight--;
                                   });
@@ -181,7 +181,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                               ),
                               CustomRoundedButton(
                                 theIcon: FontAwesomeIcons.minus,
-                                onAction: (){
+                                onAction: () {
                                   setState(() {
                                     peopleBodyWeight++;
                                   });
@@ -207,6 +207,30 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                             peopleBodyAge.toString(),
                             style: kBigNumberTextStyle,
                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CustomRoundedButton(
+                                theIcon: FontAwesomeIcons.plus,
+                                onAction: () {
+                                  setState(() {
+                                    peopleBodyAge--;
+                                  });
+                                },
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              CustomRoundedButton(
+                                theIcon: FontAwesomeIcons.minus,
+                                onAction: () {
+                                  setState(() {
+                                    peopleBodyAge++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -214,10 +238,26 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 ],
               ),
             ),
-            Container(
+            GestureDetector(
+              onTap: (){
+                //ADD SOME ACTION.. I stop Here 13-12-2024...
+              },
+              child: Container(
                 color: Theme.of(context).colorScheme.inversePrimary,
                 margin: const EdgeInsets.only(top: 10.0),
-                height: kHeightBottomPageContainer),
+                height: kHeightBottomPageContainer,
+                padding: const EdgeInsets.only(bottom: 25.0),
+                child: const Center(
+                  child: Text(
+                    '> CALCULAR <',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ));
   }
@@ -235,7 +275,7 @@ class CustomRoundedButton extends StatelessWidget {
       onPressed: onAction,
       constraints: const BoxConstraints.tightFor(width: 56.0, height: 56.0),
       shape: const CircleBorder(),
-      fillColor: Colors.blue,
+      fillColor: const Color.fromARGB(255, 80, 84, 86),
       elevation: 3.0,
       child: Icon(theIcon),
     );
