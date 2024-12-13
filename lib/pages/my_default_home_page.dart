@@ -7,6 +7,7 @@ import 'package:my_imc_calc_app/pages/components/default_column_icon_component.d
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 //### ADD Operador Ternário no Código em Substituição ao método clássico
+//### Ternary Operator with multiple condition in flutter dart...
 enum Gender {
   male,
   female,
@@ -27,7 +28,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
   Gender selectedGender = Gender.none;
   int peopleBodyHeight = 175;
   int peopleBodyWeight = 60;
-  int peopleBodyAge= 18;
+  int peopleBodyAge = 18;
 
   //### Business Logic Using Traditional Way of coding #############################
   void maleCardLabelUpdate(String txtLabel) {
@@ -68,9 +69,11 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                         });
                       },
                       child: DefaultCardContainerComponent(
+                        //# Ternary Operator ########################
                         cardColor: selectedGender == Gender.male
                             ? kColorForActiveDefaultContainerCard
                             : kColorForInactiveDefaultContainerCard,
+                        // END # Ternary Operator ########################
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'MASCULINO',
                           txtInfoOnOff: onOffTextMsnMale,
@@ -88,9 +91,11 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                         });
                       },
                       child: DefaultCardContainerComponent(
+                        //# Ternary Operator ########################
                         cardColor: selectedGender == Gender.female
                             ? kColorForActiveDefaultContainerCard
                             : kColorForInactiveDefaultContainerCard,
+                        // END # Ternary Operator ########################
                         cardChildContent: DefaultColumnIconComponent(
                           txtGenderTitle: 'FEMININO',
                           txtInfoOnOff: onOffTextMsnFemale,
@@ -132,7 +137,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                       inactiveColor: Colors.black12,
                       onChanged: (double sliderDynamicValue) {
                         setState(() {
-                            peopleBodyHeight = sliderDynamicValue.round();
+                          peopleBodyHeight = sliderDynamicValue.round();
                         });
                       },
                       value: peopleBodyHeight.toDouble(),
@@ -152,8 +157,38 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                       cardChildContent: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('( PESO )', style: kTxtGenderTitleStyle,),
-                          Text(peopleBodyWeight.toString(), style: kBigNumberTextStyle,),
+                          const Text(
+                            '( PESO )',
+                            style: kTxtGenderTitleStyle,
+                          ),
+                          Text(
+                            peopleBodyWeight.toString(),
+                            style: kBigNumberTextStyle,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CustomRoundedButton(
+                                theIcon: FontAwesomeIcons.plus,
+                                onAction: (){
+                                  setState(() {
+                                    peopleBodyWeight--;
+                                  });
+                                },
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
+                              CustomRoundedButton(
+                                theIcon: FontAwesomeIcons.minus,
+                                onAction: (){
+                                  setState(() {
+                                    peopleBodyWeight++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -164,8 +199,14 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                       cardChildContent: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('( IDADE )', style: kTxtGenderTitleStyle,),
-                          Text(peopleBodyAge.toString(), style: kBigNumberTextStyle,),
+                          const Text(
+                            '( IDADE )',
+                            style: kTxtGenderTitleStyle,
+                          ),
+                          Text(
+                            peopleBodyAge.toString(),
+                            style: kBigNumberTextStyle,
+                          ),
                         ],
                       ),
                     ),
@@ -179,5 +220,24 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 height: kHeightBottomPageContainer),
           ],
         ));
+  }
+}
+
+class CustomRoundedButton extends StatelessWidget {
+  const CustomRoundedButton({required this.theIcon, required this.onAction});
+
+  final IconData theIcon;
+  final VoidCallback onAction;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: onAction,
+      constraints: const BoxConstraints.tightFor(width: 56.0, height: 56.0),
+      shape: const CircleBorder(),
+      fillColor: Colors.blue,
+      elevation: 3.0,
+      child: Icon(theIcon),
+    );
   }
 }
