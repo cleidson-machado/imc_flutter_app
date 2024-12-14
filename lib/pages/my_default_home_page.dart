@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
+import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_custom_rounded_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
@@ -242,7 +243,6 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             ),
             GestureDetector(
               onTap: () {
-                //ADD SOME ACTION.. I stop Here 13-12-2024...
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -252,21 +252,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                   ),
                 );
               },
-              child: Container(
-                color: Theme.of(context).colorScheme.inversePrimary,
-                margin: const EdgeInsets.only(top: 10.0),
-                height: kHeightBottomPageContainer,
-                padding: const EdgeInsets.only(bottom: 25.0),
-                child: const Center(
-                  child: Text(
-                    '> CALCULAR <',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
-                    ),
-                  ),
-                ),
-              ),
+              child: const DefaultCustomContainerButtonComponent(txtButtonTitle: ' ( calcular )',),
             ),
           ],
         ));

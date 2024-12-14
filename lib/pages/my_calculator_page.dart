@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
+import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 class MyCalculatorPage extends StatefulWidget {
@@ -64,21 +65,7 @@ class _MyCalculatorPageState extends State<MyCalculatorPage> {
               onTap: () {
                 Navigator.pop(context);
               },
-              child: Container(
-                color: Theme.of(context).colorScheme.inversePrimary,
-                margin: const EdgeInsets.only(top: 10.0),
-                height: kHeightBottomPageContainer,
-                padding: const EdgeInsets.only(bottom: 25.0),
-                child: const Center(
-                  child: Text(
-                    '> RE-CALCULAR <',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30.0,
-                    ),
-                  ),
-                ),
-              ),
+              child: const DefaultCustomContainerButtonComponent(txtButtonTitle: ' ( re-calcular )',),
             ),
         ],
       ),
