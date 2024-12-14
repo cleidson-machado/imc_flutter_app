@@ -6,8 +6,17 @@ import 'package:my_imc_calc_app/pages/components/default_custom_container_button
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 class MyCalculatorPage extends StatefulWidget {
-  const MyCalculatorPage({super.key, required this.title});
+  const MyCalculatorPage(
+      {super.key,
+      required this.title,
+      this.resultImcCalc,
+      this.resultTxtLabel,
+      this.resultInterpretation});
   final String title;
+
+  final String? resultImcCalc;
+  final String? resultTxtLabel;
+  final String? resultInterpretation;
 
   @override
   State<MyCalculatorPage> createState() => _MyCalculatorPageState();
@@ -62,11 +71,13 @@ class _MyCalculatorPageState extends State<MyCalculatorPage> {
             ),
           ),
           GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const DefaultCustomContainerButtonComponent(txtButtonTitle: ' ( re-calcular )',),
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const DefaultCustomContainerButtonComponent(
+              txtButtonTitle: ' ( re-calcular )',
             ),
+          ),
         ],
       ),
     );

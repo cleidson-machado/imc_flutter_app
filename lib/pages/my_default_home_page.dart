@@ -1,7 +1,8 @@
-// ignore_for_file: use_key_in_widget_constructors, avoid_print, unrelated_type_equality_checks
+// ignore_for_file: use_key_in_widget_constructors, avoid_print, unrelated_type_equality_checks, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_imc_calc_app/pages/businessLogic/body_mass_index_calculation_logic.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
@@ -243,11 +244,20 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             ),
             GestureDetector(
               onTap: () {
+
+                BodyMassIndexCalculationLogic calc = BodyMassIndexCalculationLogic(
+                  bodyheight: peopleBodyHeight,
+                  bodyWeight: peopleBodyWeight
+                );
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MyCalculatorPage(
                       title: widget.title,
+                      resultImcCalc: calc.imcCalculation(),
+                      resultTxtLabel: calc.getTheResult(),
+                      resultInterpretation: calc.getTheResultByTextInterpretation(),
                     ),
                   ),
                 );
