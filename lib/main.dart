@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
 import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+const String theTitle = 'IMC CALCULATOR';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +18,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter IMC CALC Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), //### NOTE: This code don't do nothing at this level!.. Review!
-        useMaterial3: true,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -32,7 +34,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       themeMode: ThemeMode.dark,
-      home: const MyDefaultHomePage(title: 'IMC CALCULATOR'),
+      initialRoute: '/',
+      routes: { 
+        '/' : (context) => const MyDefaultHomePage(title: theTitle),
+        '/calculator': (context) => const MyCalculatorPage(title: theTitle,)
+        },
     );
   }
 }

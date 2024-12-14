@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
+import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
 
 //### ADD Operador Ternário no Código em Substituição ao método clássico
 //### Ternary Operator with multiple condition in flutter dart...
@@ -239,8 +240,16 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
               ),
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 //ADD SOME ACTION.. I stop Here 13-12-2024...
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyCalculatorPage(
+                      title: widget.title,
+                    ),
+                  ),
+                );
               },
               child: Container(
                 color: Theme.of(context).colorScheme.inversePrimary,
