@@ -2,15 +2,15 @@ import 'dart:math';
 
 class BodyMassIndexCalculationLogic {
   BodyMassIndexCalculationLogic(
-      {required this.bodyheight, required this.bodyWeight});
+      {required this.bodyHeight, required this.bodyWeight});
 
-  final int bodyheight;
+  final int bodyHeight;
   final int bodyWeight;
   late double _imc;
 
-  String imcCalculation() {
-    _imc = bodyheight / pow(bodyheight / 100, 2);
-    return _imc.toStringAsFixed(1);
+  String getImcCalculation() {
+    _imc = bodyWeight / pow(bodyHeight / 100, 2);
+    return _imc.toStringAsFixed(2);
   }
 
   String getTheResult() {

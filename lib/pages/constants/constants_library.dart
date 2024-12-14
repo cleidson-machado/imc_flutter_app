@@ -19,7 +19,7 @@ const kMetricTextStyle = TextStyle(
 );
 
 const kLabelResultTextStyle = TextStyle(
-  fontSize: 22.0,
+  fontSize: 28.0,
   fontWeight: FontWeight.bold,
   color: Colors.lightGreenAccent
 );

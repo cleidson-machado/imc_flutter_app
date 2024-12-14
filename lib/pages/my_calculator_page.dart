@@ -5,31 +5,28 @@ import 'package:my_imc_calc_app/pages/components/default_card_container_componen
 import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
-class MyCalculatorPage extends StatefulWidget {
+class MyCalculatorPage extends StatelessWidget {
   const MyCalculatorPage(
-      {super.key,
-      required this.title,
-      this.resultImcCalc,
-      this.resultTxtLabel,
-      this.resultInterpretation});
+        {
+          super.key,
+          required this.title,
+          this.pageTxtImcCalc,
+          this.pagetTxtLabel,
+          this.pagetTxtInterpretation
+        }
+      );
   final String title;
+  final String? pageTxtImcCalc;
+  final String? pagetTxtLabel;
+  final String? pagetTxtInterpretation;
 
-  final String? resultImcCalc;
-  final String? resultTxtLabel;
-  final String? resultInterpretation;
-
-  @override
-  State<MyCalculatorPage> createState() => _MyCalculatorPageState();
-}
-
-class _MyCalculatorPageState extends State<MyCalculatorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         elevation: 2.5,
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -45,7 +42,7 @@ class _MyCalculatorPageState extends State<MyCalculatorPage> {
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 5,
             child: DefaultCardContainerComponent(
               cardColor: kColorForActiveDefaultContainerCard,
@@ -54,17 +51,20 @@ class _MyCalculatorPageState extends State<MyCalculatorPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'NORMAL',
+                    pagetTxtLabel!,
                     style: kLabelResultTextStyle,
                   ),
                   Text(
-                    '18.4',
+                    pageTxtImcCalc!,
                     style: kLabelForIMCNumberTextStyle,
                   ),
-                  Text(
-                    'O Seu IMC está baixo, você \n precisa alimentar-se mais!',
-                    textAlign: TextAlign.center,
-                    style: kLabelForAdviceMsnTextStyle,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10, left: 10),
+                    child: Text(
+                      pagetTxtInterpretation!,
+                      textAlign: TextAlign.center,
+                      style: kLabelForAdviceMsnTextStyle,
+                    ),
                   ),
                 ],
               ),

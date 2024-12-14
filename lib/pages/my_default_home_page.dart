@@ -30,9 +30,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
   String onOffTextMsnMale = kOffStatusLabel;
   String onOffTextMsnFemale = kOffStatusLabel;
   Gender selectedGender = Gender.none;
-  int peopleBodyHeight = 175;
-  int peopleBodyWeight = 60;
-  int peopleBodyAge = 18;
+  int peopleBodyHeight = 175; //ALTURA
+  int peopleBodyWeight = 60; //PESO
+  int peopleBodyAge = 18; //IDADE
 
   //### Business Logic Using Traditional Way of coding #############################
   void maleCardLabelUpdate(String txtLabel) {
@@ -245,8 +245,8 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             GestureDetector(
               onTap: () {
 
-                BodyMassIndexCalculationLogic calc = BodyMassIndexCalculationLogic(
-                  bodyheight: peopleBodyHeight,
+                BodyMassIndexCalculationLogic result = BodyMassIndexCalculationLogic(
+                  bodyHeight: peopleBodyHeight,
                   bodyWeight: peopleBodyWeight
                 );
 
@@ -255,9 +255,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                   MaterialPageRoute(
                     builder: (context) => MyCalculatorPage(
                       title: widget.title,
-                      resultImcCalc: calc.imcCalculation(),
-                      resultTxtLabel: calc.getTheResult(),
-                      resultInterpretation: calc.getTheResultByTextInterpretation(),
+                      pageTxtImcCalc: result.getImcCalculation(),
+                      pagetTxtLabel: result.getTheResult(),
+                      pagetTxtInterpretation: result.getTheResultByTextInterpretation(),
                     ),
                   ),
                 );
