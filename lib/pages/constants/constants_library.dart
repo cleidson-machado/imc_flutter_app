@@ -18,6 +18,24 @@ const kMetricTextStyle = TextStyle(
   color: Colors.black
 );
 
+const kLabelResultTextStyle = TextStyle(
+  fontSize: 22.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.lightGreenAccent
+);
+
+const kLabelForIMCNumberTextStyle = TextStyle(
+  fontSize: 100.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.black
+);
+
+const kLabelForAdviceMsnTextStyle = TextStyle(
+  fontSize: 22.0,
+  fontStyle: FontStyle.italic,
+  color: Colors.black
+);
+
 const kHeightBottomPageContainer = 90.0;
 const kColorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
 const kColorForInactiveDefaultContainerCard = Color(0xFF383838);

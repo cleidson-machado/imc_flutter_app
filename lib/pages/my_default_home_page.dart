@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
+import 'package:my_imc_calc_app/pages/components/default_custom_rounded_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
 
@@ -169,7 +170,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CustomRoundedButton(
+                              DefaultCustomRoundedButtonComponent(
                                 theIcon: FontAwesomeIcons.plus,
                                 onAction: () {
                                   setState(() {
@@ -180,7 +181,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                               const SizedBox(
                                 width: 10.0,
                               ),
-                              CustomRoundedButton(
+                              DefaultCustomRoundedButtonComponent(
                                 theIcon: FontAwesomeIcons.minus,
                                 onAction: () {
                                   setState(() {
@@ -211,7 +212,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CustomRoundedButton(
+                              DefaultCustomRoundedButtonComponent(
                                 theIcon: FontAwesomeIcons.plus,
                                 onAction: () {
                                   setState(() {
@@ -222,7 +223,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                               const SizedBox(
                                 width: 10.0,
                               ),
-                              CustomRoundedButton(
+                              DefaultCustomRoundedButtonComponent(
                                 theIcon: FontAwesomeIcons.minus,
                                 onAction: () {
                                   setState(() {
@@ -269,24 +270,5 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             ),
           ],
         ));
-  }
-}
-
-class CustomRoundedButton extends StatelessWidget {
-  const CustomRoundedButton({required this.theIcon, required this.onAction});
-
-  final IconData theIcon;
-  final VoidCallback onAction;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      onPressed: onAction,
-      constraints: const BoxConstraints.tightFor(width: 56.0, height: 56.0),
-      shape: const CircleBorder(),
-      fillColor: const Color.fromARGB(255, 80, 84, 86),
-      elevation: 3.0,
-      child: Icon(theIcon),
-    );
   }
 }
