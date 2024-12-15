@@ -28,3 +28,31 @@ class Spacecraft {
     }
   }
 }
+
+class Orbiter extends Spacecraft {
+  double altitude;
+
+  Orbiter(super.name, DateTime super.launchDate, this.altitude);
+}
+
+void main() {
+  // Create an instance of the Spacecraft class.
+
+  print('------------------------------------------------------');
+  
+  var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
+  voyager.describe();
+
+  var unlaunchedSpacecraft = Spacecraft.unlaunched('Future Explorer');
+  unlaunchedSpacecraft.describe();
+
+  var theOrbiter = Orbiter('Cleidson', DateTime(1977, 9, 5), 1.1);
+
+  print('------------------------------------------------------');
+
+  print(theOrbiter.name);
+  print(theOrbiter.launchDate);
+  print(theOrbiter.altitude);
+
+  print('------------------------------------------------------');
+}
