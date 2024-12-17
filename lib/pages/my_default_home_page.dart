@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_imc_calc_app/Model/user_mesure.dart';
+// import 'package:my_imc_calc_app/Model/user_mesure.dart';
 import 'package:my_imc_calc_app/pages/businessLogic/body_mass_index_calculation_logic.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
@@ -251,23 +251,23 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                         bodyWeight: peopleBodyWeight);
             
             //###### BASIC FOR UNDESTAND THE LIS CRIATION ##################################
-                UserMesure userData = UserMesure(
+                // UserMesure userData = UserMesure(
                   
-                    bodyHeight: peopleBodyHeight, 
-                    bodyWeight: peopleBodyWeight,
-                    bodyAge: peopleBodyAge,
-                    bodyGender: selectedGender.toString(),
+                //     bodyHeight: peopleBodyHeight, 
+                //     bodyWeight: peopleBodyWeight,
+                //     bodyAge: peopleBodyAge,
+                //     bodyGender: selectedGender.toString(),
 
-                    imcCalc: result.getImcCalculation(),
-                    txtLabel: result.getTheResult(),
-                    txtInterpretation: result.getTheResultByTextInterpretation(),
-                    );
+                //     imcCalc: result.getImcCalculation(),
+                //     txtLabel: result.getTheResult(),
+                //     txtInterpretation: result.getTheResultByTextInterpretation(),
+                //     );
 
                   // Create a list to store UserMesure objects
-                  List<UserMesure> userDataList = [];
+                  // List<UserMesure> userDataList = [];
 
                   // Add User data to the List
-                  userDataList.add(userData);
+                  // userDataList.add(userData);
             //###### END - BASIC FOR UNDESTAND THE LIS CRIATION #############################
 
 
@@ -276,6 +276,12 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                   MaterialPageRoute(
                     builder: (context) => MyCalculatorPage(
                       title: widget.title,
+                      
+                      pageBodyHeight: peopleBodyHeight,
+                      pageBodyWeight: peopleBodyHeight,
+                      pageBodyAge: peopleBodyAge,
+                      pageGender: selectedGender.toString(),
+
                       pageTxtImcCalc: result.getImcCalculation(),
                       pagetTxtLabel: result.getTheResult(),
                       pagetTxtInterpretation: result.getTheResultByTextInterpretation(),
