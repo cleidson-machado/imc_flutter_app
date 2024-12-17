@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
+import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
 import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
 
 void main() {
@@ -37,7 +38,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: { 
         '/' : (context) => const MyDefaultHomePage(title: theTitle),
-        '/calculator': (context) => const MyCalculatorPage(title: theTitle,)
+        '/calculator': (context) => const MyCalculatorPage(title: theTitle,),
+        '/calculatorList': (context) => const MyCalculatorListPage(),
         },
     );
   }

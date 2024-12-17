@@ -7,14 +7,11 @@ import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 class MyCalculatorPage extends StatelessWidget {
   const MyCalculatorPage(
-        {
-          super.key,
-          required this.title,
-          this.pageTxtImcCalc,
-          this.pagetTxtLabel,
-          this.pagetTxtInterpretation
-        }
-      );
+      {super.key,
+      required this.title,
+      this.pageTxtImcCalc,
+      this.pagetTxtLabel,
+      this.pagetTxtInterpretation});
   final String title;
   final String? pageTxtImcCalc;
   final String? pagetTxtLabel;
@@ -32,6 +29,7 @@ class MyCalculatorPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          
           Expanded(
             child: Container(
               padding: const EdgeInsets.only(top: 22),
@@ -42,6 +40,18 @@ class MyCalculatorPage extends StatelessWidget {
               ),
             ),
           ),
+
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.only(top: 5),
+              child: const Text(
+                '( Sate to a List )',
+                textAlign: TextAlign.center,
+                style: kTxtBtnTextStyle,
+              ),
+            ),
+          ),
+
           Expanded(
             flex: 5,
             child: DefaultCardContainerComponent(
