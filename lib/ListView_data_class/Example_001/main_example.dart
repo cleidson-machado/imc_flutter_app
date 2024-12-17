@@ -18,7 +18,6 @@ final List<User> mockUsers = [
   User(name: 'Bob Smith', email: 'bob.smith@example.com'),
   User(name: 'Charlie Brown', email: 'charlie.brown@example.com'),
   User(name: 'Diana Prince', email: 'diana.prince@example.com'),
-  User(name: 'Cleidson Machado', email: 'cleidson.prime@gmail.com'),
 ];
 
 class MyApp extends StatelessWidget {
