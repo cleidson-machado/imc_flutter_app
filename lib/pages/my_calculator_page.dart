@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
+import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
 
 class MyCalculatorPage extends StatelessWidget {
   const MyCalculatorPage(
@@ -29,7 +30,6 @@ class MyCalculatorPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          
           Expanded(
             child: Container(
               padding: const EdgeInsets.only(top: 22),
@@ -40,8 +40,15 @@ class MyCalculatorPage extends StatelessWidget {
               ),
             ),
           ),
-
-          Expanded(
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyCalculatorListPage(title: title),
+                ),
+              );
+            },
             child: Container(
               padding: const EdgeInsets.only(top: 5),
               child: const Text(
@@ -51,7 +58,6 @@ class MyCalculatorPage extends StatelessWidget {
               ),
             ),
           ),
-
           Expanded(
             flex: 5,
             child: DefaultCardContainerComponent(

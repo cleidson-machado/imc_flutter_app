@@ -47,3 +47,5 @@ const kColorForActiveDefaultContainerCard = Color(0xFF9E9E9E);
 const kColorForInactiveDefaultContainerCard = Color(0xFF383838);
 const String kOffStatusLabel = '( OFF )';
 const String kOnStatusLabel = '( ON )';
+
+const String theAppTitle = 'IMC CALCULATOR';

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
 import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
 import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
@@ -7,7 +8,7 @@ void main() {
   runApp(const MyApp());
 }
 
-const String theTitle = 'IMC CALCULATOR';
+const String theTitle = theAppTitle;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       routes: { 
         '/' : (context) => const MyDefaultHomePage(title: theTitle),
         '/calculator': (context) => const MyCalculatorPage(title: theTitle,),
-        '/calculatorList': (context) => const MyCalculatorListPage(),
+        '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
         },
     );
   }

@@ -249,12 +249,15 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                     BodyMassIndexCalculationLogic(
                         bodyHeight: peopleBodyHeight,
                         bodyWeight: peopleBodyWeight);
-
+            
+            //###### BASIC FOR UNDESTAND THE LIS CRIATION ##################################
                 UserMesure userData = UserMesure(
+                  
                     bodyHeight: peopleBodyHeight, 
                     bodyWeight: peopleBodyWeight,
                     bodyAge: peopleBodyAge,
                     bodyGender: selectedGender.toString(),
+
                     imcCalc: result.getImcCalculation(),
                     txtLabel: result.getTheResult(),
                     txtInterpretation: result.getTheResultByTextInterpretation(),
@@ -265,6 +268,7 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
 
                   // Add User data to the List
                   userDataList.add(userData);
+            //###### END - BASIC FOR UNDESTAND THE LIS CRIATION #############################
 
 
                 Navigator.push(
