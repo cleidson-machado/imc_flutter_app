@@ -35,11 +35,28 @@ class Orbiter extends Spacecraft {
   Orbiter(super.name, DateTime super.launchDate, this.altitude);
 }
 
+// Mixins: Mixins are a way of reusing code in multiple class hierarchies. The following is a mixin declaration:
+mixin Piloted {
+  int astronauts = 1;
+
+  void describeCrew() {
+    print('Number of astronauts: $astronauts');
+  }
+}
+
+//To add a mixin's capabilities to a class, just extend the class with the mixin.
+class PilotedCraft extends Spacecraft with Piloted {
+  PilotedCraft(super.name, super.launchDate);
+  // ···
+}
+
+
+
 void main() {
   // Create an instance of the Spacecraft class.
 
   print('------------------------------------------------------');
-  
+
   var voyager = Spacecraft('Voyager I', DateTime(1977, 9, 5));
   voyager.describe();
 
@@ -53,6 +70,14 @@ void main() {
   print(theOrbiter.name);
   print(theOrbiter.launchDate);
   print(theOrbiter.altitude);
+
+  print('------------------------------------------------------');
+
+  var thePiloted = PilotedCraft('Napoleao', DateTime.now());
+
+  print(thePiloted.name);
+  print(thePiloted.launchDate);
+  print(thePiloted.astronauts);
 
   print('------------------------------------------------------');
 }
