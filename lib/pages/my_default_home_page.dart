@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_imc_calc_app/Model/user_mesure.dart';
 import 'package:my_imc_calc_app/pages/businessLogic/body_mass_index_calculation_logic.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_column_icon_component.dart';
@@ -244,11 +245,27 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
             ),
             GestureDetector(
               onTap: () {
+                BodyMassIndexCalculationLogic result =
+                    BodyMassIndexCalculationLogic(
+                        bodyHeight: peopleBodyHeight,
+                        bodyWeight: peopleBodyWeight);
 
-                BodyMassIndexCalculationLogic result = BodyMassIndexCalculationLogic(
-                  bodyHeight: peopleBodyHeight,
-                  bodyWeight: peopleBodyWeight
-                );
+                UserMesure userData = UserMesure(
+                    bodyHeight: peopleBodyHeight, 
+                    bodyWeight: peopleBodyWeight,
+                    bodyAge: peopleBodyAge,
+                    bodyGender: selectedGender.toString(),
+                    imcCalc: result.getImcCalculation(),
+                    txtLabel: result.getTheResult(),
+                    txtInterpretation: result.getTheResultByTextInterpretation(),
+                    );
+
+                  // Create a list to store UserMesure objects
+                  List<UserMesure> userDataList = [];
+
+                  // Add User data to the List
+                  userDataList.add(userData);
+
 
                 Navigator.push(
                   context,
@@ -262,7 +279,9 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                   ),
                 );
               },
-              child: const DefaultCustomContainerButtonComponent(txtButtonTitle: ' ( calcular )',),
+              child: const DefaultCustomContainerButtonComponent(
+                txtButtonTitle: ' ( calcular )',
+              ),
             ),
           ],
         ));
