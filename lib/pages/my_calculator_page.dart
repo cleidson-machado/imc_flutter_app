@@ -76,14 +76,14 @@ class MyCalculatorPage extends StatelessWidget {
 
                 List<UserMesure> userDataList = [];
 
-                userDataList.add(userData);
+                var payLoad = userDataList.add(userData);
 
                 print('DATA_SEND: $userDataList');
 
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MyCalculatorListPage(title: title),
+                  builder: (context) => MyCalculatorListPage(title: title, shareData: userDataList,),
                 ),
               );
 
