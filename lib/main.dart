@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:my_imc_calc_app/Model/user_data_provider.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
 // import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
 import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => UserDataProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 const String theTitle = theAppTitle;
@@ -19,7 +26,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter IMC CALC Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), //### NOTE: This code don't do nothing at this level!.. Review!
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors
+                .deepPurple), //### NOTE: This code don't do nothing at this level!.. Review!
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -29,7 +38,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF616161),// Set AppBar color to black
+          backgroundColor: Color(0xFF616161), // Set AppBar color to black
           foregroundColor: Colors.white,
           shadowColor: Colors.black, // Ensure the text/icons are white
         ),
@@ -37,11 +46,11 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.dark,
       initialRoute: '/',
-      routes: { 
-        '/' : (context) => const MyDefaultHomePage(title: theTitle),
-        '/calculator': (context) => const MyCalculatorPage(title: theTitle,),
+      routes: {
+        '/': (context) => const MyDefaultHomePage(title: theTitle),
+        '/calculator': (context) => const MyCalculatorPage(title: theTitle),
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
-        },
+      },
     );
   }
 }

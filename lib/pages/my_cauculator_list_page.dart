@@ -1,37 +1,44 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/Model/user_mesure.dart';
+import 'package:my_imc_calc_app/Model/user_data_provider.dart';
+import 'package:provider/provider.dart';
 
-class MyCalculatorListPage extends StatefulWidget {
+class MyCalculatorListPage extends StatelessWidget {
   final String title;
-  final List<UserMesure> shareData;
 
   const MyCalculatorListPage({
     super.key,
     required this.title,
-    required this.shareData,
   });
 
   @override
-  State<MyCalculatorListPage> createState() => _MyCalculatorListPageState();
-}
-
-class _MyCalculatorListPageState extends State<MyCalculatorListPage> {
-  @override
   Widget build(BuildContext context) {
+    final userDataList = Provider.of<UserDataProvider>(context).userDataList;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         elevation: 2.5,
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: ListView.builder(
-        itemCount: widget.shareData.length,
+        itemCount: userDataList.length,
         itemBuilder: (context, index) {
-          final userMesure = widget.shareData[index];
+          final user = userDataList[index];
           return ListTile(
-            title: Text('Weight: ${userMesure.bodyWeight}'),
-            subtitle: Text('Height: ${userMesure.bodyHeight}'),
+            title: Text(
+              'Height: ${user.bodyHeight}, Weight: ${user.bodyWeight}',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+                'Idade: ${user.bodyAge}, Sexo: ${user.bodyGender}, \n Label: ${user.txtLabel}, \n ImcValue: ${user.imcCalc}, \n Advice: ${user.txtInterpretation}',
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.italic,
+                )),
           );
         },
       ),

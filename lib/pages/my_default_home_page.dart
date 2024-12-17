@@ -19,6 +19,9 @@ enum Gender {
   none,
 }
 
+// final int progress;
+//   const OrderStatus(this.progress);
+
 class MyDefaultHomePage extends StatefulWidget {
   const MyDefaultHomePage({super.key, required this.title});
   final String title;
@@ -30,7 +33,7 @@ class MyDefaultHomePage extends StatefulWidget {
 class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
   String onOffTextMsnMale = kOffStatusLabel;
   String onOffTextMsnFemale = kOffStatusLabel;
-  Gender selectedGender = Gender.none;
+  Gender selectedGender = Gender.values.last;
   int peopleBodyHeight = 175; //ALTURA
   int peopleBodyWeight = 60; //PESO
   int peopleBodyAge = 18; //IDADE
@@ -247,13 +250,14 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
               onTap: () {
                 BodyMassIndexCalculationLogic result =
                     BodyMassIndexCalculationLogic(
-                        bodyHeight: peopleBodyHeight,
-                        bodyWeight: peopleBodyWeight);
-            
-            //###### BASIC FOR UNDESTAND THE LIS CRIATION ##################################
+                  bodyHeight: peopleBodyHeight,
+                  bodyWeight: peopleBodyWeight,
+                );
+
+                //###### BASIC FOR UNDESTAND THE LIS CRIATION ##################################
                 // UserMesure userData = UserMesure(
-                  
-                //     bodyHeight: peopleBodyHeight, 
+
+                //     bodyHeight: peopleBodyHeight,
                 //     bodyWeight: peopleBodyWeight,
                 //     bodyAge: peopleBodyAge,
                 //     bodyGender: selectedGender.toString(),
@@ -263,28 +267,26 @@ class _MyDefaultHomePageState extends State<MyDefaultHomePage> {
                 //     txtInterpretation: result.getTheResultByTextInterpretation(),
                 //     );
 
-                  // Create a list to store UserMesure objects
-                  // List<UserMesure> userDataList = [];
+                // Create a list to store UserMesure objects
+                // List<UserMesure> userDataList = [];
 
-                  // Add User data to the List
-                  // userDataList.add(userData);
-            //###### END - BASIC FOR UNDESTAND THE LIS CRIATION #############################
-
+                // Add User data to the List
+                // userDataList.add(userData);
+                //###### END - BASIC FOR UNDESTAND THE LIS CRIATION #############################
 
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => MyCalculatorPage(
                       title: widget.title,
-                      
                       pageBodyHeight: peopleBodyHeight,
-                      pageBodyWeight: peopleBodyHeight,
+                      pageBodyWeight: peopleBodyWeight,
                       pageBodyAge: peopleBodyAge,
-                      pageGender: selectedGender.toString(),
-
+                      pageGender: selectedGender.name.toString(),
                       pageTxtImcCalc: result.getImcCalculation(),
                       pagetTxtLabel: result.getTheResult(),
-                      pagetTxtInterpretation: result.getTheResultByTextInterpretation(),
+                      pagetTxtInterpretation:
+                          result.getTheResultByTextInterpretation(),
                     ),
                   ),
                 );

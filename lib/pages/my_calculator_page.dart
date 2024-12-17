@@ -1,11 +1,13 @@
 // ignore_for_file: avoid_unnecessary_containers, unused_local_variable, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:my_imc_calc_app/Model/user_data_provider.dart';
 import 'package:my_imc_calc_app/Model/user_mesure.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
+import 'package:provider/provider.dart';
 
 class MyCalculatorPage extends StatelessWidget {
 
@@ -74,16 +76,18 @@ class MyCalculatorPage extends StatelessWidget {
 
                 );
 
-                List<UserMesure> userDataList = [];
+                List<UserMesure> userDataList = []; //TO REMOVE
 
-                var payLoad = userDataList.add(userData);
+                var payLoad = userDataList.add(userData); //TO REMOVE
 
-                print('DATA_SEND: $userDataList');
+                Provider.of<UserDataProvider>(context, listen: false).addUser(userData);
+
+                print('DATA_SEND: $userDataList'); //TO REMOVE
 
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MyCalculatorListPage(title: title, shareData: userDataList,),
+                  builder: (context) => MyCalculatorListPage(title: title),
                 ),
               );
 
