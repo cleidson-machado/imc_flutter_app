@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
+import 'package:my_imc_calc_app/pages/components/button_index_container_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
 
@@ -19,43 +19,45 @@ class MyIndexProjectsPage extends StatelessWidget {
         title: const Text('Index Project Choices'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
+          Padding(
+            padding: const EdgeInsets.only(top: 5.0),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyDefaultHomePage(title: theAppTitle),
-                  ),
-                );
+                Navigator.of(context).pushNamed('/calc');
               },
-              child: const DefaultCustomContainerButtonComponent(
-                txtButtonTitle: ' ( IMC-Calc-Project )',
-              ),
+              child: const ButtonIndexContainerComponent(txtButtonTitle: 'imc calculator'),
             ),
           ),
-          Expanded(
-            child: GestureDetector(
+          GestureDetector(
+            onTap: () {
+               Navigator.push(
+                 context,
+                 MaterialPageRoute(
+                   builder: (context) =>
+                       const MyDefaultHomePage(title: theAppTitle),
+                 ),
+               );
+             },
+
+            child: const ButtonIndexContainerComponent(txtButtonTitle: 'combos from Api'),
+          ),
+          GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MyDefaultHomePage(title: theAppTitle),
-                  ),
-                );
+                Navigator.of(context).pushNamed('/calc');
               },
-              child: const DefaultCustomContainerButtonComponent(
-                txtButtonTitle: ' ( COMBOS-Project )',
-              ),
+              child: const ButtonIndexContainerComponent(txtButtonTitle: 'extra One'),
             ),
-          ),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed('/calc');
+              },
+              child: const ButtonIndexContainerComponent(txtButtonTitle: 'extra two'),
+            ),
         ],
       ),
     );
   }
 }
-
-// Navigator.of(context).pushNamed(RoutesLib.CARDS_LIST_VIEW_START);
