@@ -4,6 +4,7 @@ import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
 // import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
 import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
+import 'package:my_imc_calc_app/pages/my_index_projects_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -47,7 +48,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       initialRoute: '/',
       routes: {
-        '/': (context) => const MyDefaultHomePage(title: theTitle),
+        '/': (context) => const MyIndexProjectsPage(),
+        '/calc': (context) => const MyDefaultHomePage(title: theTitle),
         '/calculator': (context) => const MyCalculatorPage(title: theTitle),
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
       },
