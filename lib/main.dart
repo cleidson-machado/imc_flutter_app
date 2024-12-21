@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/Model/user_data_provider.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
-import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
+import 'package:my_imc_calc_app/pages/imc_stuff/my_calculator_page.dart';
 // import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
-import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
+import 'package:my_imc_calc_app/pages/imc_stuff/my_default_home_page.dart';
 import 'package:my_imc_calc_app/pages/my_index_projects_page.dart';
 import 'package:provider/provider.dart';
 

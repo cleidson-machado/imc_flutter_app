@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/components/button_index_container_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
-import 'package:my_imc_calc_app/pages/my_default_home_page.dart';
+import 'package:my_imc_calc_app/pages/imc_stuff/my_default_home_page.dart';
 
 const String theTitle = theAppTitle;
 

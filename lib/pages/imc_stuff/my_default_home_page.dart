@@ -9,7 +9,7 @@ import 'package:my_imc_calc_app/pages/components/default_column_icon_component.d
 import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_custom_rounded_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
-import 'package:my_imc_calc_app/pages/my_calculator_page.dart';
+import 'package:my_imc_calc_app/pages/imc_stuff/my_calculator_page.dart';
 
 //### ADD Operador Ternário no Código em Substituição ao método clássico
 //### Ternary Operator with multiple condition in flutter dart...

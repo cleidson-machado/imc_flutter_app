@@ -6,7 +6,7 @@ import 'package:my_imc_calc_app/Model/user_mesure.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
-import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
+import 'package:my_imc_calc_app/pages/imc_stuff/my_cauculator_list_page.dart';
 import 'package:provider/provider.dart';
 
 class MyCalculatorPage extends StatelessWidget {
