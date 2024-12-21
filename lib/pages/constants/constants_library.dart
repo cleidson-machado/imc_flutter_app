@@ -49,3 +49,5 @@ const String kOffStatusLabel = '( OFF )';
 const String kOnStatusLabel = '( ON )';
 
 const String theAppTitle = 'IMC CALCULATOR';
+
+const String theProjectTitleOne = 'COMBO LIST ONE';
