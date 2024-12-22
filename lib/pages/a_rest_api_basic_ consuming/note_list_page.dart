@@ -23,9 +23,20 @@ import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
     noteTitle: "You are the Best 3",
     createDateTime: DateTime.now(),
     latestEditDateTime: DateTime.now(),
+  ),
+
+  NoteEntity(
+    noteID: "4",
+    noteTitle: "You are the Best 4",
+    createDateTime: DateTime.now(),
+    latestEditDateTime: DateTime.now(),
   )
 
  ];
+
+ String formatDateTime(DateTime dateTime){
+  return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
+ }
 
 class NoteListPage extends StatelessWidget {
   const NoteListPage({super.key, required this.title});
@@ -49,12 +60,12 @@ class NoteListPage extends StatelessWidget {
           color: Colors.black,
         ),
         itemBuilder: (_, index) {
-          return const ListTile(
-            title: Text('Hello', style: kTxtTitleListTextStyle),
-            subtitle: Text('Last editedo 21/02/2024'),
+          return ListTile(
+            title: Text(notes[index].noteTitle, style: kTxtTitleListTextStyle),
+            subtitle: Text('Last edited on ${formatDateTime(notes[index].latestEditDateTime)}'),
           );
         },
-        itemCount: 30,
+        itemCount: notes.length,
       ),
     );
   }
