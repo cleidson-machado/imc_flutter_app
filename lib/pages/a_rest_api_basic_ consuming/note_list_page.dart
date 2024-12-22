@@ -1,8 +1,11 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/Model/note_entity.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
+import 'package:my_imc_calc_app/service/notes_service.dart';
 
- final notes = [
+ final notes_old = [
 
   NoteEntity(
     noteID: "1",
@@ -33,6 +36,9 @@ import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
   )
 
  ];
+
+ //#### THIS ONE IS A BASIC EXAMPLE TO GET DATA FROM A SERVICE CLASS ####
+ final notes = NotesService().getNotesList();
 
  String formatDateTime(DateTime dateTime){
   return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
