@@ -3,10 +3,9 @@ import 'package:my_imc_calc_app/Model/user_data_provider.dart';
 import 'package:my_imc_calc_app/pages/combo_from_api_a/combo_index_page_one.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_calculator_page.dart';
-// import 'package:my_imc_calc_app/pages/my_cauculator_list_page.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_default_home_page.dart';
 import 'package:my_imc_calc_app/pages/my_index_projects_page.dart';
-import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';  
 
 void main() {
   runApp(
@@ -17,8 +16,6 @@ void main() {
   );
 }
 
-const String theTitle = theAppTitle;
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -26,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter IMC CALC Demo',
+      title: theAppTitle,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors
@@ -50,9 +47,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const MyIndexProjectsPage(),
-        '/calc': (context) => const MyDefaultHomePage(title: theTitle),
-        '/calculator': (context) => const MyCalculatorPage(title: theTitle),
-        '/comboIndexOne': (context) => const ComboIndexPageOne(title: theTitle),
+        '/calc': (context) => const MyDefaultHomePage(title: theAppTitle),
+        '/calculator': (context) => const MyCalculatorPage(title: theAppTitle),
+        '/comboIndexOne': (context) => const ComboIndexPageOne(title: theAppTitle),
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
       },
     );
