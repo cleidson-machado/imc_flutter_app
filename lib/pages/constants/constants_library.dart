@@ -51,3 +51,5 @@ const String kOnStatusLabel = '( ON )';
 const String theAppTitle = 'IMC CALCULATOR';
 
 const String theProjectTitleOne = 'COMBO LIST ONE';
+
+const String theProjectTitleTwo = 'REST API LIST Try-A';
