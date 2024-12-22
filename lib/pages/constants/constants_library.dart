@@ -18,6 +18,12 @@ const kTxtBtnTextStyle = TextStyle(
   color: Colors.white
 );
 
+const kTxtTitleListTextStyle = TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w900,
+  color: Colors.white
+);
+
 const kMetricTextStyle = TextStyle(
   fontSize: 18.0,
   fontWeight: FontWeight.w600,
