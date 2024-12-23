@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers, unused_local_variable, avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/Model/user_data_provider.dart';
+import 'package:my_imc_calc_app/Model_Providers/user_data_provider.dart';
 import 'package:my_imc_calc_app/Model/user_mesure.dart';
 import 'package:my_imc_calc_app/pages/components/default_card_container_component.dart';
 import 'package:my_imc_calc_app/pages/components/default_custom_container_button_component.dart';
