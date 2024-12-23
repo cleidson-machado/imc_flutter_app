@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:my_imc_calc_app/Model/user_data_provider.dart';
 import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page.dart';
 import 'package:my_imc_calc_app/pages/combo_from_api_a/combo_index_page_one.dart';
@@ -6,12 +7,19 @@ import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_calculator_page.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_default_home_page.dart';
 import 'package:my_imc_calc_app/pages/my_index_projects_page.dart';
+import 'package:my_imc_calc_app/service/notes_service.dart';
 import 'package:provider/provider.dart';  
 
+
+void setupLocator() {
+  GetIt.I.registerLazySingleton(() => NotesService()); //### USED ON THE FIRST TEST OF - NOTES FROM  A BASIC API ###
+}
+
 void main() {
+  setupLocator();
   runApp(
     ChangeNotifierProvider(
-      create: (context) => UserDataProvider(),
+      create: (context) => UserDataProvider(), //### USED ON THE FIRST TEST OF - IMC CALCULATOR ###
       child: const MyApp(),
     ),
   );
