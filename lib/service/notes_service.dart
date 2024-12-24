@@ -1,39 +1,38 @@
-// ignore_for_file: constant_identifier_names, prefer_interpolation_to_compose_strings, unused_local_variable
+
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:my_imc_calc_app/Model/note_entity.dart';
-import 'package:my_imc_calc_app/Model_API_generics/api_response_generic.dart';
 import 'package:http/http.dart' as http;
-// import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page.dart';
+import 'package:my_imc_calc_app/Model_API_generics/api_response_generic.dart';
+
+// YOU'RE ALMOST THERE!! MAN!! NEVER GIVE UP!!
 
 class NotesService {
-  static const API = 'https://6767d711c1de2e6421c86392.mockapi.io/api/v1';
-  
-  get notes => [];
 
-  Future<ApiResponseGeneric<List<NoteEntity>>> getNotesList() {
+  Future <ApiResponseGeneric<List<NoteEntity>>> getNotesList() async {
 
-    return http.get((API + '/notes') as Uri, headers: null)
-    .then((data) {
-      if(data.statusCode == 200){
-        
-        final jsonData = json.decode(data.body);
-        final notes = <NoteEntity>[];
+    final response = await http.get(Uri.parse('https://6767d711c1de2e6421c86392.mockapi.io/api/v1/notes'), headers: null);
 
-          for (var item in jsonData){
-            final note = NoteEntity(
-              noteID: item['noteID'],
-              noteTitle: item['noteTitle'], 
-              createDateTime: DateTime.parse(item['createDateTime']),
-              latestEditDateTime: DateTime.parse(item['latestEditDateTime']), //THE ERROR IS HERE!!???
-            );
-            notes.add(note);
-          }
+    if(response.statusCode == 200){
+      
+      final List<NoteEntity> notes = [];
+      final body = jsonDecode(response.body);
 
-        return ApiResponseGeneric<List<NoteEntity>>(data: notes);
-      }
+      print(body);
+
+      body[''].map((item) {
+        final NoteEntity noteEntity = NoteEntity.fromMap(item);
+          notes.add(noteEntity);
+      }).toList();
+
+      return ApiResponseGeneric<List<NoteEntity>>(data: notes);
+    } else if(response.statusCode == 404) {
       return ApiResponseGeneric<List<NoteEntity>>(error: true, errorMessage: 'An Error Occured 1');
-    })
-    .catchError((_) => ApiResponseGeneric<List<NoteEntity>>(data: notes, error: true, errorMessage: 'An Error Occured 2')); 
+    } else {
+      return ApiResponseGeneric<List<NoteEntity>>(error: true, errorMessage: 'An Error Occured 2');
+    }
+    
   }
 
 }

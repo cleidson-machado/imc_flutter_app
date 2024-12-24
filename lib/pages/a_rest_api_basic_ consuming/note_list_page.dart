@@ -42,8 +42,7 @@ final notes_old = [
 final notes_old2 = NotesService()
     .getNotesList(); //....#### THIS ONE IS A BASIC EXAMPLE TO GET DATA FROM A SERVICE CLASS ####
 
-NotesService get service => GetIt.I<
-    NotesService>(); // #### HERE USING THE SETUP LOCATOR IN THIS PAGE! ####
+NotesService get service => GetIt.I<NotesService>(); // #### HERE USING THE SETUP LOCATOR IN THIS PAGE! ####
 
 ApiResponseGeneric<List<NoteEntity>> _apiResponseGeneric =
     [] as ApiResponseGeneric<List<NoteEntity>>;
