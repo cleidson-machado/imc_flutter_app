@@ -1,13 +1,13 @@
 class ApiResponseGeneric<T> {
 
-  final T? data;
-  final bool? error;
-  final String? errorMessage;
+  final T data;
+  final bool error;
+  final String errorMessage;
 
   ApiResponseGeneric({
-    this.data,
-    this.error,
-    this.errorMessage,
+    required this.data,
+    required this.error,
+    required this.errorMessage,
   });
 
 }

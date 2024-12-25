@@ -29,9 +29,18 @@ class NotesServiceErrorNoLoadingNotyhing {
             notes.add(note);
           }
 
-        return ApiResponseGeneric<List<NoteEntity>>(data: notes);
+        return ApiResponseGeneric<List<NoteEntity>>(
+          data: notes,
+          error: false,
+          errorMessage: '',
+        );
       }
-      return ApiResponseGeneric<List<NoteEntity>>(error: true, errorMessage: 'An Error Occured 1');
+      return ApiResponseGeneric<List<NoteEntity>>(
+          data: [],
+          error: true,
+          errorMessage:
+              'Failed to fetch notes. Status Code: ${data.statusCode}',
+        );
     })
     .catchError((_) => ApiResponseGeneric<List<NoteEntity>>(data: notes, error: true, errorMessage: 'An Error Occured 2')); 
   }

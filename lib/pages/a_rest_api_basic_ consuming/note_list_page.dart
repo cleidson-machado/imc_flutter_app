@@ -101,8 +101,8 @@ class _NoteListPageState extends State<NoteListPage> {
           return const CircularProgressIndicator();
         }
 
-        if(_apiResponseGeneric.error!) {
-          return const Center(child: Text('An Error: KKKKKK'));
+        if(_apiResponseGeneric.error) {
+          return Center(child: Text(_apiResponseGeneric.errorMessage));
         }
 
         return ListView.separated(
@@ -112,13 +112,13 @@ class _NoteListPageState extends State<NoteListPage> {
           ),
           itemBuilder: (_, index) {
             return ListTile(
-              title: Text(_apiResponseGeneric.data![index].noteTitle,
+              title: Text(_apiResponseGeneric.data[index].noteTitle,
                   style: kTxtTitleListTextStyle),
               subtitle: Text(
-                  'Last edited on ${formatDateTime(_apiResponseGeneric.data![index].latestEditDateTime)}'),
+                  'Last edited on ${formatDateTime(_apiResponseGeneric.data[index].latestEditDateTime)}'),
             );
           },
-          itemCount: _apiResponseGeneric.data!.length,
+          itemCount: _apiResponseGeneric.data.length,
         );
       }),
     );
