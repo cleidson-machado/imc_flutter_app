@@ -47,7 +47,7 @@ class MyIndexProjectsPage extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pushNamed('/notesHomePage');
               },
-              child: const ButtonIndexContainerComponent(txtButtonTitle: 'notes from basic api'),
+              child: const ButtonIndexContainerComponent(txtButtonTitle: 'data from api Exp-01'),
             ),
             GestureDetector(
               onTap: () {

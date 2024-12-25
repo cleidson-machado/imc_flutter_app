@@ -44,8 +44,7 @@ final notes_old2 = NotesService()
 
 NotesService get service => GetIt.I<NotesService>(); // #### HERE USING THE SETUP LOCATOR IN THIS PAGE! ####
 
-ApiResponseGeneric<List<NoteEntity>> _apiResponseGeneric =
-    [] as ApiResponseGeneric<List<NoteEntity>>;
+ApiResponseGeneric<List<NoteEntity>> _payload = [] as ApiResponseGeneric<List<NoteEntity>>;
 bool _isLoading = false;
 
 //List<NoteEntity> notes = []; //........................ #### HERE STARTING THE LIST OF NOTES EMPTY ####
@@ -76,7 +75,7 @@ class _NoteListPageState extends State<NoteListPage> {
       _isLoading = true;
     });
 
-    _apiResponseGeneric = await service.getNotesList();
+    _payload = await service.getNotesList();
 
     setState(() {
       _isLoading = false;
@@ -101,8 +100,8 @@ class _NoteListPageState extends State<NoteListPage> {
           return const CircularProgressIndicator();
         }
 
-        if(_apiResponseGeneric.error) {
-          return Center(child: Text(_apiResponseGeneric.errorMessage));
+        if(_payload.error) {
+          return Center(child: Text(_payload.errorMessage));
         }
 
         return ListView.separated(
@@ -112,15 +111,15 @@ class _NoteListPageState extends State<NoteListPage> {
           ),
           itemBuilder: (_, index) {
             return ListTile(
-              title: Text('Id: ${_apiResponseGeneric.data[index].noteID} | Title: ${_apiResponseGeneric.data[index].noteTitle}',
+              title: Text('Id: ${_payload.data[index].noteID} | Title: ${_payload.data[index].noteTitle}',
                   style: kTxtTitleListTextStyle),
               subtitle: Text(
-                  'Last Created on: ${formatDateTime(_apiResponseGeneric.data[index].createDateTime)}' 
+                  'Last Created on: ${formatDateTime(_payload.data[index].createDateTime)}' 
                   + '\n' + 
-                  'Last Edited on: ${formatDateTime(_apiResponseGeneric.data[index].latestEditDateTime)}'),
+                  'Last Edited on: ${formatDateTime(_payload.data[index].latestEditDateTime)}'),
             );
           },
-          itemCount: _apiResponseGeneric.data.length,
+          itemCount: _payload.data.length,
         );
       }),
     );
