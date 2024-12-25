@@ -22,7 +22,6 @@ class NotesService {
                 latestEditDateTime: DateTime.parse(item['latestEditDateTime']),
               );
             })
-            .whereType<NoteEntity>()
             .toList();
 
         return ApiResponseGeneric<List<NoteEntity>>(
