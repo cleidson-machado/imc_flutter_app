@@ -42,9 +42,11 @@ final notes_old = [
 final notes_old2 = NotesService()
     .getNotesList(); //....#### THIS ONE IS A BASIC EXAMPLE TO GET DATA FROM A SERVICE CLASS ####
 
-NotesService get service => GetIt.I<NotesService>(); // #### HERE USING THE SETUP LOCATOR IN THIS PAGE! ####
+NotesService get service => GetIt.I<
+    NotesService>(); // #### HERE USING THE SETUP LOCATOR IN THIS PAGE! ####
 
-ApiResponseGeneric<List<NoteEntity>> _payload = [] as ApiResponseGeneric<List<NoteEntity>>;
+ApiResponseGeneric<List<NoteEntity>> _payload =
+    [] as ApiResponseGeneric<List<NoteEntity>>;
 bool _isLoading = false;
 
 //List<NoteEntity> notes = []; //........................ #### HERE STARTING THE LIST OF NOTES EMPTY ####
@@ -95,12 +97,16 @@ class _NoteListPageState extends State<NoteListPage> {
         child: const Icon(Icons.add),
       ),
       body: Builder(builder: (_) {
-
-        if(_isLoading){
-          return const CircularProgressIndicator();
+        if (_isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.green,
+              strokeWidth: 5,
+            ),
+          );
         }
 
-        if(_payload.error) {
+        if (_payload.error) {
           return Center(child: Text(_payload.errorMessage));
         }
 
@@ -111,12 +117,13 @@ class _NoteListPageState extends State<NoteListPage> {
           ),
           itemBuilder: (_, index) {
             return ListTile(
-              title: Text('Id: ${_payload.data[index].noteID} | Title: ${_payload.data[index].noteTitle}',
+              title: Text(
+                  'Id: ${_payload.data[index].noteID} | Title: ${_payload.data[index].noteTitle}',
                   style: kTxtTitleListTextStyle),
               subtitle: Text(
-                  'Last Created on: ${formatDateTime(_payload.data[index].createDateTime)}' 
-                  + '\n' + 
-                  'Last Edited on: ${formatDateTime(_payload.data[index].latestEditDateTime)}'),
+                  'Last Created on: ${formatDateTime(_payload.data[index].createDateTime)}' +
+                      '\n' +
+                      'Last Edited on: ${formatDateTime(_payload.data[index].latestEditDateTime)}'),
             );
           },
           itemCount: _payload.data.length,
