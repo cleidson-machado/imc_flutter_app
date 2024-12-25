@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 // I NEED TO USING PARSE, like this bellow
 // final response = await http.get(Uri.parse(API + '/notes'));
 
-class NotesServiceErrorNoLoadingNotyhing {
+class NotesServiceAnotherWayTouse{
   static const API = 'https://6767d711c1de2e6421c86392.mockapi.io/api/v1';
 
   Future<ApiResponseGeneric<List<NoteEntity>>> getNotesList() async {
