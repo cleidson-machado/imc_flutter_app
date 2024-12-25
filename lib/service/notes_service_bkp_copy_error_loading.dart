@@ -12,15 +12,13 @@ import 'package:http/http.dart' as http;
 class NotesServiceErrorNoLoadingNotyhing {
   static const API = 'https://6767d711c1de2e6421c86392.mockapi.io/api/v1';
 
-  get notes => [];
-
   Future<ApiResponseGeneric<List<NoteEntity>>> getNotesList() async {
     return await http
         .get(Uri.parse(API + '/notes'), headers: null)
         .then((data) {
       if (data.statusCode == 200) {
         final jsonData = json.decode(data.body);
-        final notes = <NoteEntity>[];
+        final result = <NoteEntity>[];
 
         for (var item in jsonData) {
           final note = NoteEntity(
@@ -30,11 +28,11 @@ class NotesServiceErrorNoLoadingNotyhing {
             latestEditDateTime: DateTime.parse(
                 item['latestEditDateTime']), //THE ERROR IS HERE!!???
           );
-          notes.add(note);
+          result.add(note);
         }
 
         return ApiResponseGeneric<List<NoteEntity>>(
-          data: notes,
+          data: result,
           error: false,
           errorMessage: '',
         );
@@ -44,9 +42,8 @@ class NotesServiceErrorNoLoadingNotyhing {
         error: true,
         errorMessage: 'Failed to fetch notes. Status Code: ${data.statusCode}',
       );
-    }).catchError(
-      (_) => ApiResponseGeneric<List<NoteEntity>>(
-          data: notes, 
+    }).catchError((_) => ApiResponseGeneric<List<NoteEntity>>(
+          data: [], 
           error: true, 
           errorMessage: 'An Error Occured!'),
     );

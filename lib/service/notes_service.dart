@@ -7,15 +7,13 @@ import 'package:http/http.dart' as http;
 class NotesService {
   static const API = 'https://6767d711c1de2e6421c86392.mockapi.io/api/v1';
 
-  get notes => [];
-
   Future<ApiResponseGeneric<List<NoteEntity>>> getNotesList() async {
     try {
       final response = await http.get(Uri.parse(API + '/notes'));
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonData = json.decode(response.body);
-        final List<NoteEntity> notes = jsonData
+        final List<NoteEntity> result = jsonData
             .map<NoteEntity>((item) {
               return NoteEntity(
                 noteID: item['noteID'],
@@ -28,7 +26,7 @@ class NotesService {
             .toList();
 
         return ApiResponseGeneric<List<NoteEntity>>(
-          data: notes,
+          data: result,
           error: false,
           errorMessage: '',
         );
