@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_element
+// ignore_for_file: non_constant_identifier_names, unused_element, prefer_interpolation_to_compose_strings, prefer_adjacent_string_concatenation
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -112,10 +112,12 @@ class _NoteListPageState extends State<NoteListPage> {
           ),
           itemBuilder: (_, index) {
             return ListTile(
-              title: Text(_apiResponseGeneric.data[index].noteTitle,
+              title: Text('Id: ${_apiResponseGeneric.data[index].noteID} | Title: ${_apiResponseGeneric.data[index].noteTitle}',
                   style: kTxtTitleListTextStyle),
               subtitle: Text(
-                  'Last edited on ${formatDateTime(_apiResponseGeneric.data[index].latestEditDateTime)}'),
+                  'Last Created on: ${formatDateTime(_apiResponseGeneric.data[index].createDateTime)}' 
+                  + '\n' + 
+                  'Last Edited on: ${formatDateTime(_apiResponseGeneric.data[index].latestEditDateTime)}'),
             );
           },
           itemCount: _apiResponseGeneric.data.length,
