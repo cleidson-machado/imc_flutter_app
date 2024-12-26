@@ -6,6 +6,7 @@ import 'package:my_imc_calc_app/pages/combo_from_api_a/combo_index_page_one.dart
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_calculator_page.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_default_home_page.dart';
+import 'package:my_imc_calc_app/pages/list_view_layout_and_performances_tests/my_list_view_test_a.dart';
 import 'package:my_imc_calc_app/pages/my_index_projects_page.dart';
 import 'package:my_imc_calc_app/service/notes_service.dart';
 import 'package:provider/provider.dart';  
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         '/calculator': (context) => const MyCalculatorPage(title: theAppTitle),
         '/comboIndexOne': (context) => const ComboIndexPageOne(title: theProjectTitleOne),
         '/notesHomePage': (context) => const NoteListPage(title: theProjectTitleTwo),
+        '/listViewTestA': (context) => const MyListViewTestA(),
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
       },
     );
