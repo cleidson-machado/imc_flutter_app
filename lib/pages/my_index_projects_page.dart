@@ -28,10 +28,14 @@ class MyIndexProjectsPage extends StatelessWidget {
                 padding: EdgeInsets.only(top: 5.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'Type the Keyword or for a Search...',
+                    // border: OutlineInputBorder(),
+                    label: Text('Search'),
+                    labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+                    filled: true,
+                    fillColor: Colors.white10,
+                    hintText: 'Type the Keyword or a more complex term!',
                     hintStyle:
-                        TextStyle(fontWeight: FontWeight.w500, fontSize: 18.0),
+                        TextStyle(fontWeight: FontWeight.w500, fontSize: 22.0),
                   ),
                 )),
             Padding(
