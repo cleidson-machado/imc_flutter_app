@@ -56,15 +56,15 @@ String formatDateTime(DateTime dateTime) {
   return '${dateTime.day}/${dateTime.month}/${dateTime.year}';
 }
 
-class NoteListPage extends StatefulWidget {
-  const NoteListPage({super.key, required this.title});
+class NoteListPageExampleA extends StatefulWidget {
+  const NoteListPageExampleA({super.key, required this.title});
   final String title;
 
   @override
-  State<NoteListPage> createState() => _NoteListPageState();
+  State<NoteListPageExampleA> createState() => _NoteListPageExampleAState();
 }
 
-class _NoteListPageState extends State<NoteListPage> {
+class _NoteListPageExampleAState extends State<NoteListPageExampleA> {
   @override
   void initState() {
     // notes =service.getNotesList();
@@ -96,39 +96,41 @@ class _NoteListPageState extends State<NoteListPage> {
         onPressed: () {},
         child: const Icon(Icons.add),
       ),
-      body: Builder(builder: (_) {
-        if (_isLoading) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.green,
-              strokeWidth: 5,
-            ),
-          );
-        }
-
-        if (_payload.error) {
-          return Center(child: Text(_payload.errorMessage));
-        }
-
-        return ListView.separated(
-          separatorBuilder: (_, __) => const Divider(
-            height: 1,
-            color: Colors.black,
-          ),
-          itemBuilder: (_, index) {
-            return ListTile(
-              title: Text(
-                  'Id: ${_payload.data[index].noteID} | Title: ${_payload.data[index].noteTitle}',
-                  style: kTxtTitleListTextStyle),
-              subtitle: Text(
-                  'Last Created on: ${formatDateTime(_payload.data[index].createDateTime)}' +
-                      '\n' +
-                      'Last Edited on: ${formatDateTime(_payload.data[index].latestEditDateTime)}'),
+      body: Builder(
+        builder: (_) {
+          if (_isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.green,
+                strokeWidth: 5,
+              ),
             );
-          },
-          itemCount: _payload.data.length,
-        );
-      }),
+          }
+
+          if (_payload.error) {
+            return Center(child: Text(_payload.errorMessage));
+          }
+
+          return ListView.separated(
+            separatorBuilder: (_, __) => const Divider(
+              height: 1,
+              color: Colors.black,
+            ),
+            itemBuilder: (_, index) {
+              return ListTile(
+                title: Text(
+                    'Id: ${_payload.data[index].noteID} | Title: ${_payload.data[index].noteTitle}',
+                    style: kTxtTitleListTextStyle),
+                subtitle: Text(
+                    'Last Created on: ${formatDateTime(_payload.data[index].createDateTime)}' +
+                        '\n' +
+                        'Last Edited on: ${formatDateTime(_payload.data[index].latestEditDateTime)}'),
+              );
+            },
+            itemCount: _payload.data.length,
+          );
+        },
+      ),
     );
   }
 }
