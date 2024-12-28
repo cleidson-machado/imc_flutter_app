@@ -63,7 +63,7 @@ class MyIndexProjectsPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed('/notesHomePage');
+                Navigator.of(context).pushNamed('/notesHomePageA');
               },
               child: const ButtonIndexContainerComponent(
                   txtButtonTitle: 'data from api Exp-01'),
@@ -77,10 +77,10 @@ class MyIndexProjectsPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed('/calc');
+                Navigator.of(context).pushNamed('/notesHomePageB');
               },
               child: const ButtonIndexContainerComponent(
-                  txtButtonTitle: 'todo 02...'),
+                  txtButtonTitle: 'data from api Exp-02'),
             ),
             GestureDetector(
               onTap: () {

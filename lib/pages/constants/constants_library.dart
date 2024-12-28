@@ -59,3 +59,5 @@ const String theAppTitle = 'IMC CALCULATOR';
 const String theProjectTitleOne = 'COMBO LIST ONE';
 
 const String theProjectTitleTwo = 'REST API LIST Try-A';
+
+const String theProjectTitleThree = 'REST API LIST Try-B';
