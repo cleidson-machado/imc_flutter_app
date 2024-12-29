@@ -15,7 +15,6 @@ class NoteListPageExampleB extends StatefulWidget {
 }
 
 class _NoteListPageExampleBState extends State<NoteListPageExampleB> {
-
   //### START HERE THE BASIC AND SIMPLE REST API REQUEST ####################
   Future<List> getTheNotes() async {
     var url =
@@ -43,10 +42,8 @@ class _NoteListPageExampleBState extends State<NoteListPageExampleB> {
         child: const Icon(Icons.add),
       ),
       body: FutureBuilder<List>(
-
         future: getTheNotes(),
         builder: (context, snapshot) {
-
           if (snapshot.hasError) {
             return Center(
               child: Text('${snapshot.error}'),
@@ -57,21 +54,24 @@ class _NoteListPageExampleBState extends State<NoteListPageExampleB> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(' Id: ${snapshot.data![index]['noteID']} | ${snapshot.data![index]['noteTitle']}'),
-                subtitle: Text('Last Created on:: ${snapshot.data![index]['createDateTime']}' 
-                '\n' + 
-                'Last Edited on:: ${snapshot.data![index]['latestEditDateTime']}'),
-              );
-            });
+                return ListTile(
+                  title: Text(
+                      ' Id: ${snapshot.data![index]['noteID']} | ${snapshot.data![index]['noteTitle']}'),
+                  subtitle: Text(
+                          'Last Created on:: ${snapshot.data![index]['createDateTime']}'
+                          '\n' +
+                          'Last Edited on:: ${snapshot.data![index]['latestEditDateTime']}'),
+                );
+              },
+            );
           }
 
           return const Center(
-              child: CircularProgressIndicator(
-                color: Colors.green,
-                strokeWidth: 5,
-              ),
-            );
+            child: CircularProgressIndicator(
+              color: Colors.green,
+              strokeWidth: 5,
+            ),
+          );
         },
       ),
     );
