@@ -14,8 +14,9 @@ class NoteListPageExampleC extends StatefulWidget {
 }
 
 class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
-  List notes = [];
+  List notesStartList = [];
   bool isLoading = false; // For tracking the loading state
+  String? errorMessage; // To store error messages
 
   @override
   void initState() {
@@ -28,16 +29,21 @@ class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
   void fetchNotes() async {
     setState(() {
       isLoading = true; // Start loading
+      errorMessage = null; // Clear any previous error message
     });
 
     try {
-      var response = await Dio().get('https://6767d711c1de2e6421c86392.mockapi.io/api/v1/notes');
+      var response = await Dio()
+          .get('https://6767d711c1de2e6421c86392.mockapi.io/api/v1/notes');
       setState(() {
-        notes = response.data;
-        print('DATA COLLECTED IS: $notes');
+        notesStartList = response.data;
+        print('DATA COLLECTED IS: $notesStartList');
       });
     } catch (e) {
-      print('GET Error: $e');
+      setState(() {
+        errorMessage = 'Error: $e';
+        print('GET Error: $e');
+      });
     } finally {
       setState(() {
         isLoading = false; // Stop loading
@@ -55,22 +61,51 @@ class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
         elevation: 2.5,
         title: Text(widget.title),
       ),
-      body: isLoading ? const Center(child: CircularProgressIndicator()) : ListView.builder(
-              itemCount: notes.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(
-                    'Id: ${notes[index]['noteID']} | ${notes[index]['noteTitle']}',
-                    style: kTxtTabTitleListTextStyle,
+      body: isLoading
+          ? const Center(
+              child: CircularProgressIndicator()) // Show loading spinner
+          : errorMessage != null
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          errorMessage!,
+                          style: const TextStyle(
+                              color: Colors.greenAccent,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              fontStyle: FontStyle.italic),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed:
+                            fetchNotes, // Retry button to fetch data again
+                        child: const Text('Retry'),
+                      ),
+                    ],
                   ),
-                  subtitle: Text(
-                    'Last Created on:: ${notes[index]['createDateTime']}'
-                    '\n'
-                    'Last Edited on:: ${notes[index]['latestEditDateTime']}',
-                  ),
-                );
-              },
-            ),
+                )
+              : ListView.builder(
+                  itemCount: notesStartList.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(
+                        'Id: ${notesStartList[index]['noteID']} | ${notesStartList[index]['noteTitle']}',
+                        style: kTxtTabTitleListTextStyle,
+                      ),
+                      subtitle: Text(
+                        'Last Created on:: ${notesStartList[index]['createDateTime']}'
+                        '\n'
+                        'Last Edited on:: ${notesStartList[index]['latestEditDateTime']}',
+                      ),
+                    );
+                  },
+                ),
     );
   }
 }
