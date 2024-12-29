@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:my_imc_calc_app/Model_Providers/user_data_provider.dart';
 import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page_example_a.dart';
 import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page_example_b.dart';
+import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page_example_c.dart';
 import 'package:my_imc_calc_app/pages/combo_from_api_a/combo_index_page_one.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_calculator_page.dart';
@@ -63,9 +64,10 @@ class MyApp extends StatelessWidget {
         '/calc': (context) => const MyDefaultHomePage(title: theAppTitle,),
         '/calculator': (context) => const MyCalculatorPage(title: theAppTitle,),
         '/comboIndexOne': (context) => const ComboIndexPageOne(title: theProjectTitleOne,),
-        '/notesHomePageA': (context) => const NoteListPageExampleA(title: theProjectTitleTwo,),
+        '/notesHomePageA': (context) => const NoteListPageExampleA(title: theProjectTitleTwo,),   //REST API TEST A
         '/listViewTestA': (context) => const MyListViewTestA(),
-        '/notesHomePageB': (context) => const NoteListPageExampleB(title: theProjectTitleThree,),
+        '/notesHomePageB': (context) => const NoteListPageExampleB(title: theProjectTitleThree,), //REST API TEST B
+        '/notesHomePageC': (context) => const NoteListPageExampleC(title: theProjectTitleSix,), //REST API TEST C
         '/tabsPageExampleA': (context) => const TabPageExampleA(title: theProjectTitleFour,),
         '/tabsPageExampleB': (context) => const TabPageExampleB(title: theProjectTitleFive,),
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
