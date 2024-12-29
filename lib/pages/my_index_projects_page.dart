@@ -84,10 +84,10 @@ class MyIndexProjectsPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.of(context).pushNamed('/calc');
+                Navigator.of(context).pushNamed('/tabsPageExampleA');
               },
               child: const ButtonIndexContainerComponent(
-                  txtButtonTitle: 'todo 03...'),
+                  txtButtonTitle: 'Tab Page Example A'),
             ),
             GestureDetector(
               onTap: () {
