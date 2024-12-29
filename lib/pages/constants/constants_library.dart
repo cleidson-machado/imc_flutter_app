@@ -24,6 +24,12 @@ const kTxtTitleListTextStyle = TextStyle(
   color: Colors.white
 );
 
+const kTxtTabTitleListTextStyle = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.bold,
+  color: Colors.white
+);
+
 const kMetricTextStyle = TextStyle(
   fontSize: 18.0,
   fontWeight: FontWeight.w600,
@@ -63,3 +69,5 @@ const String theProjectTitleTwo = 'REST API LIST Try-A';
 const String theProjectTitleThree = 'REST API LIST Try-B';
 
 const String theProjectTitleFour = 'Test Tab Layout-A';
+
+const String theProjectTitleFive = 'Test Tab Layout-B';
