@@ -17,6 +17,7 @@ class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
   List notesStartList = [];
   bool isLoading = false; // For tracking the loading state
   String? errorMessage; // To store error messages
+  bool isEmptyData = false; // To track if the data is empty
 
   @override
   void initState() {
@@ -25,11 +26,11 @@ class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
   }
 
   //### START HERE THE BASIC AND SIMPLE REST API REQUEST USING DIO ####################
-
   void fetchNotes() async {
     setState(() {
       isLoading = true; // Start loading
       errorMessage = null; // Clear any previous error message
+      isEmptyData = false; // Reset empty data flag
     });
 
     try {
@@ -38,6 +39,9 @@ class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
       setState(() {
         notesStartList = response.data;
         print('DATA COLLECTED IS: $notesStartList');
+        if (notesStartList.isEmpty) {
+          isEmptyData = true; // Mark data as empty if list is empty
+        }
       });
     } catch (e) {
       setState(() {
@@ -50,8 +54,7 @@ class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
       });
     }
   }
-
-  //### END HERE THE BASIC AND SIMPLE REST API REQUEST USING DIO ####################
+  //### END HERE THE BASIC AND SIMPLE REST API REQUEST USING DIO ######################
 
   @override
   Widget build(BuildContext context) {
@@ -90,22 +93,33 @@ class _NoteListPageExampleCState extends State<NoteListPageExampleC> {
                     ],
                   ),
                 )
-              : ListView.builder(
-                  itemCount: notesStartList.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(
-                        'Id: ${notesStartList[index]['noteID']} | ${notesStartList[index]['noteTitle']}',
-                        style: kTxtTabTitleListTextStyle,
+              : isEmptyData
+                  ? const Center(
+                      child: Text(
+                        'No data found.',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
-                      subtitle: Text(
-                        'Last Created on:: ${notesStartList[index]['createDateTime']}'
-                        '\n'
-                        'Last Edited on:: ${notesStartList[index]['latestEditDateTime']}',
-                      ),
-                    );
-                  },
-                ),
+                    )
+                  : ListView.builder(
+                      itemCount: notesStartList.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(
+                            'Id: ${notesStartList[index]['noteID']} | ${notesStartList[index]['noteTitle']}',
+                            style: kTxtTabTitleListTextStyle,
+                          ),
+                          subtitle: Text(
+                            'Last Created on:: ${notesStartList[index]['createDateTime']}'
+                            '\n'
+                            'Last Edited on:: ${notesStartList[index]['latestEditDateTime']}',
+                          ),
+                        );
+                      },
+                    ),
     );
   }
 }
