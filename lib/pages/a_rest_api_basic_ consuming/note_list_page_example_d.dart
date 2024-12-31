@@ -27,11 +27,15 @@ class _NoteListPageExampleDState extends State<NoteListPageExampleD> {
   void initState() {
     super.initState();
     fetchNotes();
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent && !isLoading && hasMoreData) {
-        fetchNotes();
-      }
-    },
+    _scrollController.addListener(
+      () {
+        if (_scrollController.position.pixels >=
+                _scrollController.position.maxScrollExtent &&
+            !isLoading &&
+            hasMoreData) {
+          fetchNotes();
+        }
+      },
     );
   }
 
@@ -55,28 +59,25 @@ class _NoteListPageExampleDState extends State<NoteListPageExampleD> {
       );
 
       List newNotes = response.data;
-      
+
       // Calculate the subset of notes to fetch
       int startIndex = currentPage * pageSize;
       int endIndex = startIndex + pageSize;
 
       // Extract the data for this "page"
-      List fetchedNotes = newNotes.sublist(startIndex, endIndex > newNotes.length ? newNotes.length : endIndex);
-
-      // Mark data as empty if list is empty
-      setState(() {
-          if (newNotes.isEmpty) {
-            isEmptyData = true; 
-        }
-      });
+      List fetchedNotes = newNotes.sublist(
+          startIndex, endIndex > newNotes.length ? newNotes.length : endIndex);
 
       setState(() {
-        notesList.addAll(fetchedNotes);
-        if (fetchedNotes.length < pageSize) {
-          hasMoreData = false; // No more data to load
-        } 
-        else {
-          currentPage++; // Increment the page counter
+        if (newNotes.isEmpty) {
+          isEmptyData = true;
+        } else {
+          notesList.addAll(fetchedNotes);
+          if (fetchedNotes.length < pageSize) {
+            hasMoreData = false; // No more data to load
+          } else {
+            currentPage++; // Increment the page counter
+          }
         }
       });
     } catch (e) {
@@ -135,9 +136,10 @@ class _NoteListPageExampleDState extends State<NoteListPageExampleD> {
                     ),
                   ),
                 )
+              
               : ListView.builder(
                   controller: _scrollController,
-                  itemCount: notesList.length + (hasMoreData ? 1 : 0),
+                  itemCount: notesList.length + 1,
                   itemBuilder: (context, index) {
                     if (index < notesList.length) {
                       return ListTile(
@@ -151,17 +153,31 @@ class _NoteListPageExampleDState extends State<NoteListPageExampleD> {
                           'Last Edited on: ${notesList[index]['latestEditDateTime']}',
                         ),
                       );
-                    } else {
-                      // Show loader at the bottom while loading more data
-                      return const Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: CircularProgressIndicator(),
+                    }
+
+                    // Show a message when there's no more data to load
+                    if (!hasMoreData) {
+                      return const Padding(
+                        padding: EdgeInsets.only(left: 17, top: 22, bottom: 22),
+                        child: Text(
+                          '- THIS IS THE END OF A Rest API LIST ------',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14.0,
+                            color: Colors.amber,
+                          ),
                         ),
                       );
                     }
-                  },
-                ),
+
+                    // Show loader at the bottom while loading more data
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }),
     );
   }
 }
