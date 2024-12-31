@@ -136,48 +136,70 @@ class _NoteListPageExampleDState extends State<NoteListPageExampleD> {
                     ),
                   ),
                 )
-              
-              : ListView.builder(
-                  controller: _scrollController,
-                  itemCount: notesList.length + 1,
-                  itemBuilder: (context, index) {
-                    if (index < notesList.length) {
-                      return ListTile(
-                        title: Text(
-                          'Id: ${notesList[index]['noteID']} | ${notesList[index]['noteTitle']}',
-                          style: kTxtTabTitleListTextStyle,
-                        ),
-                        subtitle: Text(
-                          'Last Created on: ${notesList[index]['createDateTime']}'
-                          '\n'
-                          'Last Edited on: ${notesList[index]['latestEditDateTime']}',
-                        ),
-                      );
-                    }
+              : Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: notesList.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index < notesList.length) {
+                          return Padding(
+                              padding: const EdgeInsets.only(left: 5, right: 5),
+                              child: Card(
+                                elevation: 1,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    topRight: Radius.circular(5),
+                                    bottomLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(5),
+                                  ),
+                                ),
+                                color: Colors.black12,
+                                child: ListTile(
+                                  title: Text(
+                                    'Id: ${notesList[index]['noteID']} | ${notesList[index]['noteTitle']}',
+                                    style: kTxtTabTitleListTextStyle,
+                                  ),
+                                  subtitle: Text(
+                                    'Last Created on: ${notesList[index]['createDateTime']}'
+                                    '\n'
+                                    'Last Edited on: ${notesList[index]['latestEditDateTime']}',
+                                  ),
+                                ),
+                              ));
+                        }
 
-                    // Show a message when there's no more data to load
-                    if (!hasMoreData) {
-                      return const Padding(
-                        padding: EdgeInsets.only(left: 17, top: 22, bottom: 22),
-                        child: Text(
-                          '- THIS IS THE END OF A Rest API LIST ------',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14.0,
-                            color: Colors.amber,
+                        // Show a message when there's no more data to load
+                        if (!hasMoreData) {
+                          String notesCounter = notesList.length.toString();
+                          return Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 10, bottom: 15),
+                                child: Text(
+                                  '- Only: $notesCounter Itens Has been Found on The List! -',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.0,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+
+                        // Show loader at the bottom while loading more data
+                        return const Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: CircularProgressIndicator(),
                           ),
-                        ),
-                      );
-                    }
-
-                    // Show loader at the bottom while loading more data
-                    return const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  }),
+                        );
+                      }),
+                ),
     );
   }
 }
