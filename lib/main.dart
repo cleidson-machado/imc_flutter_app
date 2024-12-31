@@ -11,6 +11,7 @@ import 'package:my_imc_calc_app/pages/imc_stuff/my_calculator_page.dart';
 import 'package:my_imc_calc_app/pages/imc_stuff/my_default_home_page.dart';
 import 'package:my_imc_calc_app/pages/list_view_layout_and_performances_tests/my_list_view_test_a.dart';
 import 'package:my_imc_calc_app/pages/my_index_projects_page.dart';
+import 'package:my_imc_calc_app/pages/skeletonizer_demo_pages/skeletonizer_demo_page_a.dart';
 import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tab_page_example_a.dart';
 import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tab_page_example_b.dart';
 import 'package:my_imc_calc_app/service/notes_service.dart';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
         '/tabsPageExampleA': (context) => const TabPageExampleA(title: theProjectTitleFour,),
         '/tabsPageExampleB': (context) => const TabPageExampleB(title: theProjectTitleFive,),
         '/notesHomePageD': (context) => const NoteListPageExampleD(title: theProjectTitleSeven,), //REST API TEST D Scroll Control
+        '/skeletonPageA': (context) => const SkeletonizerDemoPageA(),
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
       },
     );
