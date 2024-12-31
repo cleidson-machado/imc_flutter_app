@@ -70,6 +70,7 @@ class MyApp extends StatelessWidget {
         '/notesHomePageC': (context) => const NoteListPageExampleC(title: theProjectTitleSix,), //REST API TEST C
         '/tabsPageExampleA': (context) => const TabPageExampleA(title: theProjectTitleFour,),
         '/tabsPageExampleB': (context) => const TabPageExampleB(title: theProjectTitleFive,),
+        '/notesHomePageD': (context) => const NoteListPageExampleC(title: theProjectTitleSeven,), //REST API TEST D Scroll Control
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
       },
     );
