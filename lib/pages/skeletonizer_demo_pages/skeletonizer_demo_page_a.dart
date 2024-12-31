@@ -44,10 +44,7 @@ class _SkeletonizerDemoPageAState extends State<SkeletonizerDemoPageA> {
               child: ListTile(
                 title: Text('Item number $index as title'),
                 subtitle: const Text('Subtitle here'),
-                trailing: const Icon(
-                  Icons.ac_unit,
-                  size: 32,
-                ),
+                trailing: const Icon( Icons.ac_unit, size: 32),
               ),
             );
           },
