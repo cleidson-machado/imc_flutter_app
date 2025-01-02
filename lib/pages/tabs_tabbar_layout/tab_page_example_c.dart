@@ -17,7 +17,7 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
   
   String get tabTitleA => 'All Mess...'; 
   String get tabTitleB => 'Read';
-  String get tabTitleC => 'Achive';
+  String get tabTitleC => 'Archive';
 
   @override
   Widget build(BuildContext context) {
