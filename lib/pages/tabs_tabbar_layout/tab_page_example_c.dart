@@ -15,7 +15,7 @@ class TabPageExampleC extends StatefulWidget {
 
 class _TabPageExampleCState extends State<TabPageExampleC> {
   
-  String get tabTitleA => 'All Mess...'; 
+  String get tabTitleA => 'All'; 
   String get tabTitleB => 'Read';
   String get tabTitleC => 'Archive';
 

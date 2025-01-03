@@ -76,4 +76,4 @@ const String theProjectTitleSix = 'REST API LIST Try-C';
 
 const String theProjectTitleSeven = 'REST API LIST Try-D';
 
-const String theProjectTitleEight = 'Test Tab Layout-C';
+const String theProjectTitleEight = 'Inbox Messages';
