@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
-import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tabs_pages/second_tab_page.dart';
 import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tabs_pages/third_tab_page.dart';
-import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tabs_pages_list_filter_msn/list_messages_tab_page.dart';
+import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tabs_pages_list_filter_msn/list_all_messages_tab_page.dart';
+import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tabs_pages_list_filter_msn/list_read_messages_tab_page.dart';
 
 class TabPageExampleC extends StatefulWidget {
   const TabPageExampleC({super.key, required this.title});
@@ -48,8 +48,8 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
         ),
         body: const TabBarView(
           children: [
-          ListMessagesTabPage(),
-          SecondTabPage(),
+          ListAllMessagesTabPage(),
+          ListReadMessagesTabPage(),
           ThirdTabPage(),
         ]),
       ),

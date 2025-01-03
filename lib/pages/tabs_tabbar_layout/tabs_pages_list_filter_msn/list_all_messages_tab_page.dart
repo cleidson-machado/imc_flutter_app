@@ -1,18 +1,17 @@
 // ignore_for_file: avoid_print
-// ListMessagesTabPage
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
-class ListMessagesTabPage extends StatefulWidget {
-  const ListMessagesTabPage({super.key});
+class ListAllMessagesTabPage extends StatefulWidget {
+  const ListAllMessagesTabPage({super.key});
 
   @override
-  State<ListMessagesTabPage> createState() => _ListMessagesTabPageState();
+  State<ListAllMessagesTabPage> createState() => _ListAllMessagesTabPageState();
 }
 
-class _ListMessagesTabPageState extends State<ListMessagesTabPage> {
+class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
   List notesList = [];
   bool isLoading = false; // For tracking the loading state
   bool hasMoreData = true; // To track if more data is available
@@ -57,14 +56,14 @@ class _ListMessagesTabPageState extends State<ListMessagesTabPage> {
         'https://6767d711c1de2e6421c86392.mockapi.io/api/v1/notes',
       );
 
-      List newNotes = response.data;
+      final List<dynamic> newNotes = response.data;
 
       // Calculate the subset of notes to fetch
-      int startIndex = currentPage * pageSize;
-      int endIndex = startIndex + pageSize;
+      final int startIndex = currentPage * pageSize;
+      final int endIndex = startIndex + pageSize;
 
       // Extract the data for this "page"
-      List fetchedNotes = newNotes.sublist(
+      final List fetchedNotes = newNotes.sublist(
           startIndex, endIndex > newNotes.length ? newNotes.length : endIndex);
 
       setState(() {
