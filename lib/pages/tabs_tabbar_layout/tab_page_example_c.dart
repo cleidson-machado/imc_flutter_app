@@ -14,10 +14,11 @@ class TabPageExampleC extends StatefulWidget {
 }
 
 class _TabPageExampleCState extends State<TabPageExampleC> {
-  
-  String get tabTitleA => 'All'; 
+  String get tabTitleA => 'All';
   String get tabTitleB => 'Read';
   String get tabTitleC => 'Archive';
+
+  int tabNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,28 +30,50 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
           elevation: 2.5,
           title: Text(widget.title),
           centerTitle: true,
+          actions: [
+            if(tabNumber == 0)
+            IconButton(
+              icon: const Icon(Icons.filter_alt),
+              tooltip: 'Show Snackbar',
+              onPressed: () { ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('This is a snackbar')));
+              },
+            ),
+          ],
           bottom: TabBar(
+            onTap: (value) {
+                setState(() {
+                  tabNumber = value;
+                });
+              },
             tabs: [
               Tab(
-                child: Text(tabTitleA.toUpperCase(), style: kTxtTabTitleListTextStyle,),
+                child: Text(
+                  tabTitleA.toUpperCase(),
+                  style: kTxtTabTitleListTextStyle,
+                ),
                 // icon: Icon(Icons.home),
               ),
               Tab(
-                child: Text(tabTitleB.toUpperCase(), style: kTxtTabTitleListTextStyle,),
+                child: Text(
+                  tabTitleB.toUpperCase(),
+                  style: kTxtTabTitleListTextStyle,
+                ),
                 // icon: Icon(Icons.star),
               ),
               Tab(
-                child: Text(tabTitleC.toUpperCase(), style: kTxtTabTitleListTextStyle,),
+                child: Text(
+                  tabTitleC.toUpperCase(),
+                  style: kTxtTabTitleListTextStyle,
+                ),
                 // icon: Icon(Icons.person),
               ),
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-          ListAllMessagesTabPage(),
-          ListReadMessagesTabPage(),
-          ThirdTabPage(),
+        body: TabBarView(children: [
+          ListAllMessagesTabPage(idTabMark: tabNumber,),
+          ListReadMessagesTabPage(idTabMark: tabNumber,),
+          const ThirdTabPage(),
         ]),
       ),
     );

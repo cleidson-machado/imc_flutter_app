@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 class ListAllMessagesTabPage extends StatefulWidget {
-  const ListAllMessagesTabPage({super.key});
+  const ListAllMessagesTabPage({super.key, this.idTabMark});
+
+  final int? idTabMark;
 
   @override
   State<ListAllMessagesTabPage> createState() => _ListAllMessagesTabPageState();
