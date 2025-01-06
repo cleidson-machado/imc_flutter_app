@@ -18,7 +18,7 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
   String get tabTitleB => 'Read';
   String get tabTitleC => 'Archive';
 
-  int tabNumber = 0;
+  int enableFilterButton = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
           title: Text(widget.title),
           centerTitle: true,
           actions: [
-            if(tabNumber == 0)
+            if(enableFilterButton == 0)
             IconButton(
               icon: const Icon(Icons.filter_alt),
               tooltip: 'Show Snackbar',
@@ -42,7 +42,7 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
           bottom: TabBar(
             onTap: (value) {
                 setState(() {
-                  tabNumber = value;
+                  enableFilterButton = value;
                 });
               },
             tabs: [
@@ -71,8 +71,8 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
           ),
         ),
         body: TabBarView(children: [
-          ListAllMessagesTabPage(idTabMark: tabNumber,),
-          ListReadMessagesTabPage(idTabMark: tabNumber,),
+          ListAllMessagesTabPage(idTabMark: enableFilterButton,),
+          ListReadMessagesTabPage(idTabMark: enableFilterButton,),
           const ThirdTabPage(),
         ]),
       ),
