@@ -59,9 +59,9 @@ class _ListReadMessagesTabPageState extends State<ListReadMessagesTabPage> {
         'https://6767d711c1de2e6421c86392.mockapi.io/api/v1/notes',
       );
 
-      // FILTER isViewed >> TRUE.... ################################################# START
       final List<dynamic> rawData = response.data;
 
+      // FILTER isViewed >> TRUE.... ################################################# START
       final List<Map<String, dynamic>> newNotes = rawData
           .where((note) => note['isViewed'] == true)
           .map((note) => note as Map<String, dynamic>)

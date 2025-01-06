@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
 class ListAllMessagesTabPage extends StatefulWidget {
-  const ListAllMessagesTabPage({super.key, this.idTabMark});
+  const ListAllMessagesTabPage({super.key, this.idTabMark, this.listAction});
 
   final int? idTabMark;
+  final bool? listAction;
 
   @override
   State<ListAllMessagesTabPage> createState() => _ListAllMessagesTabPageState();
@@ -60,6 +61,13 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
 
       final List<dynamic> newNotes = response.data;
 
+      // LOGICAL FILTER TEST ################################################# START
+       if(widget.listAction == true) {
+        //print('TRIGGER: ${widget.listAction}');
+        // OK TRY MAKE THE DROP DOWN BUTTON EXECUTE THE FECTH ACTION AGAIN!! 06/01/2024...
+       }
+      // LOGICAL FILTER TEST ################################################# END
+
       // Calculate the subset of notes to fetch
       final int startIndex = currentPage * pageSize;
       final int endIndex = startIndex + pageSize;
@@ -94,6 +102,8 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
 
   @override
   Widget build(BuildContext context) {
+    print('PAREI AQUI VALIDA VIA TAB INDEX PAGE: ${widget.listAction}');
+    // OK TRY MAKE THE DROP DOWN BUTTON EXECUTE THE FECTH ACTION AGAIN!! 06/01/2024...
     return Scaffold(
       body: errorMessage != null
           ? Center(

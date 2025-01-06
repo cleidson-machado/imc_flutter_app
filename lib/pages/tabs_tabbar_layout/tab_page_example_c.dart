@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tabs_pages/third_tab_page.dart';
@@ -17,34 +19,85 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
   String get tabTitleA => 'All';
   String get tabTitleB => 'Read';
   String get tabTitleC => 'Archive';
+  String statusFilterMsn = 'none';
 
   int enableFilterButton = 0;
 
+  bool showAll = false;
+
   @override
   Widget build(BuildContext context) {
+    void onSelected(BuildContext context, int item) {
+      switch (item) {
+        case 0:
+          setState(() {
+            statusFilterMsn = '( Todas )';
+            showAll = false;
+          });
+          break;
+        case 1:
+          setState(() {
+            statusFilterMsn = '( Lidas )';
+            showAll = true;
+          });
+          break;
+        case 2:
+          setState(() {
+            statusFilterMsn = '( NÃO Lidas )';
+          });
+          break;
+      }
+    }
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           elevation: 2.5,
-          title: Text(widget.title),
+          //title: Text(widget.title),
+          title: statusFilterMsn == 'none'
+              ? Text(widget.title)
+              : Text('${widget.title} $statusFilterMsn'),
           centerTitle: true,
           actions: [
-            if(enableFilterButton == 0)
-            IconButton(
-              icon: const Icon(Icons.filter_alt),
-              tooltip: 'Show Snackbar',
-              onPressed: () { ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('This is a snackbar')));
-              },
-            ),
+            if (enableFilterButton == 0)
+              PopupMenuButton<int>(
+                icon: const Icon(Icons.filter_alt),
+                onSelected: (item) => onSelected(context, item),
+                itemBuilder: (context) => [
+                  const PopupMenuItem<int>(
+                    value: 0,
+                    child: Center(
+                      child: Text('TODAS'),
+                    ),
+                  ),
+                  const PopupMenuItem<int>(
+                    value: 1,
+                    child: Center(
+                      child: Text('LIDAS'),
+                    ),
+                  ),
+                  const PopupMenuItem<int>(
+                    value: 2,
+                    child: Center(
+                      child: Text('NÃO LIDAS'),
+                    ),
+                  )
+                ],
+              )
           ],
           bottom: TabBar(
             onTap: (value) {
-                setState(() {
-                  enableFilterButton = value;
-                });
-              },
+              setState(() {
+                enableFilterButton = value;
+                if (enableFilterButton == 0) {
+                  statusFilterMsn =
+                      'none'; //To Clear Title When The Main Tab is Selected!!!
+                  // showAll = true;
+                }
+              });
+            },
             tabs: [
               Tab(
                 child: Text(
@@ -71,8 +124,8 @@ class _TabPageExampleCState extends State<TabPageExampleC> {
           ),
         ),
         body: TabBarView(children: [
-          ListAllMessagesTabPage(idTabMark: enableFilterButton,),
-          ListReadMessagesTabPage(idTabMark: enableFilterButton,),
+          ListAllMessagesTabPage(listAction: showAll,),
+          ListReadMessagesTabPage(idTabMark: enableFilterButton),
           const ThirdTabPage(),
         ]),
       ),
