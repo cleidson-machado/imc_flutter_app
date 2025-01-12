@@ -20,11 +20,7 @@ class _SkeletonizerDemoPageAState extends State<SkeletonizerDemoPageA> {
         child: Padding(
           padding: const EdgeInsets.only(bottom: 110),
           child: FloatingActionButton(
-            child: Icon(
-              _enabled
-                  ? Icons.hourglass_bottom_rounded
-                  : Icons.hourglass_disabled_outlined,
-            ),
+            child: Icon(_enabled ? Icons.hourglass_bottom_rounded : Icons.hourglass_disabled_outlined),
             onPressed: () {
               setState(() {
                 _enabled = !_enabled;

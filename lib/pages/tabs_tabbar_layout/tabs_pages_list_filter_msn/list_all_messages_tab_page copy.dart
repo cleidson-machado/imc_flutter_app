@@ -4,8 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pages/constants/constants_library.dart';
 
-//VOLTAR AO ESTUDOS! USAR OU COMPARAR AINDA COM CÓDIGO DO CHAT GPT
-
 class ListAllMessagesTabPage extends StatefulWidget {
   const ListAllMessagesTabPage({super.key, this.idTabMark, this.listAction});
 
@@ -17,7 +15,6 @@ class ListAllMessagesTabPage extends StatefulWidget {
 }
 
 class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
-
   List notesList = [];
   bool isLoading = false; // For tracking the loading state
   bool hasMoreData = true; // To track if more data is available
@@ -62,31 +59,61 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
         'https://6767d711c1de2e6421c86392.mockapi.io/api/v1/notes',
       );
 
-      List<dynamic> rawData = response.data;
-
       if (widget.listAction == true) {
-        // Filtrar por `isViewed == true`
-        rawData = rawData.where((note) => note['isViewed'] == true).toList();
-      }
+        final List<dynamic> rawData = response.data;
 
-      final int startIndex = currentPage * pageSize;
-      final int endIndex = startIndex + pageSize;
+        // FILTER isViewed >> TRUE.... ################################################# START
+        final List<Map<String, dynamic>> newNotes = rawData
+            .where((note) => note['isViewed'] == true)
+            .map((note) => note as Map<String, dynamic>)
+            .toList();
+        // FILTER isViewed >> TRUE.... ################################################# END
 
-      List fetchedNotes = rawData.sublist(
-          startIndex, endIndex > rawData.length ? rawData.length : endIndex);
+        // Calculate the subset of notes to fetch
+        int startIndex = currentPage * pageSize;
+        int endIndex = startIndex + pageSize;
 
-      setState(() {
-        if (rawData.isEmpty) {
-          isEmptyData = true;
-        } else {
-          notesList.addAll(fetchedNotes);
-          if (fetchedNotes.length < pageSize) {
-            hasMoreData = false;
+        // Extract the data for this "page"
+        List fetchedNotes = newNotes.sublist(startIndex,
+            endIndex > newNotes.length ? newNotes.length : endIndex);
+
+        setState(() {
+          if (newNotes.isEmpty) {
+            isEmptyData = true;
           } else {
-            currentPage++;
+            notesList.addAll(fetchedNotes);
+            if (fetchedNotes.length < pageSize) {
+              hasMoreData = false; // No more data to load
+            } else {
+              currentPage++; // Increment the page counter
+            }
           }
-        }
-      });
+        });
+      } else {
+        final List<dynamic> newNotes = response.data;
+
+        // Calculate the subset of notes to fetch
+        final int startIndex = currentPage * pageSize;
+        final int endIndex = startIndex + pageSize;
+
+        // Extract the data for this "page"
+        final List fetchedNotes = newNotes.sublist(startIndex,
+            endIndex > newNotes.length ? newNotes.length : endIndex);
+
+        setState(() {
+          if (newNotes.isEmpty) {
+            isEmptyData = true;
+          } else {
+            notesList.addAll(fetchedNotes);
+            if (fetchedNotes.length < pageSize) {
+              hasMoreData = false; // No more data to load
+            } else {
+              currentPage++; // Increment the page counter
+            }
+          }
+        });
+      }
+      // LOGICAL FILTER TEST ################################################# END
     } catch (e) {
       setState(() {
         errorMessage = 'Error: $e';
@@ -161,7 +188,6 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
                                 ),
                                 color: Colors.black12,
                                 child: ListTile(
-                                  leading: CircleAvatar(child: Text('${index + 1}')),
                                   title: Text(
                                     'Id: ${notesList[index]['noteID']} | ${notesList[index]['noteTitle']}',
                                     style: kTxtTabTitleListTextStyle,
@@ -175,7 +201,8 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
                                     'MSN: ${notesList[index]['contentTxtBody']}'
                                     '\n'
                                     '\n'
-                                    'READ: ${notesList[index]['isViewed']} ' '| Archived: ${notesList[index]['isArchive']}',
+                                    'READ: ${notesList[index]['isViewed']} '
+                                    '| Archived: ${notesList[index]['isArchive']}',
                                   ),
                                   trailing: const Text('ICON'),
                                 ),
