@@ -23,21 +23,21 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
   bool hasMoreData = true; // To track if more data is available
   String? errorMessage; // To store error messages
   int currentPage = 0; // Track the current page
-  final int pageSize = 5; // Number of items to load per page
+  final int pageSize = 3; // Number of items to load per page
   final ScrollController _scrollController = ScrollController();
   bool isEmptyData = false; // To track if the data is empty
 
   @override
   void initState() {
     super.initState();
-    fetchNotes();
-    _scrollController.addListener(
-      () {
-        if (_scrollController.position.pixels >=
-                _scrollController.position.maxScrollExtent &&
-            !isLoading &&
-            hasMoreData) {
-          fetchNotes();
+    _fetchNotes();
+    _scrollListener();
+  }
+
+  void _scrollListener() {
+    _scrollController.addListener(() {
+        if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent && !isLoading && hasMoreData) {
+          _fetchNotes();
         }
       },
     );
@@ -49,7 +49,8 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
     super.dispose();
   }
 
-  void fetchNotes() async {
+  void _fetchNotes() async {
+  
     if (isLoading || !hasMoreData) return;
 
     setState(() {
@@ -72,8 +73,7 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
       final int startIndex = currentPage * pageSize;
       final int endIndex = startIndex + pageSize;
 
-      List fetchedNotes = rawData.sublist(
-          startIndex, endIndex > rawData.length ? rawData.length : endIndex);
+      List fetchedNotes = rawData.sublist( startIndex, endIndex > rawData.length ? rawData.length : endIndex );
 
       setState(() {
         if (rawData.isEmpty) {
@@ -87,6 +87,7 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
           }
         }
       });
+
     } catch (e) {
       setState(() {
         errorMessage = 'Error: $e';
@@ -123,7 +124,7 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: fetchNotes, // Retry button
+                    onPressed: _fetchNotes, // Retry button
                     child: const Text('Retry'),
                   ),
                 ],
@@ -201,6 +202,10 @@ class _ListAllMessagesTabPageState extends State<ListAllMessagesTabPage> {
                               ),
                             ],
                           );
+                        }
+
+                        if(pageSize < 3){
+                          return null;
                         }
 
                         // Show loader at the bottom while loading more data
