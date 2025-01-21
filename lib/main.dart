@@ -47,34 +47,20 @@ class Progress extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    bool halfWayMessageTag = false;
-    bool endWayMessageTag = false;
-
     final progressState = ref.watch(taskViewModelProvider);
-    final progressPercentage = progressState.progressPercentage;
-    final progress = progressState.progress;
 
-    // CHECK IF PROGRESS IS APPROXIMATELY 50%
-    if (progress > 0.49 && progress < 0.56 && !halfWayMessageTag) {
-      halfWayMessageTag = true;
+    if (progressState.halfWayMessageShown) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  'Never Give Up! You have $progressPercentage of the tasks!')),
+          SnackBar(content: Text('Never Give Up! You have ${progressState.progressPercentage} of the tasks!')),
         );
       });
     }
 
-    // CHECK IF PROGRESS IS 100%
-    if (progress == 1.0 && !endWayMessageTag) {
-      endWayMessageTag = true;
+    if (progressState.endWayMessageShown) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content: Text(
-                  'Congratulations! You have $progressPercentage of the tasks!')),
+          SnackBar(content: Text('Congratulations! You have ${progressState.progressPercentage} of the tasks!')),
         );
       });
     }
@@ -89,13 +75,14 @@ class Progress extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 10),
-        LinearProgressIndicator(value: progress),
+        LinearProgressIndicator(value: progressState.progress),
         const SizedBox(height: 8),
-        Text(progressPercentage, style: const TextStyle(fontSize: 16)),
+        Text(progressState.progressPercentage, style: const TextStyle(fontSize: 16)),
       ],
     );
   }
 }
+
 
 class TaskList extends ConsumerWidget {
   const TaskList({super.key});

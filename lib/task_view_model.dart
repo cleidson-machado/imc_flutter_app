@@ -8,7 +8,6 @@ final taskViewModelProvider = StateNotifierProvider<TaskViewModel, TaskState>((r
 });
 
 class TaskViewModel extends StateNotifier<TaskState> {
-  
   TaskViewModel() : super(TaskState.initial(mockTasks));
 
   void toggleTask(int index) {
@@ -19,7 +18,27 @@ class TaskViewModel extends StateNotifier<TaskState> {
         else
           state.tasks[i],
     ];
-    state = state.copyWith(tasks: updatedTasks);
-  }
 
+    bool halfWayMessageShown = state.halfWayMessageShown;
+    bool endWayMessageShown = state.endWayMessageShown;
+
+    final progress = updatedTasks.where((task) => task.isChecked).length /
+        updatedTasks.length;
+
+    if (progress > 0.49 && progress < 0.56 && !halfWayMessageShown) {
+      halfWayMessageShown = true;
+    }
+
+    if (progress == 1.0 && !endWayMessageShown) {
+      endWayMessageShown = true;
+    }
+
+    state = state.copyWith(
+      tasks: updatedTasks,
+      progress: progress,
+      halfWayMessageShown: halfWayMessageShown,
+      endWayMessageShown: endWayMessageShown,
+    );
+  }
 }
+
