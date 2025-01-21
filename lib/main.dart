@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,16 +13,28 @@ class Task {
   Task({required this.title, this.isChecked = false});
 }
 
+// Lista mock de tarefas
+final List<Task> mockTasks = [
+  Task(title: 'This is a Task 1'),
+  Task(title: 'This is a Task 2'),
+  Task(title: 'This is a Task 3'),
+  Task(title: 'This is a Task 4'),
+  Task(title: 'This is a Task 5'),
+  Task(title: 'This is a Task 6'),
+  Task(title: 'This is a Task 7'),
+  Task(title: 'This is a Task 8'),
+  Task(title: 'This is a Task 10'),
+];
+
 // Provedor para gerenciar a lista de tarefas
 final tasksProvider = StateNotifierProvider<TaskNotifier, List<Task>>((ref) {
   return TaskNotifier();
 });
 
-// Gerenciador de estado para as tarefas
+// Gerenciador de estado das tarefas
 class TaskNotifier extends StateNotifier<List<Task>> {
-  TaskNotifier() : super(List.generate(6, (index) => Task(title: 'This is a Task ${index + 1}')));
+  TaskNotifier() : super(mockTasks); // Utilizando a lista mock
 
-  // Alternar o estado de uma tarefa
   void toggleTask(int index) {
     state = [
       for (int i = 0; i < state.length; i++)
@@ -36,7 +46,7 @@ class TaskNotifier extends StateNotifier<List<Task>> {
   }
 }
 
-// Provedor para calcular o progresso com base nas tarefas concluídas
+// ############################################ Provedor para calcular o progresso com base nas tarefas concluídas ############################################
 final progressProvider = Provider<double>((ref) {
   final tasks = ref.watch(tasksProvider);
   final completedTasks = tasks.where((task) => task.isChecked).length;
@@ -81,7 +91,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// Widget para exibir o progresso
+// Indicador de progresso
 class Progress extends ConsumerWidget {
   const Progress({super.key});
 
@@ -91,18 +101,18 @@ class Progress extends ConsumerWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         const Center(child: Text( 'This is your Progress Indicator...', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
         const SizedBox(height: 10),
         LinearProgressIndicator(value: progress),
-        const SizedBox(height: 10),
-        Text('${(progress * 100).toStringAsFixed(1)}% Completed',style: const TextStyle(fontSize: 16)),
+        const SizedBox(height: 8),Text('${(progress * 100).toStringAsFixed(1)}% Completed', style: const TextStyle(fontSize: 16)),
       ],
     );
   }
 }
 
-// Widget para exibir a lista de tarefas
+// Lista de tarefas
 class TaskList extends ConsumerWidget {
   const TaskList({super.key});
 
@@ -114,13 +124,9 @@ class TaskList extends ConsumerWidget {
       itemCount: tasks.length,
       itemBuilder: (context, index) {
         final task = tasks[index];
-        return ListTile(
-          leading: Checkbox(
-            value: task.isChecked,
-            onChanged: (bool? newValue) {
-              ref.read(tasksProvider.notifier).toggleTask(index);
-            },
-          ),
+        return CheckboxListTile(
+          value: task.isChecked,
+          onChanged: (_) => ref.read(tasksProvider.notifier).toggleTask(index),
           title: Text(task.title),
         );
       },
