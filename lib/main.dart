@@ -1,8 +1,13 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
+
+final List<Map<String, dynamic>> _tasks = List.generate(6, (index) => {'title': 'This is a Task ${index + 1}', 'isChecked': false});
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -55,7 +60,6 @@ class Progress extends StatelessWidget{
   }
 }
 
-// Widget TaskList separada
 class TaskList extends StatefulWidget {
   const TaskList({super.key});
 
@@ -64,10 +68,6 @@ class TaskList extends StatefulWidget {
 }
 
 class _TaskListState extends State<TaskList> {
-  final List<Map<String, dynamic>> _tasks = List.generate(
-    6,
-    (index) => {'title': 'This is a Task ${index + 1}', 'isChecked': false},
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +80,7 @@ class _TaskListState extends State<TaskList> {
             onChanged: (bool? newValue) {
               setState(() {
                 _tasks[index]['isChecked'] = newValue!;
+                print(newValue);
               });
             },
           ),
@@ -88,4 +89,5 @@ class _TaskListState extends State<TaskList> {
       },
     );
   }
+
 }
