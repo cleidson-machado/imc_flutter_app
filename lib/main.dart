@@ -47,8 +47,37 @@ class Progress extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final progress = ref.watch(taskViewModelProvider.select((state) => state.progress));
-    final progressPercentage = ref.watch(taskViewModelProvider.select((state) => state.progressPercentage));
+
+    bool halfWayMessageTag = false;
+    bool endWayMessageTag = false;
+
+    final progressState = ref.watch(taskViewModelProvider);
+    final progressPercentage = progressState.progressPercentage;
+    final progress = progressState.progress;
+
+    // CHECK IF PROGRESS IS APPROXIMATELY 50%
+    if (progress > 0.49 && progress < 0.56 && !halfWayMessageTag) {
+      halfWayMessageTag = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Text(
+                  'Never Give Up! You have $progressPercentage of the tasks!')),
+        );
+      });
+    }
+
+    // CHECK IF PROGRESS IS 100%
+    if (progress == 1.0 && !endWayMessageTag) {
+      endWayMessageTag = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+              content: Text(
+                  'Congratulations! You have $progressPercentage of the tasks!')),
+        );
+      });
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,13 +97,13 @@ class Progress extends ConsumerWidget {
   }
 }
 
-
 class TaskList extends ConsumerWidget {
   const TaskList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tasks = ref.watch(taskViewModelProvider.select((state) => state.tasks));
+    final tasks =
+        ref.watch(taskViewModelProvider.select((state) => state.tasks));
 
     return ListView.builder(
       itemCount: tasks.length,
@@ -82,7 +111,8 @@ class TaskList extends ConsumerWidget {
         final task = tasks[index];
         return CheckboxListTile(
           value: task.isChecked,
-          onChanged: (_) => ref.read(taskViewModelProvider.notifier).toggleTask(index),
+          onChanged: (_) =>
+              ref.read(taskViewModelProvider.notifier).toggleTask(index),
           title: Text(task.title),
         );
       },
