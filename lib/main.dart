@@ -5,7 +5,7 @@ void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-// Classe para representar uma tarefa
+// CLASSE PARA REPRESENTAR UMA TAREFA
 class Task {
   final String title;
   bool isChecked;
@@ -13,7 +13,7 @@ class Task {
   Task({required this.title, this.isChecked = false});
 }
 
-// Lista mock de tarefas
+// LISTA MOCK DE TAREFAS
 final List<Task> mockTasks = [
   Task(title: 'This is a Task 1'),
   Task(title: 'This is a Task 2'),
@@ -26,15 +26,16 @@ final List<Task> mockTasks = [
   Task(title: 'This is a Task 10'),
 ];
 
-// Provedor para gerenciar a lista de tarefas
+// ############################################ REGRAS DE NEGÓCIO: GERENCIAR A LISTA DE TAREFAS ############################################
 final tasksProvider = StateNotifierProvider<TaskNotifier, List<Task>>((ref) {
   return TaskNotifier();
 });
 
-// Gerenciador de estado das tarefas
+// ############################################ GERENCIADOR DE ESTADO DAS TAREFAS ############################################
 class TaskNotifier extends StateNotifier<List<Task>> {
-  TaskNotifier() : super(mockTasks); // Utilizando a lista mock
+  TaskNotifier() : super(mockTasks); // UTILIZANDO A LISTA MOCK
 
+  // ############################################ REGRA DE NEGÓCIO: ALTERAR O ESTADO DE UMA TAREFA ############################################
   void toggleTask(int index) {
     state = [
       for (int i = 0; i < state.length; i++)
@@ -46,14 +47,14 @@ class TaskNotifier extends StateNotifier<List<Task>> {
   }
 }
 
-// ############################################ Provedor para calcular o progresso com base nas tarefas concluídas ############################################
+// ############################################ REGRA DE NEGÓCIO: CALCULAR O PROGRESSO COM BASE NAS TAREFAS CONCLUÍDAS ############################################
 final progressProvider = Provider<double>((ref) {
   final tasks = ref.watch(tasksProvider);
   final completedTasks = tasks.where((task) => task.isChecked).length;
   return tasks.isEmpty ? 0.0 : completedTasks / tasks.length;
 });
 
-// Aplicativo principal
+// APLICATIVO PRINCIPAL
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Widget principal da página inicial
+// WIDGET PRINCIPAL DA PÁGINA INICIAL
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
@@ -91,7 +92,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-// Indicador de progresso
+// INDICADOR DE PROGRESSO
 class Progress extends ConsumerWidget {
   const Progress({super.key});
 
@@ -101,18 +102,18 @@ class Progress extends ConsumerWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-
       children: [
-        const Center(child: Text( 'This is your Progress Indicator...', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
+        const Center(child: Text('This is your Progress Indicator...', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold))),
         const SizedBox(height: 10),
         LinearProgressIndicator(value: progress),
-        const SizedBox(height: 8),Text('${(progress * 100).toStringAsFixed(1)}% Completed', style: const TextStyle(fontSize: 16)),
+        const SizedBox(height: 8),
+        Text('${(progress * 100).toStringAsFixed(1)}% Completed', style: const TextStyle(fontSize: 16)),
       ],
     );
   }
 }
 
-// Lista de tarefas
+// LISTA DE TAREFAS
 class TaskList extends ConsumerWidget {
   const TaskList({super.key});
 
