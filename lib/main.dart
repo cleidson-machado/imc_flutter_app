@@ -48,6 +48,7 @@ class Progress extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final progress = ref.watch(taskViewModelProvider.select((state) => state.progress));
+    final progressPercentage = ref.watch(taskViewModelProvider.select((state) => state.progressPercentage));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,11 +62,12 @@ class Progress extends ConsumerWidget {
         const SizedBox(height: 10),
         LinearProgressIndicator(value: progress),
         const SizedBox(height: 8),
-        Text('${(progress * 100).toStringAsFixed(1)}% Completed', style: const TextStyle(fontSize: 16)),
+        Text(progressPercentage, style: const TextStyle(fontSize: 16)),
       ],
     );
   }
 }
+
 
 class TaskList extends ConsumerWidget {
   const TaskList({super.key});

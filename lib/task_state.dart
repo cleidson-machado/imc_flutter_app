@@ -20,4 +20,7 @@ class TaskState {
 
     return TaskState(tasks: newTasks, progress: progress);
   }
+
+  // COMPUTED PROPERTY FOR FORMATTED PROGRESS PERCENTAGE
+  String get progressPercentage => '${(progress * 100).toStringAsFixed(1)}% Completed';
 }
