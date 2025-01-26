@@ -11,13 +11,18 @@ class CounterView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Counter App With MVVM'),
       ),
       body: Center(
-        child: Text('Counter: ${viewModel.counter}'),
+        child: Text(
+          'Counter: ${viewModel.counter}',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: viewModel.incrementCounter,
+        tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
     );
