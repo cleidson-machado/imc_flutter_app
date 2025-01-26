@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/viewmodel/counter_view_moel.dart';
+import 'package:my_imc_calc_app/viewmodel/counter_view_model.dart';
 import 'package:provider/provider.dart';
 
 class CounterView extends StatelessWidget {
@@ -7,7 +7,7 @@ class CounterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<CounterViewMoel>(context);
+    final viewModel = Provider.of<CounterViewModel>(context);
 
     return Scaffold(
       appBar: AppBar(

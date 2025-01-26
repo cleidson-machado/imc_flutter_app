@@ -1,6 +1,9 @@
+// ignore_for_file: unused_import
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/viewmodel/counter_view_moel.dart';
+import 'package:my_imc_calc_app/viewmodel/counter_view_model.dart';
+import 'package:my_imc_calc_app/viewmodel/note_view_model.dart';
 import 'package:my_imc_calc_app/views/counter_view.dart';
+import 'package:my_imc_calc_app/views/note_list_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,8 +22,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: ChangeNotifierProvider(
-        create: (context) => CounterViewMoel(),
-        child: const CounterView(),
+        // create: (context) => CounterViewModel(),
+        create: (context) => NoteViewModel(),
+        // child: const CounterView(),
+         child: const NoteListView(),
       ),
     );
   }

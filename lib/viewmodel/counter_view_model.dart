@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/model/counter_model.dart';
 
-class CounterViewMoel with ChangeNotifier {
+class CounterViewModel with ChangeNotifier {
   final CounterModel _counterModel = CounterModel(counter: 0);
 
   int get counter => _counterModel.counter;
