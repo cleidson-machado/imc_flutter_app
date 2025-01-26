@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_final_fields, unused_local_variable
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/model/note_model.dart';
+import 'package:my_imc_calc_app/features/note_rest_try_one/note_model.dart';
 import 'package:http/http.dart' as http;
 
 class NoteViewModel with ChangeNotifier {

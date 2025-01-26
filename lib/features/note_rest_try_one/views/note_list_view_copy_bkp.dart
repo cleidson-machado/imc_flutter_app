@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/viewmodel/note_view_model.dart';
+import 'package:my_imc_calc_app/features/note_rest_try_one/note_view_model.dart';
 import 'package:provider/provider.dart';
 
 class NoteListView extends StatelessWidget {
@@ -58,3 +58,16 @@ class NoteListView extends StatelessWidget {
     );
   }
 }
+
+
+//CREATE A CARD WIDGET and Put THIS ONE I A SIMPLE METHOD..
+
+
+// : InfinityScrollComponent<NoteModel>(
+//   hasMore: noteViewModel.loading,
+//   fetchData: () => noteViewModel.fetchNotes(),
+//   items: noteViewModel.notes,
+//   itemBuilder: (item, index),
+//   noMoreDataText: 'None',
+//   loadingText: 'Node2',
+// ),
