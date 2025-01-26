@@ -1,5 +1,5 @@
 class NoteModel {
-  final int id;
+  final String id; // `noteID` is a string in the JSON
   final String noteTitle;
   final String contentTxtBody;
   final bool isViewed;
@@ -19,14 +19,13 @@ class NoteModel {
 
   factory NoteModel.fromjson(Map<String, dynamic> json) {
     return NoteModel(
-      id: json['id'] as int,
+      id: json['noteID'] as String, // Handle `noteID` as a string
       noteTitle: json['noteTitle'] as String,
       contentTxtBody: json['contentTxtBody'] as String,
       isViewed: json['isViewed'] as bool,
       isArchive: json['isArchive'] as bool,
-      createDateTime: DateTime.fromMillisecondsSinceEpoch(json['createDateTime'] as int),
-      latestEditDateTime: DateTime.fromMillisecondsSinceEpoch(json['latestEditDateTime'] as int),
+      createDateTime: DateTime.parse(json['createDateTime']), // Parse ISO 8601 string
+      latestEditDateTime: DateTime.parse(json['latestEditDateTime']), // Parse ISO 8601 string
     );
   }
-
 }
