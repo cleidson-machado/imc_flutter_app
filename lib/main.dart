@@ -1,8 +1,9 @@
 // ignore_for_file: unused_import
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/features/counter_one/counter_view_model.dart';
-import 'package:my_imc_calc_app/features/note_rest_try_one/note_view_model.dart';
 import 'package:my_imc_calc_app/features/counter_one/counter_view.dart';
+import 'package:my_imc_calc_app/features/note_rest_try_one/note_view_model.dart';
+import 'package:my_imc_calc_app/features/note_rest_try_one/views/note_list_cards_scroll.dart';
 import 'package:my_imc_calc_app/features/note_rest_try_one/views/note_list_view.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // create: (context) => CounterViewModel(),
         create: (context) => NoteViewModel(),
         // child: const CounterView(),
-         child: const NoteListView(),
+         child: const NoteListCardsScroll(),
       ),
     );
   }

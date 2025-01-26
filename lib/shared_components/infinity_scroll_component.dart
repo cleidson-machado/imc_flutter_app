@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InfinityScrollComponent<T> extends StatefulWidget {
-  final Function() fetchData;
+  final Future<void> Function() fetchData;
   final Widget Function(T item, int index) itemBuilder;
   final Function(T, int)? onItemTap;
   final Widget loadingIndicator;
@@ -17,7 +17,7 @@ class InfinityScrollComponent<T> extends StatefulWidget {
     required this.hasMore,
     required this.noMoreDataText,
     this.onItemTap,
-    this.loadingText = 'A carregar...',
+    this.loadingText = 'Loading...',
     this.loadingIndicator = const CircularProgressIndicator.adaptive(),
     this.items = const [],
   });
@@ -28,7 +28,6 @@ class InfinityScrollComponent<T> extends StatefulWidget {
 
 class InfiniteScrollListState<T> extends State<InfinityScrollComponent<T>> {
   late ScrollController _scrollController;
-
   bool _isFetchingData = false;
 
   @override
@@ -46,9 +45,15 @@ class InfiniteScrollListState<T> extends State<InfinityScrollComponent<T>> {
   void _onScroll() {
     var maxScroll = _scrollController.position.maxScrollExtent;
     var currentScroll = _scrollController.position.pixels;
+
     if (currentScroll >= maxScroll && widget.hasMore && !_isFetchingData) {
-      _isFetchingData = true;
-      widget.fetchData();
+      setState(() => _isFetchingData = true);
+      widget.fetchData().then((_) {
+        setState(() => _isFetchingData = false);
+      }).catchError((e) {
+        setState(() => _isFetchingData = false);
+        debugPrint("Error fetching data: $e");
+      });
     }
   }
 
@@ -59,19 +64,21 @@ class InfiniteScrollListState<T> extends State<InfinityScrollComponent<T>> {
       itemCount: widget.items.length + 1,
       itemBuilder: (context, index) {
         if (index < widget.items.length) {
-          _isFetchingData = false;
           return InkWell(
-              onTap: widget.onItemTap != null
-                  ? widget.onItemTap!(widget.items[index], index)
-                  : null,
-              child: widget.itemBuilder(widget.items[index], index));
+            onTap: widget.onItemTap != null
+                ? () => widget.onItemTap!(widget.items[index], index)
+                : null,
+            child: widget.itemBuilder(widget.items[index], index),
+          );
         } else {
           return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2),
-              child: Center(
-                  child: widget.hasMore
-                      ? buildLoadingContainer()
-                      : buildNoMoreData()));
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: Center(
+              child: widget.hasMore
+                  ? buildLoadingContainer()
+                  : buildNoMoreData(),
+            ),
+          );
         }
       },
     );
@@ -82,7 +89,7 @@ class InfiniteScrollListState<T> extends State<InfinityScrollComponent<T>> {
       children: [
         Text(widget.loadingText),
         const SizedBox(height: 2),
-        widget.loadingIndicator
+        widget.loadingIndicator,
       ],
     );
   }
