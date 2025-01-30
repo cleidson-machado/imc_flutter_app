@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/features/note_rest_try_one/note_model.dart';
 import 'package:my_imc_calc_app/features/note_rest_try_one/note_view_model.dart';
 import 'package:my_imc_calc_app/shared_components/infinity_scroll_component.dart';
+import 'package:my_imc_calc_app/shared_components/infinity_scroll_skeletonizer_component.dart';
 import 'package:provider/provider.dart';
 
 class NoteListCardsScroll extends StatefulWidget {
@@ -33,12 +34,8 @@ class _NoteListCardsScrollState extends State<NoteListCardsScroll> {
         title: const Text('Notes List'),
       ),
       backgroundColor: Colors.grey,
-      body: noteViewModel.loading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : Center(
-              child: InfinityScrollComponent<NoteModel>(
+      body: Center(
+              child: InfinityScrollSkeletonizerComponent<NoteModel>(
                 hasMore: noteViewModel.loading,
                 fetchData: () => noteViewModel.fetchNotes(),
                 items: noteViewModel.notes,

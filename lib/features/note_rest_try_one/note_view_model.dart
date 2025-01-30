@@ -18,6 +18,8 @@ class NoteViewModel with ChangeNotifier {
     _errorMessage = ''; // Clear any previous errors
     notifyListeners();
 
+    //await Future.delayed(const Duration(seconds: 15)); //IS HERE!?
+
     try {
       final response = await http.get(
         Uri.parse('https://6767d711c1de2e6421c86392.mockapi.io/api/v1/notes/'),
