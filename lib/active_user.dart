@@ -12,6 +12,6 @@ class ActiveUser extends UserState {
   @override
   void logout() {
     print('ActiveUser: Logging out...');
-    //_user.changeState(BannedUser()); // ✅ Now correctly references _user
+    user.changeState(BannedUser()); // ✅ Now correctly references _user
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/banned_user.dart';
 import 'user.dart';
 import 'active_user.dart';
 
@@ -17,21 +16,17 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     user = User(ActiveUser()); // Start with an active user
-    //user = User(BannedUser()); // Start with an Banned user
   }
 
   void login() {
     setState(() {
       user.login();
-      //user = User(BannedUser());
     });
   }
 
   void logout() {
     setState(() {
       user.logout();
-      //user = User(ActiveUser());
-      user = User(BannedUser());
     });
   }
 
