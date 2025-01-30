@@ -22,6 +22,7 @@ class User {
   }
 }
 
+//ABSTRACT CLASS #################### start
 abstract class UserState {
   late User _user;
 
@@ -32,6 +33,7 @@ abstract class UserState {
   void login();
   void logout();
 }
+//ABSTRACT CLASS #################### end
 
 class ActiveUser extends UserState {
   @override
