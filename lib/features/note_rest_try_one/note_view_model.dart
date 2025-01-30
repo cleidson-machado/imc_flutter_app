@@ -18,7 +18,7 @@ class NoteViewModel with ChangeNotifier {
     _errorMessage = ''; // Clear any previous errors
     notifyListeners();
 
-    //await Future.delayed(const Duration(seconds: 15)); //IS HERE!?
+    //await Future.delayed(const Duration(seconds: 5)); //IS HERE!?
 
     try {
       final response = await http.get(
@@ -38,6 +38,11 @@ class NoteViewModel with ChangeNotifier {
       _loading = false;
       notifyListeners();
     }
+  }
+
+  void clearAndGetData() {
+    _notes.clear();
+    fetchNotes();
   }
 }
 

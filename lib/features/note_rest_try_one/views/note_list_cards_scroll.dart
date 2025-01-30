@@ -15,13 +15,12 @@ class NoteListCardsScroll extends StatefulWidget {
 }
 
 class _NoteListCardsScrollState extends State<NoteListCardsScroll> {
-
- @override
+  @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      final noteViewModel = Provider.of<NoteViewModel>(context, listen: false);
-      noteViewModel.fetchNotes();
+      final noteViewModel1 = Provider.of<NoteViewModel>(context, listen: false);
+      noteViewModel1.fetchNotes();
     });
   }
 
@@ -35,15 +34,19 @@ class _NoteListCardsScrollState extends State<NoteListCardsScroll> {
       ),
       backgroundColor: Colors.grey,
       body: Center(
-              child: InfinityScrollSkeletonizerComponent<NoteModel>(
-                hasMore: noteViewModel.loading,
-                fetchData: () => noteViewModel.fetchNotes(),
-                items: noteViewModel.notes,
-                itemBuilder: (item, index) => _buildCard(item, context),
-                noMoreDataText: 'No More Data!',
-                loadingText: 'Loading...',
-              ),
-            ),
+        child: InfinityScrollSkeletonizerComponent<NoteModel>(
+          hasMore: noteViewModel.loading,
+          fetchData: () => noteViewModel.fetchNotes(),
+          items: noteViewModel.notes,
+          itemBuilder: (item, index) => _buildCard(item, context),
+          noMoreDataText: 'No More Data!',
+          loadingText: 'Loading...',
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: noteViewModel.clearAndGetData,
+        child: const Icon(Icons.storage_rounded),
+      ),
     );
   }
 
