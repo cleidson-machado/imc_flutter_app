@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_imc_calc_app/modal/modal_test.dart';
 import 'user.dart';
 import 'active_user.dart';
 
@@ -11,11 +12,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late User user;
+  late ModalTest xmodal;
 
   @override
   void initState() {
     super.initState();
-    user = User(ActiveUser()); // Start with an active user
+    user = User(ActiveUser()); 
+    xmodal = ModalTest(user);// Start with an active user
   }
 
   void login() {
@@ -51,6 +54,11 @@ class _HomePageState extends State<HomePage> {
             ElevatedButton(
               onPressed: logout,
               child: const Text("Logout"),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => xmodal.dialogBuilder(context), //Error?
+              child: const Text("Modal"),
             ),
           ],
         ),
