@@ -32,7 +32,30 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Future<List<PokemonModelClass>> futurePokemonList;
-  final PokemonService service = PokemonService();
+  final service = PokemonService();
+
+  var isLoading = false;
+  var error = '';
+  var pokemonsx = <PokemonModelClass>[];
+
+  getPokemons() async {
+    setState(() {
+      isLoading = true;
+      error = '';
+    });
+
+    try {
+      final pokemonsx = await service.fetchAll();
+      setState(() {
+        this.pokemonsx = pokemonsx;
+        isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        error = e.toString();
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -42,33 +65,35 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    Widget innerBody = Container();
+
+    if (isLoading) {
+      innerBody = const Center(
+        child: CircularProgressIndicator(),
+      );
+    } else if (error.isNotEmpty) {
+      innerBody = Center(
+          child: ElevatedButton(onPressed: getPokemons, child: Text(error)));
+    } else if (pokemonsx.isEmpty) {
+      innerBody = Center(
+          child: ElevatedButton(
+              onPressed: getPokemons, child: const Text('Toque Aqui')));
+    } else {
+      innerBody = ListView.builder(
+        itemCount: pokemonsx.length,
+        itemBuilder: (context, index) {
+          final pokemon = pokemonsx[index];
+          return ListTile(
+            title: Text(pokemon.name),
+          );
+        },
+      );
+    }
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Pokemon List"),
+        title: const Text('Pokemon'),
       ),
-      body: FutureBuilder<List<PokemonModelClass>>(
-        future: futurePokemonList,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text('No Pokemon found.'));
-          } else {
-            final pokemonList = snapshot.data!;
-            return ListView.builder(
-              itemCount: pokemonList.length,
-              itemBuilder: (context, index) {
-                final pokemon = pokemonList[index];
-                return ListTile(
-                  title: Text(pokemon.name), //error here
-                );
-              },
-            );
-          }
-        },
-      ),
+      body: innerBody,
     );
   }
 }
