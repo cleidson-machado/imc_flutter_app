@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 final pokemon = pokemonList[index];
                 return ListTile(
-                  title: Text(pokemon.name.toString()),
+                  title: Text(pokemon.name), //error here
                 );
               },
             );
