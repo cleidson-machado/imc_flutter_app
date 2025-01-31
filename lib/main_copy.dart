@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pokemon_model_class.dart';
+import 'package:my_imc_calc_app/pokemon_service_copy.dart';
 import 'pokemon_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final PokemonService _service = PokemonService();
+  final PokemonServiceBKP _service = PokemonServiceBKP();
   late Future<List<PokemonModelClass>> _pokemonFuture;
 
   @override
