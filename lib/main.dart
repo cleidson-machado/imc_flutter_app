@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pokemon_model_class.dart';
 import 'pokemon_service.dart';
 
+//BASE!!! ### CÓDIGO PARA COMEÇAR A ENTENDER O GRENCIAMENTO DE ESTADO!  ###
+
 void main() {
   runApp(const MyApp());
 }
