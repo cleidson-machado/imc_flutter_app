@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pokemon_model_class.dart';
 import 'package:my_imc_calc_app/pokemon_service_copy.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
+void main() {
+  runApp(const HomePageBkp());
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageBkp extends StatefulWidget {
+  const HomePageBkp({super.key});
+
+  @override
+  State<HomePageBkp> createState() => _HomePageBkpState();
+}
+
+class _HomePageBkpState extends State<HomePageBkp> {
   final PokemonServiceBKP _service = PokemonServiceBKP();
   late Future<List<PokemonModelClass>> _pokemonFuture;
 

@@ -1,8 +1,7 @@
 import 'package:my_imc_calc_app/pokemon_model_class.dart';
 
 class PokemonService {
-  List<PokemonModelClass> fetchAll() {
-    // No Future, no async
+  Future<List<PokemonModelClass>> fetchAll() async {
     return [
       PokemonModelClass("Picachu"),
       PokemonModelClass("Mewtwo"),
