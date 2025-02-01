@@ -1,10 +1,9 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/pokemon_model_class.dart';
-import 'pokemon_service.dart';
+import 'package:my_imc_calc_app/pokemon_store.dart';
 
-//BASE!!! ### CÓDIGO PARA COMEÇAR A ENTENDER O GRENCIAMENTO DE ESTADO!  ###
+//BASE!!! ### ESSA É A OPÇÃO MAIS BÁSICA DE ASSINAR A VIEW / WIDGET PARA ESCUTAR AS MODIFICAÇÕES DE ESTADO  ###
 
 void main() {
   runApp(const MyApp());
@@ -33,58 +32,37 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<List<PokemonModelClass>> futurePokemonList;
-  final service = PokemonService();
 
-  var isLoading = false; // ####################################### Esse cara representa o primeiro estagio do gerenciamento de estadpo
-  var error = ''; // ############################################ Esse cara representa o primeiro estagio do gerenciamento de estadpo
-  var pokemonsx = <PokemonModelClass>[]; // #### Esse cara representa o primeiro estagio do gerenciamento de estadpo
-
-  getPokemons() async {
-    setState(() {
-      isLoading = true;
-      error = '';
-    });
-
-    try {
-      final pokemonsx = await service.fetchAll();
-      setState(() {
-        this.pokemonsx = pokemonsx;
-        isLoading = false;
-      });
-    } catch (e) {
-      setState(() {
-        error = e.toString();
-      });
-    }
-  }
+  final storeController = PokemonStore(); //####### DECLARA AQUI!!!
 
   @override
   void initState() {
     super.initState();
-    futurePokemonList = service.fetchAll();
+    storeController.addListener(() { //### CONSOME OU INICA AQUI!!!
+      setState(() {}); //################# CONSOME OU INICA AQUI!!!
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     Widget innerBody = Container();
 
-    if (isLoading) {
+    if (storeController.isLoading) {
       innerBody = const Center(
         child: CircularProgressIndicator(),
       );
-    } else if (error.isNotEmpty) {
+    } else if (storeController.error.isNotEmpty) {
       innerBody = Center(
-          child: ElevatedButton(onPressed: getPokemons, child: Text(error)));
-    } else if (pokemonsx.isEmpty) {
+          child: ElevatedButton(onPressed: storeController.getPokemons, child: Text(storeController.error)));
+    } else if (storeController.pokemonsx.isEmpty) {
       innerBody = Center(
           child: ElevatedButton(
-              onPressed: getPokemons, child: const Text('Toque Aqui')));
+              onPressed: storeController.getPokemons, child: const Text('Toque Aqui')));
     } else {
       innerBody = ListView.builder(
-        itemCount: pokemonsx.length,
+        itemCount: storeController.pokemonsx.length,
         itemBuilder: (context, index) {
-          final pokemon = pokemonsx[index];
+          final pokemon = storeController.pokemonsx[index];
           return ListTile(
             title: Text(pokemon.name),
           );
