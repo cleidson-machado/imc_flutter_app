@@ -19,61 +19,55 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  HomePage({super.key}); 
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-
-  final storeController = PokemonStore(); //####### DECLARA AQUI!!!
-
-  @override
-  void initState() {
-    super.initState();
-    storeController.addListener(() { //### CONSOME OU INICA AQUI!!!
-      setState(() {}); //################# CONSOME OU INICA AQUI!!!
-    });
-  }
-
+  final storeController = PokemonStore(); //########## DECLARA AQUI!!!
+ 
   @override
   Widget build(BuildContext context) {
-    Widget innerBody = Container();
+    return ListenableBuilder( //###################### E FAZ O USO AQUI!!!
+        listenable: storeController, //############### E FAZ O USO AQUI!!!
+        builder: (context, child) {
+          Widget innerBody = Container();
 
-    if (storeController.isLoading) {
-      innerBody = const Center(
-        child: CircularProgressIndicator(),
-      );
-    } else if (storeController.error.isNotEmpty) {
-      innerBody = Center(
-          child: ElevatedButton(onPressed: storeController.getPokemons, child: Text(storeController.error)));
-    } else if (storeController.pokemonsx.isEmpty) {
-      innerBody = Center(
-          child: ElevatedButton(
-              onPressed: storeController.getPokemons, child: const Text('Toque Aqui')));
-    } else {
-      innerBody = ListView.builder(
-        itemCount: storeController.pokemonsx.length,
-        itemBuilder: (context, index) {
-          final pokemon = storeController.pokemonsx[index];
-          return ListTile(
-            title: Text(pokemon.name),
+          if (storeController.isLoading) {
+            innerBody = const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (storeController.error.isNotEmpty) {
+            innerBody = Center(
+                child: ElevatedButton(
+                    onPressed: storeController.getPokemons,
+                    child: Text(storeController.error)));
+          } else if (storeController.pokemonsx.isEmpty) {
+            innerBody = Center(
+                child: ElevatedButton(
+                    onPressed: storeController.getPokemons,
+                    child: const Text('Toque Aqui')));
+          } else {
+            innerBody = ListView.builder(
+              itemCount: storeController.pokemonsx.length,
+              itemBuilder: (context, index) {
+                final pokemon = storeController.pokemonsx[index];
+                return ListTile(
+                  title: Text(pokemon.name),
+                );
+              },
+            );
+          }
+
+          return Scaffold(
+            appBar: AppBar(
+              title: const Text('Pokemon'),
+            ),
+            body: innerBody,
           );
-        },
-      );
-    }
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pokemon'),
-      ),
-      body: innerBody,
-    );
+        });
   }
 }
