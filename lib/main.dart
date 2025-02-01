@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pokemon_store.dart';
 
-//BASE!!! ### ESSA É A OPÇÃO MAIS BÁSICA DE ASSINAR A VIEW / WIDGET PARA ESCUTAR AS MODIFICAÇÕES DE ESTADO  ###
+//BASE!!! ### ESSA É A OPÇÃO MAIS AVANÇADA DO GERENCIAMENTO DE ESTADO  ### 
+// MAS É POSSÍVEL AMPLIAR AS COISAS USANDO O STATE PATTER COM O POLIMORFIRMO.. ###
 
 void main() {
   runApp(const MyApp());
@@ -36,25 +37,27 @@ class HomePage extends StatelessWidget {
         builder: (context, child) {
           Widget innerBody = Container();
 
-          if (storeController.isLoading) {
+          final state = storeController.state; //##### INCIA USANDO O CONSTRUTOR VAZIO...
+
+          if (state.isLoading) {
             innerBody = const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (storeController.error.isNotEmpty) {
+          } else if (state.error.isNotEmpty) {
             innerBody = Center(
                 child: ElevatedButton(
                     onPressed: storeController.getPokemons,
-                    child: Text(storeController.error)));
-          } else if (storeController.pokemonsx.isEmpty) {
+                    child: Text(state.error)));
+          } else if (state.pokemons.isEmpty) {
             innerBody = Center(
                 child: ElevatedButton(
                     onPressed: storeController.getPokemons,
                     child: const Text('Toque Aqui')));
           } else {
             innerBody = ListView.builder(
-              itemCount: storeController.pokemonsx.length,
+              itemCount: state.pokemons.length,
               itemBuilder: (context, index) {
-                final pokemon = storeController.pokemonsx[index];
+                final pokemon = state.pokemons[index];
                 return ListTile(
                   title: Text(pokemon.name),
                 );
