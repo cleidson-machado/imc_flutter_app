@@ -36,9 +36,9 @@ class _HomePageState extends State<HomePage> {
   late Future<List<PokemonModelClass>> futurePokemonList;
   final service = PokemonService();
 
-  var isLoading = false;
-  var error = '';
-  var pokemonsx = <PokemonModelClass>[];
+  var isLoading = false; // ####################################### Esse cara representa o primeiro estagio do gerenciamento de estadpo
+  var error = ''; // ############################################ Esse cara representa o primeiro estagio do gerenciamento de estadpo
+  var pokemonsx = <PokemonModelClass>[]; // #### Esse cara representa o primeiro estagio do gerenciamento de estadpo
 
   getPokemons() async {
     setState(() {

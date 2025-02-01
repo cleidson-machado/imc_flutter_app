@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pokemon_model_class.dart';
-import 'package:my_imc_calc_app/pokemon_service_copy.dart';
+import 'pokemon_service_copy.dart';
 
 void main() {
   runApp(const HomePageBkp());
