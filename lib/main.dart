@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/pokemon_store.dart';
 
-//BASE!!! ### ESSA É A OPÇÃO MAIS AVANÇADA DO GERENCIAMENTO DE ESTADO  ### 
+// BASE!!! ### ESSA É A OPÇÃO MAIS AVANÇADA DO GERENCIAMENTO DE ESTADO  ### 
 // MAS É POSSÍVEL AMPLIAR AS COISAS USANDO O STATE PATTER COM O POLIMORFIRMO.. ###
 
 void main() {
