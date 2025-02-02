@@ -8,6 +8,7 @@ class PokemonStore extends ChangeNotifier {
   
   final service = PokemonService();
 
+  // ###################################### IMPORTANTE AQUI TODOS OS ESTADOS ESTÃO REPRESENTADOS EM UM ÚNICO "ESTADO"...
   var state = PokemonState.empty(); //##### INCIA USANDO O CONSTRUTOR VAZIO...
 
   getPokemons() async {
