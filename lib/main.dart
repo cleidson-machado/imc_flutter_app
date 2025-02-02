@@ -1,10 +1,15 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:my_imc_calc_app/pokemon_state.dart';
 import 'package:my_imc_calc_app/pokemon_store.dart';
 
 // BASE!!! ### ESSA É A OPÇÃO MAIS AVANÇADA DO GERENCIAMENTO DE ESTADO  ### 
 // MAS É POSSÍVEL AMPLIAR AS COISAS USANDO O STATE PATTER COM O POLIMORFIRMO.. ###
+// #### USANDO O POLIMORFISMO ####
+// #### USANDO O POLIMORFISMO ####
+// #### USANDO O POLIMORFISMO ####
+// #### USANDO O POLIMORFISMO ####
 
 void main() {
   runApp(const MyApp());
@@ -40,21 +45,21 @@ class HomePage extends StatelessWidget {
 
           final state = storeController.state; //##### INCIA USANDO O CONSTRUTOR VAZIO...
 
-          if (state.isLoading) {
+          if (state is LoadingPokemonState) {
             innerBody = const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state.error.isNotEmpty) {
+          } else if (state is ErrorPokemonState) {
             innerBody = Center(
                 child: ElevatedButton(
                     onPressed: storeController.getPokemons,
-                    child: Text(state.error)));
-          } else if (state.pokemons.isEmpty) {
+                    child: Text(state.message)));
+          } else if (state is EmptyPokemonState) {
             innerBody = Center(
                 child: ElevatedButton(
                     onPressed: storeController.getPokemons,
                     child: const Text('Toque Aqui')));
-          } else {
+          } else if(state is GettedPokemonState) {
             innerBody = ListView.builder(
               itemCount: state.pokemons.length,
               itemBuilder: (context, index) {
