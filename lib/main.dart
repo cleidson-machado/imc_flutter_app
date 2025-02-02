@@ -35,6 +35,7 @@ class HomePage extends StatelessWidget {
     return ListenableBuilder( //###################### E FAZ O USO AQUI!!!
         listenable: storeController, //############### E FAZ O USO AQUI!!!
         builder: (context, child) {
+          
           Widget innerBody = Container();
 
           final state = storeController.state; //##### INCIA USANDO O CONSTRUTOR VAZIO...
