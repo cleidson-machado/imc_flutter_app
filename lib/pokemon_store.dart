@@ -12,15 +12,15 @@ class PokemonStore extends ChangeNotifier {
   var state = PokemonState.empty(); //##### INCIA USANDO O CONSTRUTOR VAZIO...
 
   getPokemons() async {
-    state = state.copyWith(error: '', isLoading: true);
+    state = state.copyWith(error: '', isLoading: true); // ####################### OS ESTADOS SÃO REPASSADOS COMO PARÂMETROS NOMEADOS AQUI
     notifyListeners();
 
     try {
       final pokemons = await service.fetchAll();
-      state = state.copyWith(isLoading: false, pokemons: pokemons);
+      state = state.copyWith(isLoading: false, pokemons: pokemons); // ############ OS ESTADOS SÃO REPASSADOS COMO PARÂMETROS NOMEADOS AQUI
       notifyListeners();
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
+      state = state.copyWith(isLoading: false, error: e.toString()); // ########## OS ESTADOS SÃO REPASSADOS COMO PARÂMETROS NOMEADOS AQUI
       notifyListeners();
     }
   }

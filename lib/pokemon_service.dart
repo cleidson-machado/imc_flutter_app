@@ -1,6 +1,6 @@
 import 'package:my_imc_calc_app/pokemon_model_class.dart';
 
-class PokemonService {
+class PokemonService { // ############ AQUI APENAS SIMULANDO A FONTE DE DADOS.. 
   Future<List<PokemonModelClass>> fetchAll() async {
 
     await Future.delayed(const Duration(seconds: 3));
