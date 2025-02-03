@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/main.dart';
 
 class SubscriptionsPage extends StatefulWidget {
   const SubscriptionsPage({super.key});
@@ -9,10 +8,14 @@ class SubscriptionsPage extends StatefulWidget {
 }
 
 class _SubscriptionsPageState extends State<SubscriptionsPage> {
+
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+
+  bool _isPasswordVisible = false; // State to toggle password visibility
+  bool _isConfirmPasswordVisible = false; // State to toggle confirm password visibility
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +50,21 @@ class _SubscriptionsPageState extends State<SubscriptionsPage> {
               const SizedBox(height: 16.0),
               TextFormField(
                 controller: _passwordController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Password',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible = !_isPasswordVisible; // Toggle visibility
+                      });
+                    },
+                  ),
                 ),
-                obscureText: true,
+                obscureText: !_isPasswordVisible, // Toggle obscureText
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your password';
@@ -62,11 +75,21 @@ class _SubscriptionsPageState extends State<SubscriptionsPage> {
               const SizedBox(height: 16.0),
               TextFormField(
                 controller: _confirmPasswordController,
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   labelText: 'Confirm Password',
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isConfirmPasswordVisible = !_isConfirmPasswordVisible; // Toggle visibility
+                      });
+                    },
+                  ),
                 ),
-                obscureText: true,
+                obscureText: !_isConfirmPasswordVisible, // Toggle obscureText
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please confirm your password';
@@ -80,7 +103,7 @@ class _SubscriptionsPageState extends State<SubscriptionsPage> {
               const SizedBox(height: 24.0),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {  
+                  if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Processing Data')),
                     );
