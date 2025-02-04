@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "763380366761",
+    "project_id": "firstfirebaseapp-b8a72",
+    "storage_bucket": "firstfirebaseapp-b8a72.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763380366761:android:67ed4f6c4ee4d5a64458b8",
+        "android_client_info": {
+          "package_name": "br.com.imc.calc.app.my_imc_calc_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT1BXzi6BZntXoAtP-wk2y6MzUFEiE-wQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
