@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/subscriptions_page.dart';
 
 //Fix ERROR: How to solve Include of non-modular header inside framework module 'firebase_auth.FLTAuthStateChannelStreamHandler'
-//https://addmeta.co.jp/%E3%80%90flutter%E3%80%91lexical-or-preprocessor-issue-xcode-include-of-non-modular-header-inside-framework-module-firebase_auth-fltauthstatechannelstreamhandler/
+//https://addmeta.co.jp/%E3%80%90flutter%E3%80%91lexical-or-preprocessor-issue-xcode-include-of-non-modular-header-inside-framework-module-firebase _auth-fltauthstatechannelstreamhandler/
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); //TEST FOR USING FireBase on IOS App
