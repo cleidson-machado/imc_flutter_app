@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCIEWRROTjXrKrfOFogxTWl4xsEhxOK5PY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>763380366761</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.imc.calc.app.myImcCalcApp</string>
+	<key>PROJECT_ID</key>
+	<string>firstfirebaseapp-b8a72</string>
+	<key>STORAGE_BUCKET</key>
+	<string>firstfirebaseapp-b8a72.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:763380366761:ios:1ba6852998bc844b4458b8</string>
+</dict>
+</plist>
