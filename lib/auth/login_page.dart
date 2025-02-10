@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/auth/auth_service.dart';
 import 'package:my_imc_calc_app/pages/subscriptions_page.dart';
@@ -10,27 +12,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void login(BuildContext context) async{
+  void login(BuildContext context) async {
     final authService = AuthService();
 
     try {
       await authService.signInWithEmailPassword(
-        _emailController.text, 
-        _passwordController.text
-        );
+          _emailController.text, _passwordController.text);
     } catch (e) {
-      showDialog(context: context, 
-      builder: ((context) => AlertDialog(
-        title: Text(e.toString()),
-      )),
+      showDialog(
+        context: context,
+        builder: ((context) => AlertDialog(
+              title: Text(e.toString()),
+            )),
       );
     }
-
   }
 
   @override
@@ -81,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 24.0),
               ElevatedButton(
                 onPressed: () {
-                  login(context);
                   if (_formKey.currentState!.validate()) {
+                    login(context);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text('Processing Data')),
                     );
@@ -93,8 +92,10 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 16.0),
               TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SubscriptionsPage()),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SubscriptionsPage()),
                   );
                 },
                 child: const Text('Not a member? Sign up now'),

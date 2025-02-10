@@ -18,5 +18,8 @@ class AuthService {
   //Sing Up //#######################################
 
   //Sing Out //######################################
+  Future<void> singOut() async {
+    return await auth.signOut();
+  }
 
 }
