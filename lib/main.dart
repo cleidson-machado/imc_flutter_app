@@ -2,8 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/subscriptions_page.dart';
 
-
-//########################## HERE AS CREATED USING THE HANDS ON AND THE BASIC VIDEO APPROACH!!! ##########################
+//########################## REBUILD USING THE OFFICIAL DOC APPROACH ##########################
 
 //Fix ERROR: How to solve Include of non-modular header inside framework module 'firebase_auth.FLTAuthStateChannelStreamHandler'
 //https://addmeta.co.jp/%E3%80%90flutter%E3%80%91lexical-or-preprocessor-issue-xcode-include-of-non-modular-header-inside-framework-module-firebase _auth-fltauthstatechannelstreamhandler/
