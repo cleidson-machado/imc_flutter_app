@@ -16,7 +16,10 @@ import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tab_page_example_a.dart
 import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tab_page_example_b.dart';
 import 'package:my_imc_calc_app/pages/tabs_tabbar_layout/tab_page_example_c.dart';
 import 'package:my_imc_calc_app/service/notes_service.dart';
-import 'package:provider/provider.dart';  
+import 'package:provider/provider.dart';
+
+//#################### This is my First Attempt to Create a simple Page Handler for some kind of MSN or ########################
+//#################### SMS, Like a Ordinary email App, or something like that! #################################################
 
 
 void setupLocator() {
