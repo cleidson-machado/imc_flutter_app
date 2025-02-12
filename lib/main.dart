@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_imc_calc_app/Model_Providers/user_data_provider.dart';
+import 'package:my_imc_calc_app/pages/a_msn_page_handler/message_list_screen.dart';
 import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page_example_a.dart';
 import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page_example_b.dart';
 import 'package:my_imc_calc_app/pages/a_rest_api_basic_%20consuming/note_list_page_example_c.dart';
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
         '/notesHomePageD': (context) => const NoteListPageExampleD(title: theProjectTitleSeven,), //REST API TEST D Scroll Control
         '/skeletonPageA': (context) => const SkeletonizerDemoPageA(),
         '/tabsPageExampleC': (context) => const TabPageExampleC(title: theProjectTitleEight,), //REST API TEST Message Filters
+        '/messageListScreen': (context) => const MessageListScreen(),
         // '/calculatorList': (context) => const MyCalculatorListPage(title: theAppTitle,),
       },
     );
