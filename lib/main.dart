@@ -1,3 +1,4 @@
+import 'dart:ui'; // Import necessário para pegar o idioma do dispositivo
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_imc_calc_app/resources/international/app_localizations.dart';
@@ -14,7 +15,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _currentLocale = const Locale('pt', ''); // Default language
+  late Locale _currentLocale;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentLocale = _getDeviceLocale();
+  }
+
+  Locale _getDeviceLocale() {
+    Locale deviceLocale = PlatformDispatcher.instance.locale; // ✅ Correção
+    const supportedLocales = [
+      Locale('en', ''),
+      Locale('es', ''),
+      Locale('pt', ''),
+      Locale('fr', ''),
+    ];
+
+    return supportedLocales.contains(Locale(deviceLocale.languageCode))
+        ? Locale(deviceLocale.languageCode)
+        : const Locale('en', ''); // Fallback para inglês
+  }
 
   void _changeLanguage(Locale newLocale) {
     setState(() {
@@ -65,14 +86,12 @@ class MyHomePage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           DropdownButton<Locale>(
-            
             value: Localizations.localeOf(context),
             onChanged: (Locale? newLocale) {
               if (newLocale != null) {
                 onLanguageChange(newLocale);
               }
             },
-
             items: [
               DropdownMenuItem(
                 value: const Locale('en', ''),
@@ -91,7 +110,6 @@ class MyHomePage extends StatelessWidget {
                 child: Text(AppLocalizations.of(context)!.languageFrench),
               ),
             ],
-            
           ),
         ],
       ),
