@@ -1,0 +1,13 @@
+{
+    "@@locale": "fr",
+    "hello": "Bonjour",
+    "welcome": "Bienvenue",
+    "goodbye": "Au revoir",
+    "thank_you": "Merci",
+    "please": "S'il vous plaît",
+    "yes": "Oui",
+    "no": "Non",
+    "error": "Erreur",
+    "loading": "Chargement",
+    "success": "Succès"
+}
