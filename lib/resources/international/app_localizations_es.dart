@@ -37,5 +37,5 @@ class AppLocalizationsEs extends AppLocalizations {
   String get success => 'Éxito';
 
   @override
-  String get myTextTerm => 'Yabadabadoo';
+  String get myTextTerm => 'Pero No Mucho';
 }
