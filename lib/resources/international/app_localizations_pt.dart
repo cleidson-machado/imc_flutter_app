@@ -37,5 +37,5 @@ class AppLocalizationsPt extends AppLocalizations {
   String get success => 'Sucesso';
 
   @override
-  String get myTextTerm => 'Yabadabadoo';
+  String get myTextTerm => 'Brazuca Termo';
 }

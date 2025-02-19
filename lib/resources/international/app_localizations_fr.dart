@@ -37,5 +37,5 @@ class AppLocalizationsFr extends AppLocalizations {
   String get success => 'Succès';
 
   @override
-  String get myTextTerm => 'Yabadabadoo';
+  String get myTextTerm => 'Franch Termo';
 }

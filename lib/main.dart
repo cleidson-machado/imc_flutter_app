@@ -38,8 +38,15 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.hello),
       ),
-      body: Center(
-        child: Text(AppLocalizations.of(context)!.welcome),
+      body: Column(
+        children: [
+          Center(
+            child: Text(AppLocalizations.of(context)!.welcome),
+          ),
+          Center(
+            child: Text(AppLocalizations.of(context)!.myTextTerm),
+          ),
+        ],
       ),
     );
   }
