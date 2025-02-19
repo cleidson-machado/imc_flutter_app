@@ -37,5 +37,17 @@ class AppLocalizationsPt extends AppLocalizations {
   String get success => 'Sucesso';
 
   @override
-  String get myTextTerm => 'Brazuca Termo';
+  String get myTextTerm => 'Zé Ninguém, Cabeça-dura e Mala sem alça!';
+
+  @override
+  String get languageEnglish => 'Inglês';
+
+  @override
+  String get languageSpanish => 'Espanhol';
+
+  @override
+  String get languagePortuguese => 'Português';
+
+  @override
+  String get languageFrench => 'Francês';
 }

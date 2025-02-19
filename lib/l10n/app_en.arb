@@ -10,5 +10,9 @@
   "error": "Error",
   "loading": "Loading",
   "success": "Success",
-  "myTextTerm": "Yabadabadoo"
+  "myTextTerm": "Latin boy, you've been deported! Go to your hole, sweet hole",
+  "languageEnglish": "English",
+  "languageSpanish": "Spanish",
+  "languagePortuguese": "Portuguese",
+  "languageFrench": "French"
 }

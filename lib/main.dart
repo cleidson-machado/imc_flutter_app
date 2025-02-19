@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _currentLocale = const Locale('en', ''); // Default language
+  Locale _currentLocale = const Locale('pt', ''); // Default language
 
   void _changeLanguage(Locale newLocale) {
     setState(() {
@@ -65,30 +65,33 @@ class MyHomePage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           DropdownButton<Locale>(
+            
             value: Localizations.localeOf(context),
             onChanged: (Locale? newLocale) {
               if (newLocale != null) {
                 onLanguageChange(newLocale);
               }
             },
-            items: const [
+
+            items: [
               DropdownMenuItem(
-                value: Locale('en', ''),
-                child: Text('English'),
+                value: const Locale('en', ''),
+                child: Text(AppLocalizations.of(context)!.languageEnglish),
               ),
               DropdownMenuItem(
-                value: Locale('es', ''),
-                child: Text('Español'),
+                value: const Locale('es', ''),
+                child: Text(AppLocalizations.of(context)!.languageSpanish),
               ),
               DropdownMenuItem(
-                value: Locale('pt', ''),
-                child: Text('Português'),
+                value: const Locale('pt', ''),
+                child: Text(AppLocalizations.of(context)!.languagePortuguese),
               ),
               DropdownMenuItem(
-                value: Locale('fr', ''),
-                child: Text('Français'),
+                value: const Locale('fr', ''),
+                child: Text(AppLocalizations.of(context)!.languageFrench),
               ),
             ],
+            
           ),
         ],
       ),

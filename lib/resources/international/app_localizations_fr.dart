@@ -37,5 +37,17 @@ class AppLocalizationsFr extends AppLocalizations {
   String get success => 'Succès';
 
   @override
-  String get myTextTerm => 'Franch Termo';
+  String get myTextTerm => 'Les Français ne se baignent pas';
+
+  @override
+  String get languageEnglish => 'Anglais';
+
+  @override
+  String get languageSpanish => 'Espagnol';
+
+  @override
+  String get languagePortuguese => 'Portugais';
+
+  @override
+  String get languageFrench => 'Français';
 }

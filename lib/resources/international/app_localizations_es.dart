@@ -37,5 +37,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get success => 'Éxito';
 
   @override
-  String get myTextTerm => 'Pero No Mucho';
+  String get myTextTerm => '¡Príncipe de la paella, apártate de la sartén! \n Tu reino de carbohidratos te llama.';
+
+  @override
+  String get languageEnglish => 'Inglés';
+
+  @override
+  String get languageSpanish => 'Español';
+
+  @override
+  String get languagePortuguese => 'Portugués';
+
+  @override
+  String get languageFrench => 'Francés';
 }

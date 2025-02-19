@@ -37,5 +37,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get success => 'Success';
 
   @override
-  String get myTextTerm => 'Yabadabadoo';
+  String get myTextTerm => 'Latin boy, you\'ve been deported! Go to your hole, sweet hole';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageSpanish => 'Spanish';
+
+  @override
+  String get languagePortuguese => 'Portuguese';
+
+  @override
+  String get languageFrench => 'French';
 }

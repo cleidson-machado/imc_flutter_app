@@ -10,5 +10,9 @@
   "error": "Error",
   "loading": "Cargando",
   "success": "Éxito",
-  "myTextTerm": "Pero No Mucho"
+  "myTextTerm": "¡Príncipe de la paella, apártate de la sartén! \n Tu reino de carbohidratos te llama.",
+  "languageEnglish": "Inglés",
+  "languageSpanish": "Español",
+  "languagePortuguese": "Portugués",
+  "languageFrench": "Francés"
 }

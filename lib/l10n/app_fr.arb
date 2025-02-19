@@ -10,5 +10,9 @@
     "error": "Erreur",
     "loading": "Chargement",
     "success": "Succès",
-    "myTextTerm": "Franch Termo"
+    "myTextTerm": "Les Français ne se baignent pas",
+    "languageEnglish": "Anglais",
+    "languageSpanish": "Espagnol",
+    "languagePortuguese": "Portugais",
+    "languageFrench": "Français"
 }
