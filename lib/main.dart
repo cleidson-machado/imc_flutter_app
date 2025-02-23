@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:my_imc_calc_app/core/app_theme.dart';
+import 'package:my_imc_calc_app/screens/home_screen.dart';
 import 'package:provider/provider.dart';
-import 'screens/login_screen.dart';
 
 void main() {
   runApp(
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         return CupertinoApp(
           debugShowCheckedModeBanner: false,
           theme: appTheme.themeData,
-          home: const LoginScreen(),
+          home: const HomeScreen(),
         );
       },
     );

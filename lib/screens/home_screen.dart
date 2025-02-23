@@ -14,9 +14,9 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const BlogListScreen(),
-    const SearchScreen(),
-    const ProfileScreen(),
+    const TopicContentPointScreen(),
+    const UserProfileScreen(),
+    const AppConfigurationScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -31,19 +31,21 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: _selectedIndex,
+        height: 80,
+        iconSize:40,
         onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.home),
-            label: "Home",
+            label: "HOME",
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.person_2),
-            label: "User Profile",
+            label: "USER",
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.gear_big),
-            label: "Confiurations",
+            label: "CONFIG",
           ),
         ],
       ),
@@ -51,9 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-/// 📝 Tela Principal - Lista de Blogs
-class BlogListScreen extends StatelessWidget {
-  const BlogListScreen({super.key});
+/// 📝 Tela Principal - Lista de Conteúdos cadastrados ou compartilhados pelos usuários
+class TopicContentPointScreen extends StatelessWidget {
+  const TopicContentPointScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -142,27 +144,27 @@ class BlogListScreen extends StatelessWidget {
 }
 
 /// 🔍 Tela de Pesquisa
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
+class UserProfileScreen extends StatelessWidget {
+  const UserProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(middle: Text("Search")),
-      child: Center(child: Text("Search Content", style: TextStyle(fontSize: 20))),
+      navigationBar: CupertinoNavigationBar(middle: Text("User Profile")),
+      child: Center(child: Text("User Content", style: TextStyle(fontSize: 20))),
     );
   }
 }
 
 /// 👤 Tela de Perfil
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class AppConfigurationScreen extends StatelessWidget {
+  const AppConfigurationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(middle: Text("Profile")),
-      child: Center(child: Text("Profile Content", style: TextStyle(fontSize: 20))),
+      navigationBar: CupertinoNavigationBar(middle: Text("Configuration")),
+      child: Center(child: Text("Profile for App Configuration", style: TextStyle(fontSize: 20))),
     );
   }
 }
