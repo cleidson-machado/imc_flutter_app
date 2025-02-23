@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:my_imc_calc_app/core/app_theme.dart';
 import 'package:my_imc_calc_app/screens/home_screen.dart';
+import 'package:my_imc_calc_app/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
