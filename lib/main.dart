@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return Consumer<AppTheme>(
       builder: (context, appTheme, child) {
         return CupertinoApp(
-          debugShowCheckedModeBanner: false,
+          //debugShowCheckedModeBanner: false,
           theme: appTheme.themeData,
           home: const HomeScreen(),
         );
