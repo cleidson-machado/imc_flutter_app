@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:my_imc_calc_app/screens/settings_screen.dart';
 import 'package:my_imc_calc_app/theme/app_theme.dart';
 import 'package:my_imc_calc_app/screens/home_screen.dart';
 import 'package:my_imc_calc_app/screens/login_screen.dart';
@@ -21,9 +22,9 @@ class MyApp extends StatelessWidget {
     return Consumer<AppTheme>(
       builder: (context, appTheme, child) {
         return CupertinoApp(
-          //debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
           theme: appTheme.themeData,
-          home: const HomeScreen(),
+          home: const SettingsScreen(),
         );
       },
     );
