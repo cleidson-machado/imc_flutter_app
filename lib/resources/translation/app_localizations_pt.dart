@@ -11,4 +11,40 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get welcome => 'Bem-vindo';
+
+  @override
+  String get goodbye => 'Adeus';
+
+  @override
+  String get thank_you => 'Obrigado';
+
+  @override
+  String get please => 'Por favor';
+
+  @override
+  String get yes => 'Sim';
+
+  @override
+  String get no => 'Não';
+
+  @override
+  String get error => 'Erro';
+
+  @override
+  String get loading => 'Carregando';
+
+  @override
+  String get success => 'Sucesso';
+
+  @override
+  String get languageEnglish => 'Inglês';
+
+  @override
+  String get languageSpanish => 'Espanhol';
+
+  @override
+  String get languagePortuguese => 'Português';
+
+  @override
+  String get languageFrench => 'Francês';
 }
