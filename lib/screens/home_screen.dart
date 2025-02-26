@@ -1,7 +1,8 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api, camel_case_types
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_imc_calc_app/screens/app_configuration_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -157,8 +158,8 @@ class UserProfileScreen extends StatelessWidget {
 }
 
 /// 👤 Tela de Perfil
-class AppConfigurationScreen extends StatelessWidget {
-  const AppConfigurationScreen({super.key});
+class AppConfigurationScreen_ORIG extends StatelessWidget {
+  const AppConfigurationScreen_ORIG({super.key});
 
   @override
   Widget build(BuildContext context) {
