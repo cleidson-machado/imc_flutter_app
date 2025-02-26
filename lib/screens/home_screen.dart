@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/screens/app_configuration_screen.dart';
+import 'package:my_imc_calc_app/screens/app_user_profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _pages = [
     const TopicContentPointScreen(),
-    const UserProfileScreen(),
+    const AppUserProfileScreen(),
     const AppConfigurationScreen(),
   ];
 
@@ -78,7 +79,7 @@ class TopicContentPointScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               itemCount: blogPosts.length,
               itemBuilder: (context, index) {
                 final post = blogPosts[index];
@@ -145,8 +146,8 @@ class TopicContentPointScreen extends StatelessWidget {
 }
 
 /// 🔍 Tela de Pesquisa
-class UserProfileScreen extends StatelessWidget {
-  const UserProfileScreen({super.key});
+class UserProfileScreen_ORIG extends StatelessWidget {
+  const UserProfileScreen_ORIG({super.key});
 
   @override
   Widget build(BuildContext context) {
