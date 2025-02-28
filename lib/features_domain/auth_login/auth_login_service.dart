@@ -1,0 +1,46 @@
+import 'dart:convert';
+import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
+import 'package:logger/logger.dart';
+import 'auth_login_model.dart';
+
+// Custom exception class
+class FetchDataException implements Exception {
+  final String message;
+  FetchDataException(this.message);
+
+  @override
+  String toString() => 'FetchDataException: $message';
+}
+
+class AuthLoginService {
+  final String _baseUrl ='https://6767d711c1de2e6421c86392.mockapi.io/api/v1/user/';
+  final Logger _logger = Logger();
+
+  Future<List<AuthLoginModel>> fetchUsersTEST() async {
+    final response = await http.get(Uri.parse(_baseUrl));
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      return data.map((user) => AuthLoginModel.fromMap(user)).toList();
+    } else {
+      throw FetchDataException('Failed to load users');
+    }
+  }
+
+  Future<List<AuthLoginModel>> fetchUsers() async {
+    try {
+      final response = await Dio().get('${dotenv.env['MOC_API_A']}/user/');
+      if (response.statusCode == 200) {
+        List<dynamic> data = response.data;
+        return data.map((user) => AuthLoginModel.fromMap(user)).toList();
+      } else {
+        throw FetchDataException('Failed to load users');
+      }
+    } catch (e) {
+      _logger.e('Error fetching users', error: e);
+      throw FetchDataException('Error fetching users: $e');
+    }
+  }
+}
