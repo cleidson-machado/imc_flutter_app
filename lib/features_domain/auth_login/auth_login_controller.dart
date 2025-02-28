@@ -1,12 +1,32 @@
+import 'package:flutter/foundation.dart';
 import 'auth_login_service.dart';
 import 'auth_login_model.dart';
 
-class AuthLoginController {
+class AuthLoginController extends ChangeNotifier {
   final AuthLoginService _service;
 
   AuthLoginController(this._service);
 
+  var isLoading = false;
+  var error = '';
+  var usersModel = <AuthLoginModel>[];
+
   Future<List<AuthLoginModel>> getUsers() async {
-    return await _service.fetchUsers();
+    try {
+      isLoading = true;
+      notifyListeners(); // Notify UI about loading state
+
+      final users = await _service.fetchUsers();
+      usersModel = users;
+      error = ''; // Clear any previous errors
+    } catch (err) {
+      error = err.toString();
+      usersModel = []; // Ensure a list is always returned
+    } finally {
+      isLoading = false;
+      notifyListeners(); // Notify UI about state change
+    }
+
+    return usersModel; // Always return a list
   }
 }
