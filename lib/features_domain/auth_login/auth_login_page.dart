@@ -25,11 +25,38 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
   }
 
   Future<void> _fetchUsers() async {
-    final users = await _controller.getUsers();
-    setState(() {
-      _users = users;
-      _isLoading = false;
-    });
+    try {
+      final users = await _controller.getUsers();
+      setState(() {
+        _users = users;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+      _showErrorDialog(e.toString());
+    }
+  }
+
+  void _showErrorDialog(String message) {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: const Text('Erro'),
+          content: Text(message),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -41,22 +68,29 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
       child: SafeArea(
         child: _isLoading
             ? const Center(child: CupertinoActivityIndicator())
-            : Column(
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: CupertinoListSection.insetGrouped(
-                        children: _users.map((user) {
-                          return CupertinoListTile(
-                            title: Text(user.username),
-                            subtitle: Text(user.email),
-                          );
-                        }).toList(),
+            : _users.isNotEmpty
+                ? Column(
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: CupertinoListSection.insetGrouped(
+                            children: _users.map((user) {
+                              return CupertinoListTile(
+                                title: Text(user.username),
+                                subtitle: Text(user.email),
+                              );
+                            }).toList(),
+                          ),
+                        ),
                       ),
+                    ],
+                  )
+                : const Center(
+                    child: Text(
+                      'Nenhum usuário encontrado',
+                      style: TextStyle(fontSize: 18, color: CupertinoColors.systemGrey),
                     ),
                   ),
-                ],
-              ),
       ),
     );
   }

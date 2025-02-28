@@ -15,10 +15,11 @@ class FetchDataException implements Exception {
 }
 
 class AuthLoginService {
-  final String _baseUrl ='https://6767d711c1de2e6421c86392.mockapi.io/api/v1/user/';
+  final String _baseUrl = 'https://6767d711c1de2e6421c86392.mockapi.io/api/v1/user/';
   final Logger _logger = Logger();
 
   Future<List<AuthLoginModel>> fetchUsersTEST() async {
+    await Future.delayed(const Duration(seconds: 2)); // Simula um delay de 2 segundos
     final response = await http.get(Uri.parse(_baseUrl));
 
     if (response.statusCode == 200) {
@@ -30,8 +31,15 @@ class AuthLoginService {
   }
 
   Future<List<AuthLoginModel>> fetchUsers() async {
+    await Future.delayed(const Duration(seconds: 5)); // Simula um delay de 3 segundos
+
     try {
-      final response = await Dio().get('${dotenv.env['MOC_API_A']}/user/');
+      final apiUrl = dotenv.env['MOC_API_A'];
+      if (apiUrl == null) {
+        throw FetchDataException('API URL is not set in environment variables');
+      }
+
+      final response = await Dio().get('$apiUrl/user/');
       if (response.statusCode == 200) {
         List<dynamic> data = response.data;
         return data.map((user) => AuthLoginModel.fromMap(user)).toList();

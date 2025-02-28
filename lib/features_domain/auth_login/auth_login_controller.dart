@@ -7,11 +7,6 @@ class AuthLoginController {
   AuthLoginController(this._service);
 
   Future<List<AuthLoginModel>> getUsers() async {
-    try {
-      return await _service.fetchUsers();
-    } catch (e) {
-      
-      return [];
-    }
+    return await _service.fetchUsers();
   }
 }
