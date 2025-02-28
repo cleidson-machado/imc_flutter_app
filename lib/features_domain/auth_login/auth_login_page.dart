@@ -1,5 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'auth_login_controller.dart';
 import 'auth_login_service.dart';
@@ -25,17 +26,27 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
   }
 
   Future<void> _fetchUsers() async {
+
     try {
       final users = await _controller.getUsers();
       setState(() {
         _users = users;
         _isLoading = false;
       });
-    } catch (e) {
+    } catch (err) {
       setState(() {
         _isLoading = false;
       });
-      _showErrorDialog(e.toString());
+
+      _showErrorDialog(err.toString());
+
+      // Extract only the HTTP status code // DON'T WORK OK YET.. REVIEW AGAIN
+      String? statusCode;
+      if (err is DioException && err.response != null) {
+        statusCode = err.message.toString();
+      }
+
+      //_showErrorDialog(statusCode != null ? 'Erro $statusCode' : 'Erro desconhecido');
     }
   }
 
