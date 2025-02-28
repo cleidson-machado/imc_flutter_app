@@ -38,16 +38,17 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
         _isLoading = false;
       });
 
-      _showErrorDialog(err.toString());
-
-      // Extract only the HTTP status code // DON'T WORK OK YET.. REVIEW AGAIN
-      String? statusCode;
+      // Extract only the HTTP status code
+      int? statusCode;
       if (err is DioException && err.response != null) {
-        statusCode = err.message.toString();
+        statusCode = err.response?.statusCode;
       }
 
-      //_showErrorDialog(statusCode != null ? 'Erro $statusCode' : 'Erro desconhecido');
+      // Show only the status code in the error message
+      _showErrorDialog(
+          statusCode != null ? 'Erro $statusCode' : 'Erro desconhecido');
     }
+    
   }
 
   void _showErrorDialog(String message) {
@@ -99,7 +100,8 @@ class _AuthLoginPageState extends State<AuthLoginPage> {
                 : const Center(
                     child: Text(
                       'Nenhum usuário encontrado',
-                      style: TextStyle(fontSize: 18, color: CupertinoColors.systemGrey),
+                      style: TextStyle(
+                          fontSize: 18, color: CupertinoColors.systemGrey),
                     ),
                   ),
       ),
