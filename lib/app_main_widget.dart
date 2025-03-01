@@ -3,7 +3,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:my_imc_calc_app/features_domain/auth_login/auth_login_screen.dart';
+import 'package:my_imc_calc_app/features_domain/auth_login/screens/auth_login_screen.dart';
 import 'package:my_imc_calc_app/screens/home_screen.dart';
 import 'package:my_imc_calc_app/screens/login_screen.dart';
 import 'package:my_imc_calc_app/theme/app_theme.dart';

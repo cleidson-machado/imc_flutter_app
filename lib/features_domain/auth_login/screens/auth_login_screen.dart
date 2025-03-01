@@ -2,32 +2,15 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:my_imc_calc_app/core/useful/error_messages.dart';
+import 'package:my_imc_calc_app/widgets/custom_cupertino_dialog_widget.dart';
 import 'package:provider/provider.dart';
-import 'auth_login_controller.dart';
-import 'auth_login_service.dart';
+import '../auth_login_controller.dart';
+import '../auth_login_service.dart';
 
 class AuthLoginPage extends StatelessWidget {
   const AuthLoginPage({super.key});
 
-  void _showErrorDialog(BuildContext context, String message) {
-    showCupertinoDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return CupertinoAlertDialog(
-          title: const Text('Erro'),
-          content: Text(message),
-          actions: <Widget>[
-            CupertinoDialogAction(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -85,3 +68,9 @@ class AuthLoginPage extends StatelessWidget {
     );
   }
 }
+
+void _showErrorDialog(BuildContext context, String message) {
+    customCupertinoDialog(context, message);
+}
+
+
