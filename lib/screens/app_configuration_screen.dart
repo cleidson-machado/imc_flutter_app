@@ -25,7 +25,7 @@ class _AppConfigurationScreenState extends State<AppConfigurationScreen> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar:const CupertinoNavigationBar(middle: Text("Configuration")),
+      navigationBar:const CupertinoNavigationBar(middle: Text(">> Altera PF de Consumidor p/ Fornecedor <<")),
       child: Padding(
         padding: const EdgeInsets.only(top: 12, left: 0, right: 0, bottom: 0),
         child: ListView(

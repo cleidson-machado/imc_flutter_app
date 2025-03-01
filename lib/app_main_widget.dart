@@ -26,7 +26,7 @@ class _AppMainWidgetState extends State<AppMainWidget> {
         return CupertinoApp(
           debugShowCheckedModeBanner: false, //############ THE ORIGINAL DEBUG FLAG...
           theme: appTheme.themeData,
-          home: const AuthLoginPage(),
+          home: const HomeScreen(),
         );
       },
     );

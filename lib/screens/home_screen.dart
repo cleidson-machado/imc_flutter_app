@@ -33,21 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: _selectedIndex,
-        height: 80,
-        iconSize:40,
+        height: 65,
+        iconSize:45,
         onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
-            label: "HOME",
+            icon: Icon(CupertinoIcons.news_solid),
+            label: "TEMAS",
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person_2),
-            label: "USER",
+            icon: Icon(CupertinoIcons.person_3_fill),
+            label: "RELAÇÕES",
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.gear_big),
-            label: "CONFIG",
+            icon: Icon(CupertinoIcons.gear_alt_fill),
+            label: "PERFIL",
           ),
         ],
       ),
@@ -70,7 +70,7 @@ class TopicContentPointScreen extends StatelessWidget {
     });
 
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(middle: Text("Blogs")),
+      navigationBar: const CupertinoNavigationBar(middle: Text(">> Perfil de Consumidor - Default <<")),
       child: Column(
         children: [
           const Padding(

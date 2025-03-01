@@ -18,7 +18,7 @@ class _AppUserProfileScreenState extends State<AppUserProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(middle: Text("Edit Profile")),
+      navigationBar: const CupertinoNavigationBar(middle: Text(">> Lista Contatos para Ambos <<")),
       child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
