@@ -1,6 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/cupertino.dart';
+import 'package:my_imc_calc_app/core/useful/error_messages.dart';
 import 'package:provider/provider.dart';
 import 'auth_login_controller.dart';
 import 'auth_login_service.dart';
@@ -41,8 +42,14 @@ class AuthLoginPage extends StatelessWidget {
             });
           }
           return CupertinoPageScaffold(
-            navigationBar: const CupertinoNavigationBar(
-              middle: Text('Moc List of Users'),
+            navigationBar: CupertinoNavigationBar(
+              middle: const Text('Moc List of Users'),
+              trailing: CupertinoButton(
+                padding: EdgeInsets.zero,
+                child: const Icon(CupertinoIcons.arrow_down_doc_fill),
+                onPressed: () {Provider.of<AuthLoginController>(context, listen: false).getUsers();
+                },
+              ),
             ),
             child: SafeArea(
               child: controller.isLoading
@@ -65,8 +72,7 @@ class AuthLoginPage extends StatelessWidget {
                           ],
                         )
                       : const Center(
-                          child: Text(
-                            'Nenhum usuário encontrado',
+                          child: Text(ErrorMessages.ERROR_FETCHING_USERS_MESSAGE,
                             style: TextStyle(
                                 fontSize: 18,
                                 color: CupertinoColors.systemGrey),

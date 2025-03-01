@@ -12,7 +12,7 @@ class AuthLoginService {
 
   Future<List<AuthLoginModel>> fetchUsersBasicWay() async {
     if (apiUrl == null) {
-      throw ServiceDataException.handler(ErrorMessages.apiUrlNotSet);
+      throw ServiceDataException.handler(ErrorMessages.API_URL_NOT_SET_MESSAGE);
     }
     final result = await Dio().get('$apiUrl/user/');
 
@@ -20,7 +20,7 @@ class AuthLoginService {
       List<dynamic> data = result.data; 
       return data.map((user) => AuthLoginModel.fromMap(user)).toList();
     } else {
-      throw ServiceDataException.handler(ErrorMessages.failedToLoadUsers);
+      throw ServiceDataException.handler(ErrorMessages.FAILED_TO_LOAD_USERS_MESSAGE);
     }
   }
 
@@ -30,7 +30,7 @@ class AuthLoginService {
 
     try {
       if (apiUrl == null) {
-        throw ServiceDataException.handler(ErrorMessages.apiUrlNotSet);
+        throw ServiceDataException.handler(ErrorMessages.API_URL_NOT_SET_MESSAGE);
       }
 
       final result = await Dio().get('$apiUrl/user/');
@@ -38,12 +38,12 @@ class AuthLoginService {
         List<dynamic> data = result.data;
         return data.map((user) => AuthLoginModel.fromMap(user)).toList();
       } else {
-        throw ServiceDataException.handler(ErrorMessages.failedToLoadUsers);
+        throw ServiceDataException.handler(ErrorMessages.FAILED_TO_LOAD_USERS_MESSAGE);
       }
     } catch (e) {
       _logger.e('Error fetching users', error: e);
       throw ServiceDataException.handler(
-          '${ErrorMessages.errorFetchingUsers}: $e');
+          '${ErrorMessages.ERROR_FETCHING_USERS_MESSAGE}: $e');
     }
   }
 }
