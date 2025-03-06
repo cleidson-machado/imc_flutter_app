@@ -5,14 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:my_imc_calc_app/screens/app_configuration_screen.dart';
 import 'package:my_imc_calc_app/screens/app_user_profile_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+//RE-APROVEITA OS CÓDIGOGOS E VOLTA O NOME HomeScreen SE NECESSÁRIO...
+
+class HomeScreenOrig extends StatefulWidget {
+  const HomeScreenOrig({super.key});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreenOrigState createState() => _HomeScreenOrigState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenOrigState extends State<HomeScreenOrig> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
