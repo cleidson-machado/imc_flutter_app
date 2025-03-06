@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'auth_login_service.dart';
-import 'auth_login_model.dart';
+import 'core_auth_login_service.dart';
+import 'core_auth_login_model.dart';
 
 class AuthLoginController extends ChangeNotifier {
   final AuthLoginService _service;

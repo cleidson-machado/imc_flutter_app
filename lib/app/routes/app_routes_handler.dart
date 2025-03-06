@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_imc_calc_app/core/features_domain/google_login/screens/google_login_screen.dart';
-import 'package:my_imc_calc_app/core/features_domain/home_content/screens/home_screen.dart';
+import 'package:my_imc_calc_app/modules/core_google_login/screens/core_google_login_screen.dart';
+import 'package:my_imc_calc_app/modules/home_content/screens/home_screen.dart';
 
 class AppRoutesHandler {
   static const String googleLogin = '/google_login_screen';

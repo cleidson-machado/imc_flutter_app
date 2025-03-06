@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:my_imc_calc_app/util/error_messages.dart';
 import 'package:my_imc_calc_app/widgets/custom_cupertino_dialog_widget.dart';
 import 'package:provider/provider.dart';
-import '../auth_login_controller.dart';
-import '../auth_login_service.dart';
+import '../core_auth_login_controller.dart';
+import '../core_auth_login_service.dart';
 
 class AuthLoginPage extends StatelessWidget {
   const AuthLoginPage({super.key});

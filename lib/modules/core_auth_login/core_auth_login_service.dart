@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:my_imc_calc_app/util/service_data_exception.dart';
-import 'auth_login_model.dart';
+import 'core_auth_login_model.dart';
 import 'package:my_imc_calc_app/util/error_messages.dart';
 
 final String? apiUrl = dotenv.env['MOC_API_A'];
