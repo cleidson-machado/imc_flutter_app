@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_imc_calc_app/core/routes/app_routes.dart';
-import 'package:my_imc_calc_app/theme/app_theme.dart';
+import 'package:my_imc_calc_app/routes/app_routes_handler.dart';
+import 'package:my_imc_calc_app/theme/app_theme_provider_full.dart';
 import 'package:provider/provider.dart';
 
 class AppMainWidget extends StatefulWidget {
@@ -18,8 +18,8 @@ class _AppMainWidgetState extends State<AppMainWidget> {
         return CupertinoApp(
           title: 'Meu App Cupertino',//ESSE TXT NÃO APARECE NO VISUAL VERIFICAR......
           theme: appTheme.themeData,
-          onGenerateRoute: AppRoutes.generateRoute, // Usando nosso método otimizado.
-          initialRoute: AppRoutes.home,
+          onGenerateRoute: AppRoutesHandler.generateRoute, // Usando nosso método otimizado.
+          initialRoute: AppRoutesHandler.home,
           debugShowCheckedModeBanner: false, //############ THE ORIGINAL DEBUG FLAG...
         );
       },

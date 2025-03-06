@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:my_imc_calc_app/features_domain/google_login/screens/google_login_screen.dart';
 import 'package:my_imc_calc_app/features_domain/home_content/screens/home_screen.dart';
 
-class AppRoutes {
+class AppRoutesHandler {
   static const String googleLogin = '/google_login_screen';
   static const String home = '/home';
 
