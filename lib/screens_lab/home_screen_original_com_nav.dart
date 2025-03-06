@@ -2,8 +2,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/screens/app_configuration_screen.dart';
-import 'package:my_imc_calc_app/screens/app_user_profile_screen.dart';
+import 'package:my_imc_calc_app/screens_lab/app_configuration_screen.dart';
+import 'package:my_imc_calc_app/screens_lab/app_user_profile_screen.dart';
 
 //RE-APROVEITA OS CÓDIGOGOS E VOLTA O NOME HomeScreen SE NECESSÁRIO...
 

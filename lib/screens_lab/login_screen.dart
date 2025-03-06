@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_imc_calc_app/screens/forgot_password_screen.dart';
-import 'package:my_imc_calc_app/screens/register_screen.dart';
+import 'package:my_imc_calc_app/screens_lab/forgot_password_screen.dart';
+import 'package:my_imc_calc_app/screens_lab/register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

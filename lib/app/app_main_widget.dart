@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_imc_calc_app/routes/app_routes_handler.dart';
-import 'package:my_imc_calc_app/theme/app_theme_provider_full.dart';
+import 'package:my_imc_calc_app/app/routes/app_routes_handler.dart';
+import 'package:my_imc_calc_app/app/theme/app_theme_provider_full.dart';
 import 'package:provider/provider.dart';
 
 class AppMainWidget extends StatefulWidget {
