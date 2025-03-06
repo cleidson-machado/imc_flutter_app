@@ -1,19 +1,17 @@
 import 'package:flutter/foundation.dart';
-import 'core_auth_login_service.dart';
-import 'core_auth_login_model.dart';
+import 'package:my_imc_calc_app/modules/user_content/user_model.dart';
+import 'package:my_imc_calc_app/modules/user_content/user_service.dart';
 
-//REFATORAR COB BASE USADO NA USER
+class UserController extends ChangeNotifier {
+  final UserService _service;
 
-class AuthLoginController extends ChangeNotifier {
-  final AuthLoginService _service;
-
-  AuthLoginController(this._service);
+  UserController(this._service);
 
   var isLoading = false;
   var error = '';
-  var usersModel = <AuthLoginModel>[];
+  var usersModel = <UserModel>[];
 
-  Future<List<AuthLoginModel>> getUsers() async {
+  Future<List<UserModel>> getUsers() async {
     try {
       isLoading = true;
       notifyListeners(); // Notify UI about loading state

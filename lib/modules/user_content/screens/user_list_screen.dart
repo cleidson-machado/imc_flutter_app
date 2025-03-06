@@ -1,23 +1,19 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/cupertino.dart';
+import 'package:my_imc_calc_app/modules/user_content/user_controller.dart';
+import 'package:my_imc_calc_app/modules/user_content/user_service.dart';
 import 'package:my_imc_calc_app/util/error_messages.dart';
 import 'package:my_imc_calc_app/widgets/custom_cupertino_dialog_widget.dart';
 import 'package:provider/provider.dart';
-import '../core_auth_login_controller.dart';
-import '../core_auth_login_service.dart';
 
-//## THIS IS A ((SIMPLE TEST)) PAGE TO LIST USERS FROM A REST API ENDPOINT... REFATORAR COB BASE USADO NA USER
-
-class AuthLoginPage extends StatelessWidget {
-  const AuthLoginPage({super.key});
+class UserListScreen extends StatelessWidget {
+  const UserListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => AuthLoginController(AuthLoginService())
+      create: (_) => UserController(UserService())
         ..getUsers(), // Load users on init
-      child: Consumer<AuthLoginController>(
+      child: Consumer<UserController>(
         builder: (context, controller, child) {
           if (controller.error.isNotEmpty) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -30,7 +26,9 @@ class AuthLoginPage extends StatelessWidget {
               trailing: CupertinoButton(
                 padding: EdgeInsets.zero,
                 child: const Icon(CupertinoIcons.arrow_down_doc_fill),
-                onPressed: () {Provider.of<AuthLoginController>(context, listen: false).getUsers();
+                onPressed: () {
+                  Provider.of<UserController>(context, listen: false)
+                      .getUsers();
                 },
               ),
             ),
@@ -55,7 +53,8 @@ class AuthLoginPage extends StatelessWidget {
                           ],
                         )
                       : const Center(
-                          child: Text(ErrorMessages.ERROR_FETCHING_USERS_MESSAGE,
+                          child: Text(
+                            ErrorMessages.ERROR_FETCHING_USERS_MESSAGE,
                             style: TextStyle(
                                 fontSize: 18,
                                 color: CupertinoColors.systemGrey),
@@ -68,6 +67,7 @@ class AuthLoginPage extends StatelessWidget {
     );
   }
 }
+
 
 void _showErrorDialog(BuildContext context, String message) {
     customCupertinoDialog(context, message);

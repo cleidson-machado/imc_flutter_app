@@ -1,9 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-//REFATORAR COB BASE USADO NA USER
-
-class AuthLoginModel {
+class UserModel {
 
   final String id;
   final String username;
@@ -12,7 +10,7 @@ class AuthLoginModel {
   final String firstName;
   final String lastName;
 
-  AuthLoginModel({
+  UserModel({
     required this.id,
     required this.username,
     required this.email,
@@ -21,7 +19,7 @@ class AuthLoginModel {
     required this.lastName,
   });
 
-  AuthLoginModel copyWith({
+  UserModel copyWith({
     String? id,
     String? username,
     String? email,
@@ -29,7 +27,7 @@ class AuthLoginModel {
     String? firstName,
     String? lastName,
   }) {
-    return AuthLoginModel(
+    return UserModel(
       id: id ?? this.id,
       username: username ?? this.username,
       email: email ?? this.email,
@@ -50,8 +48,8 @@ class AuthLoginModel {
     };
   }
 
-  factory AuthLoginModel.fromMap(Map<String, dynamic> map) {
-    return AuthLoginModel(
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
       id: map['id'] as String,
       username: map['username'] as String,
       email: map['email'] as String,
@@ -63,15 +61,15 @@ class AuthLoginModel {
 
   String toJson() => json.encode(toMap());
 
-  factory AuthLoginModel.fromJson(String source) => AuthLoginModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserModel.fromJson(String source) => UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'AuthLoginModel(id: $id, username: $username, email: $email, passwordHash: $passwordHash, firstName: $firstName, lastName: $lastName)';
+    return 'UserModel(id: $id, username: $username, email: $email, passwordHash: $passwordHash, firstName: $firstName, lastName: $lastName)';
   }
 
   @override
-  bool operator ==(covariant AuthLoginModel other) {
+  bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
   
     return 

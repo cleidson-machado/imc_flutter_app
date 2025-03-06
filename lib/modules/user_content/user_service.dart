@@ -1,18 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
-import 'package:my_imc_calc_app/util/service_data_exception.dart';
-import 'core_auth_login_model.dart';
+import 'package:my_imc_calc_app/modules/user_content/user_model.dart';
 import 'package:my_imc_calc_app/util/error_messages.dart';
-
-//REFATORAR COB BASE USADO NA USER
+import 'package:my_imc_calc_app/util/service_data_exception.dart';
 
 final String? apiUrl = dotenv.env['MOC_API_A'];
 
-class AuthLoginService {
+class UserService {
   final Logger _logger = Logger();
 
-  Future<List<AuthLoginModel>> fetchUsersBasicWay() async {
+  Future<List<UserModel>> fetchUsersBasicWay() async {
     if (apiUrl == null) {
       throw ServiceDataException.handler(ErrorMessages.API_URL_NOT_SET_MESSAGE);
     }
@@ -20,13 +18,13 @@ class AuthLoginService {
 
     if (result.statusCode == 200) {
       List<dynamic> data = result.data; 
-      return data.map((user) => AuthLoginModel.fromMap(user)).toList();
+      return data.map((user) => UserModel.fromMap(user)).toList();
     } else {
       throw ServiceDataException.handler(ErrorMessages.FAILED_TO_LOAD_USERS_MESSAGE);
     }
   }
 
-  Future<List<AuthLoginModel>> fetchUsers() async {
+  Future<List<UserModel>> fetchUsers() async {
     await Future.delayed(
         const Duration(seconds: 5)); // Simulate a 5-second delay
 
@@ -38,14 +36,13 @@ class AuthLoginService {
       final result = await Dio().get('$apiUrl/user/');
       if (result.statusCode == 200) {
         List<dynamic> data = result.data;
-        return data.map((user) => AuthLoginModel.fromMap(user)).toList();
+        return data.map((user) => UserModel.fromMap(user)).toList();
       } else {
         throw ServiceDataException.handler(ErrorMessages.FAILED_TO_LOAD_USERS_MESSAGE);
       }
     } catch (e) {
       _logger.e('Error fetching users', error: e);
-      throw ServiceDataException.handler(
-          '${ErrorMessages.ERROR_FETCHING_USERS_MESSAGE}: $e');
+      throw ServiceDataException.handler('${ErrorMessages.ERROR_FETCHING_USERS_MESSAGE}: $e');
     }
   }
 }
