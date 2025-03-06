@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
-import 'package:my_imc_calc_app/core/useful/service_data_exception.dart';
+import 'package:my_imc_calc_app/useful/service_data_exception.dart';
 import 'auth_login_model.dart';
-import 'package:my_imc_calc_app/core/useful/error_messages.dart';
+import 'package:my_imc_calc_app/useful/error_messages.dart';
 
 final String? apiUrl = dotenv.env['MOC_API_A'];
 

@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/cupertino.dart';
-import 'package:my_imc_calc_app/core/useful/error_messages.dart';
+import 'package:my_imc_calc_app/useful/error_messages.dart';
 import 'package:my_imc_calc_app/widgets/custom_cupertino_dialog_widget.dart';
 import 'package:provider/provider.dart';
 import '../auth_login_controller.dart';
