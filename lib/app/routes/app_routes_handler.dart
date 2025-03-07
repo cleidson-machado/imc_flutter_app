@@ -6,7 +6,7 @@ import 'package:my_imc_calc_app/modules/user/screens/user_list_screen.dart';
 
 class AppRoutesHandler {
   static const String rootLogin = '/root_login';
-  static const String googleLogin = '/google_login_screen';
+  static const String googleLogin = '/google_login';
   //APPLE LOGIN
   //FACEBOOK LOGIN
   static const String home = '/home';
