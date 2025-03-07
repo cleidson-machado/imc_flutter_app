@@ -19,7 +19,7 @@ class _AppMainWidgetState extends State<AppMainWidget> {
           title: 'Meu App Cupertino',//ESSE TXT NÃO APARECE NO VISUAL VERIFICAR......
           theme: appTheme.themeData,
           onGenerateRoute: AppRoutesHandler.generateRoute, // Usando nosso método otimizado.
-          initialRoute: AppRoutesHandler.home,
+          initialRoute: AppRoutesHandler.login,
           debugShowCheckedModeBanner: false, //############ THE ORIGINAL DEBUG FLAG...
         );
       },

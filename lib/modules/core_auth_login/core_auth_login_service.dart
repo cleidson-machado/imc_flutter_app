@@ -5,7 +5,7 @@ import 'package:my_imc_calc_app/util/service_data_exception.dart';
 import 'core_auth_login_model.dart';
 import 'package:my_imc_calc_app/util/error_messages.dart';
 
-//REFATORAR COB BASE USADO NA USER
+//REFATORAR CÓDIGO BASE USADO NA USER
 
 final String? apiUrl = dotenv.env['MOC_API_A'];
 

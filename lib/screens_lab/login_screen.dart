@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_imc_calc_app/screens_lab/forgot_password_screen.dart';
 import 'package:my_imc_calc_app/screens_lab/register_screen.dart';
 
+// //REFATORAR CÓDIGO BASE USADO NA >> lib/modules/core_auth_login/screens/core_auth_login_screen.dart >> levar para lá todo esse código!!
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 

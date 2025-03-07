@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'core_auth_login_service.dart';
 import 'core_auth_login_model.dart';
 
-//REFATORAR COB BASE USADO NA USER
+//REFATORAR CÓDIGO BASE USADO NA USER
 
 class AuthLoginController extends ChangeNotifier {
   final AuthLoginService _service;

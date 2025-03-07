@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../core_auth_login_controller.dart';
 import '../core_auth_login_service.dart';
 
-//## THIS IS A ((SIMPLE TEST)) PAGE TO LIST USERS FROM A REST API ENDPOINT... REFATORAR COB BASE USADO NA USER
+//## THIS IS A ((SIMPLE TEST)) PAGE TO LIST USERS FROM A REST API ENDPOINT... REFATORAR CÓDIGO BASE USADO NA USER
 
 class AuthLoginPage extends StatelessWidget {
   const AuthLoginPage({super.key});

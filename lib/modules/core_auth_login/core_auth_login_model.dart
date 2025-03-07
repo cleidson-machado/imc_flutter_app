@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-//REFATORAR COB BASE USADO NA USER
+//REFATORAR CÓDIGO BASE USADO NA USER
 
 class AuthLoginModel {
 
