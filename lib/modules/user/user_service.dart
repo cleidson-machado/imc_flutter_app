@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
-import 'package:my_imc_calc_app/modules/user_content/user_model.dart';
+import 'package:my_imc_calc_app/modules/user/user_model.dart';
 import 'package:my_imc_calc_app/util/error_messages.dart';
 import 'package:my_imc_calc_app/util/service_data_exception.dart';
 

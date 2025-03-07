@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeContentScreen extends StatelessWidget {
   final String? data;
 
-  const HomeScreen({super.key, this.data});
+  const HomeContentScreen({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {

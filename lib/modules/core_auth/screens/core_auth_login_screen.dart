@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_imc_calc_app/modules/core_auth_login/screens/core_auth_forgot_pass_screen.dart';
-import 'package:my_imc_calc_app/modules/core_auth_login/screens/core_auth_register_screen.dart';
+import 'package:my_imc_calc_app/modules/core_auth/screens/core_auth_forgot_pass_screen.dart';
+import 'package:my_imc_calc_app/modules/core_auth/screens/core_auth_register_screen.dart';
 
 class CoreAuthLoginScreen extends StatelessWidget {
   const CoreAuthLoginScreen({super.key});

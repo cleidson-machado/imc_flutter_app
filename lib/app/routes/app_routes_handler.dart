@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_imc_calc_app/modules/core_auth_login/screens/core_auth_login_screen.dart';
-import 'package:my_imc_calc_app/modules/core_google_login/screens/core_google_login_screen.dart';
-import 'package:my_imc_calc_app/modules/home_content/screens/home_screen.dart';
-import 'package:my_imc_calc_app/modules/user_content/screens/user_list_screen.dart';
+import 'package:my_imc_calc_app/modules/core_auth/screens/core_auth_login_screen.dart';
+import 'package:my_imc_calc_app/modules/core_auth_google/screens/core_google_login_screen.dart';
+import 'package:my_imc_calc_app/modules/home_content/screens/home_content_screen.dart';
+import 'package:my_imc_calc_app/modules/user/screens/user_list_screen.dart';
 
 class AppRoutesHandler {
   static const String rootLogin = '/root_login';
@@ -31,7 +31,7 @@ class AppRoutesHandler {
         final Map<String, dynamic>? args =
             settings.arguments as Map<String, dynamic>?;
         return CupertinoPageRoute(
-          builder: (_) => HomeScreen(data: args?['data']),
+          builder: (_) => HomeContentScreen(data: args?['data']),
           settings: settings,
         );
 

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_imc_calc_app/modules/user_content/user_controller.dart';
-import 'package:my_imc_calc_app/modules/user_content/user_service.dart';
+import 'package:my_imc_calc_app/modules/user/user_controller.dart';
+import 'package:my_imc_calc_app/modules/user/user_service.dart';
 import 'package:my_imc_calc_app/util/error_messages.dart';
 import 'package:my_imc_calc_app/widgets/custom_cupertino_dialog_widget.dart';
 import 'package:provider/provider.dart';

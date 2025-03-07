@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:my_imc_calc_app/modules/user_content/user_model.dart';
-import 'package:my_imc_calc_app/modules/user_content/user_service.dart';
+import 'package:my_imc_calc_app/modules/user/user_model.dart';
+import 'package:my_imc_calc_app/modules/user/user_service.dart';
 
 class UserController extends ChangeNotifier {
   final UserService _service;
