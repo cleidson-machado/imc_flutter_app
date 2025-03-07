@@ -1,23 +1,21 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+class CoreAuthRegisterScreen extends StatefulWidget {
+  const CoreAuthRegisterScreen({super.key});
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  State<CoreAuthRegisterScreen> createState() => _CoreAuthRegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
-  bool _agreeTerms = false;
+class _CoreAuthRegisterScreenState extends State<CoreAuthRegisterScreen> {
+   bool _agreeTerms = false;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text("Sign up", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+        middle: Text("Sign up - Plus", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
       ),
       child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),

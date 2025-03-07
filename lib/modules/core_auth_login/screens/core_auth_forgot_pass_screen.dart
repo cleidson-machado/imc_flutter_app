@@ -3,14 +3,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
+class CoreAuthForgotPassScreen extends StatefulWidget {
+  const CoreAuthForgotPassScreen({super.key});
 
   @override
-  _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
+  _CoreAuthForgotPassScreenState createState() =>
+      _CoreAuthForgotPassScreenState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _CoreAuthForgotPassScreenState extends State<CoreAuthForgotPassScreen> {
   final TextEditingController _inputController = TextEditingController();
   final TextEditingController _pinController = TextEditingController();
   bool _codeSent = false;
@@ -44,7 +45,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text("Forgot Password", style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
+        middle: Text("Forgot Password - Plus",
+            style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
       ),
       child: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
@@ -54,7 +56,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             // Título
             Text(
               "Enter your email or phone number to reset your password",
-              style: GoogleFonts.lato(fontSize: 16, color: CupertinoColors.systemGrey),
+              style: GoogleFonts.lato(
+                  fontSize: 16, color: CupertinoColors.systemGrey),
             ),
             const SizedBox(height: 20),
 
@@ -88,7 +91,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               const SizedBox(height: 24),
               Text(
                 "Enter the 6-digit code sent to your email or phone",
-                style: GoogleFonts.lato(fontSize: 16, color: CupertinoColors.systemGrey),
+                style: GoogleFonts.lato(
+                    fontSize: 16, color: CupertinoColors.systemGrey),
               ),
               const SizedBox(height: 16),
 
@@ -118,7 +122,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   padding: EdgeInsets.zero,
                   child: Text(
                     "Resend Code",
-                    style: GoogleFonts.lato(fontSize: 14, color: CupertinoColors.activeBlue),
+                    style: GoogleFonts.lato(
+                        fontSize: 14, color: CupertinoColors.activeBlue),
                   ),
                   onPressed: _sendCode,
                 ),
@@ -132,7 +137,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 child: CupertinoButton.filled(
                   borderRadius: BorderRadius.circular(8),
                   child: const Text("Verify"),
-                  onPressed: _pinController.text.length == 6 ? _verifyPin : null,
+                  onPressed:
+                      _pinController.text.length == 6 ? _verifyPin : null,
                 ),
               ),
             ],

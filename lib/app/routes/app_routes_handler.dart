@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
+import 'package:my_imc_calc_app/modules/core_auth_login/screens/core_auth_login_screen.dart';
 import 'package:my_imc_calc_app/modules/core_google_login/screens/core_google_login_screen.dart';
 import 'package:my_imc_calc_app/modules/home_content/screens/home_screen.dart';
 import 'package:my_imc_calc_app/modules/user_content/screens/user_list_screen.dart';
-import 'package:my_imc_calc_app/screens_lab/login_screen.dart';
 
 class AppRoutesHandler {
-  static const String login = '/login';
+  static const String rootLogin = '/root_login';
   static const String googleLogin = '/google_login_screen';
   //APPLE LOGIN
   //FACEBOOK LOGIN
   static const String home = '/home';
-  static const String userList = '/user_list';
+  static const String userList = '/user_list';  
   
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case login:
+      case rootLogin:
         return CupertinoPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => const CoreAuthLoginScreen(),
           settings: settings,
         );
 

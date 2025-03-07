@@ -1,74 +1,211 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'package:flutter/cupertino.dart';
-import 'package:my_imc_calc_app/util/error_messages.dart';
-import 'package:my_imc_calc_app/widgets/custom_cupertino_dialog_widget.dart';
-import 'package:provider/provider.dart';
-import '../core_auth_login_controller.dart';
-import '../core_auth_login_service.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:my_imc_calc_app/modules/core_auth_login/screens/core_auth_forgot_pass_screen.dart';
+import 'package:my_imc_calc_app/modules/core_auth_login/screens/core_auth_register_screen.dart';
 
-//## THIS IS A ((SIMPLE TEST)) PAGE TO LIST USERS FROM A REST API ENDPOINT... REFATORAR CÓDIGO BASE USADO NA USER
-
-class AuthLoginPage extends StatelessWidget {
-  const AuthLoginPage({super.key});
+class CoreAuthLoginScreen extends StatelessWidget {
+  const CoreAuthLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AuthLoginController(AuthLoginService())
-        ..getUsers(), // Load users on init
-      child: Consumer<AuthLoginController>(
-        builder: (context, controller, child) {
-          if (controller.error.isNotEmpty) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              _showErrorDialog(context, 'Erro ${controller.error}');
-            });
-          }
-          return CupertinoPageScaffold(
-            navigationBar: CupertinoNavigationBar(
-              middle: const Text('Moc List of Users'),
-              trailing: CupertinoButton(
-                padding: EdgeInsets.zero,
-                child: const Icon(CupertinoIcons.arrow_down_doc_fill),
-                onPressed: () {Provider.of<AuthLoginController>(context, listen: false).getUsers();
-                },
+    return CupertinoPageScaffold(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Imagem no topo
+            Container(
+              height: 250,
+              color: CupertinoColors.lightBackgroundGray,
+              child: Center(
+                child: CupertinoButton(
+                  child: const Icon(CupertinoIcons.photo,
+                      size: 50, color: CupertinoColors.inactiveGray),
+                  onPressed: () {}, // Placeholder para imagem
+                ),
               ),
             ),
-            child: SafeArea(
-              child: controller.isLoading
-                  ? const Center(child: CupertinoActivityIndicator())
-                  : controller.usersModel.isNotEmpty
-                      ? Column(
-                          children: [
-                            Expanded(
-                              child: SingleChildScrollView(
-                                child: CupertinoListSection.insetGrouped(
-                                  children: controller.usersModel.map((user) {
-                                    return CupertinoListTile(
-                                      title: Text(user.username),
-                                      subtitle: Text(user.email),
-                                    );
-                                  }).toList(),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      : const Center(
-                          child: Text(ErrorMessages.ERROR_FETCHING_USERS_MESSAGE,
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: CupertinoColors.systemGrey),
+
+            // Seção de Login
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Título
+                  Text(
+                    "Welcome - Plus!",
+                    style: GoogleFonts.lato(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: CupertinoColors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Campo de Email
+                  CupertinoTextField(
+                    placeholder: "Email Address",
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: CupertinoColors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: CupertinoColors.systemGrey3),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // Campo de Senha
+                  CupertinoTextField(
+                    placeholder: "Password",
+                    obscureText: true,
+                    padding: const EdgeInsets.all(16),
+                    suffix: CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      child: const Icon(CupertinoIcons.eye,
+                          color: CupertinoColors.systemGrey),
+                      onPressed: () {}, // Ação para exibir senha
+                    ),
+                    decoration: BoxDecoration(
+                      color: CupertinoColors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: CupertinoColors.systemGrey3),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+
+                  // Esqueceu a senha
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: CupertinoButton(
+                      padding: EdgeInsets.zero,
+                      child: Text(
+                        "Forgot password?",
+                        style: GoogleFonts.lato(
+                          color: CupertinoColors.activeBlue,
+                          fontSize: 14,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (context) => const CoreAuthForgotPassScreen()),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // Botão Login
+                  SizedBox(
+                    width: double.infinity,
+                    child: CupertinoButton.filled(
+                      borderRadius: BorderRadius.circular(8),
+                      child: const Text("Login"),
+                      onPressed: () {
+                        // Ação de login
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // Cadastro
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Not a member?  | ",
+                        style: GoogleFonts.lato(
+                            fontSize: 14, color: CupertinoColors.systemGrey),
+                      ),
+                      CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        child: Text(
+                          "Register now",
+                          style: GoogleFonts.lato(
+                            fontSize: 14,
+                            color: CupertinoColors.activeBlue,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => const CoreAuthRegisterScreen()),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+
+                  // Linha divisória
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: Row(
+                      children: [
+                        const Expanded(
+                            child: Divider(color: CupertinoColors.systemGrey3)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Text("Or continue with",
+                              style: GoogleFonts.lato(
+                                  fontSize: 14,
+                                  color: CupertinoColors.systemGrey)),
+                        ),
+                        const Expanded(
+                            child: Divider(color: CupertinoColors.systemGrey3)),
+                      ],
+                    ),
+                  ),
+
+                  // Botões sociais
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _socialButton("G", CupertinoColors.destructiveRed),
+                      const SizedBox(width: 16),
+                      _socialButton("", CupertinoColors.black),
+                      const SizedBox(width: 16),
+                      _socialButton("f", CupertinoColors.systemBlue),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }
-}
 
-void _showErrorDialog(BuildContext context, String message) {
-    customCupertinoDialog(context, message);
+  // Método para criar botões sociais
+  Widget _socialButton(String label, Color color) {
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
+      child: Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: GoogleFonts.lato(
+              fontSize: 24,
+              color: CupertinoColors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      onPressed: () {
+        // Ação social login
+      },
+    );
+  }
 }
