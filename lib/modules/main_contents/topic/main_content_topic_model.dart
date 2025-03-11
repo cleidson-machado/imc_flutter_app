@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class MainContentModel {
+class MainContentTopicModel {
   
   final String id;
   final String title;
@@ -10,7 +10,7 @@ class MainContentModel {
   final String contentImageUrl;
   final String bioAnnotationInfo;
 
-  MainContentModel({
+  MainContentTopicModel({
     required this.id,
     required this.title,
     required this.subTitle,
@@ -19,7 +19,7 @@ class MainContentModel {
     required this.bioAnnotationInfo,
   });
 
-  MainContentModel copyWith({
+  MainContentTopicModel copyWith({
     String? id,
     String? title,
     String? subTitle,
@@ -27,7 +27,7 @@ class MainContentModel {
     String? contentImageUrl,
     String? bioAnnotationInfo,
   }) {
-    return MainContentModel(
+    return MainContentTopicModel(
       id: id ?? this.id,
       title: title ?? this.title,
       subTitle: subTitle ?? this.subTitle,
@@ -48,8 +48,8 @@ class MainContentModel {
     };
   }
 
-  factory MainContentModel.fromMap(Map<String, dynamic> map) {
-    return MainContentModel(
+  factory MainContentTopicModel.fromMap(Map<String, dynamic> map) {
+    return MainContentTopicModel(
       id: map['id'] as String,
       title: map['title'] as String,
       subTitle: map['subTitle'] as String,
@@ -61,15 +61,15 @@ class MainContentModel {
 
   String toJson() => json.encode(toMap());
 
-  factory MainContentModel.fromJson(String source) => MainContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory MainContentTopicModel.fromJson(String source) => MainContentTopicModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'MainContentModel(id: $id, title: $title, subTitle: $subTitle, description: $description, contentImageUrl: $contentImageUrl, bioAnnotationInfo: $bioAnnotationInfo)';
+    return 'MainContentTopicModel(id: $id, title: $title, subTitle: $subTitle, description: $description, contentImageUrl: $contentImageUrl, bioAnnotationInfo: $bioAnnotationInfo)';
   }
 
   @override
-  bool operator ==(covariant MainContentModel other) {
+  bool operator ==(covariant MainContentTopicModel other) {
     if (identical(this, other)) return true;
   
     return 

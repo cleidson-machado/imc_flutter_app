@@ -3,18 +3,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart'; // Only for using ImagePicker
 
-//######################################################################################
-//NOTE: TO DELETE AFTER VERIFY IF THE BASIC CODE LAYOUT HERE IS OK ON THE MAIN STUFF...
-//######################################################################################
-
-class AppUserProfileScreen extends StatefulWidget {
-  const AppUserProfileScreen({super.key});
+class MainContentProfileScreen extends StatefulWidget {
+  const MainContentProfileScreen({super.key});
 
   @override
-  _AppUserProfileScreenState createState() => _AppUserProfileScreenState();
+  _MainContentProfileScreenState createState() => _MainContentProfileScreenState();
 }
 
-class _AppUserProfileScreenState extends State<AppUserProfileScreen> {
+class _MainContentProfileScreenState extends State<MainContentProfileScreen> {
   final TextEditingController _nameController = TextEditingController(text: "Suzane Jobs");
   final TextEditingController _emailController = TextEditingController(text: "abc@gmail.com");
   final TextEditingController _phoneController = TextEditingController(text: "+91 123456890");
@@ -99,3 +95,4 @@ class _AppUserProfileScreenState extends State<AppUserProfileScreen> {
     );
   }
 }
+

@@ -14,10 +14,3 @@ void main() async {
     ),
   );
 }
-
-
-// VERIFICAR AINDA SE ALTERA NOME DE AppTheme PARA AppThemePpvider e exclui o anterior da IA
-// COMO UTILIZAR O CÓDIGO MAIS COMPLETO DA HOME
-// SE ...
-// lib/features_domain/home_content/screens/home_screen.dart //## recomeçar?? usar em melhorar a da IA
-// lib/screens/home_screen_original_com_nav.dart //## usar a minha antiga mas tb melhorando

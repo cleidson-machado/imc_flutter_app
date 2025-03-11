@@ -2,18 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 
-//######################################################################################
-//NOTE: TO DELETE AFTER VERIFY IF THE BASIC CODE LAYOUT HERE IS OK ON THE MAIN STUFF...
-//######################################################################################
-
-class AppConfigurationScreen extends StatefulWidget {
-  const AppConfigurationScreen({super.key});
+class MainContentRelationScreen extends StatefulWidget {
+  const MainContentRelationScreen({super.key});
 
   @override
-  _AppConfigurationScreenState createState() => _AppConfigurationScreenState();
+  _MainContentRelationScreenState createState() => _MainContentRelationScreenState();
 }
 
-class _AppConfigurationScreenState extends State<AppConfigurationScreen> {
+class _MainContentRelationScreenState extends State<MainContentRelationScreen> {
 
   final Map<String, bool> _settings = {
     "Money Receive": false,

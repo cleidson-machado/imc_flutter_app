@@ -1,67 +1,10 @@
-// ignore_for_file: library_private_types_in_public_api, camel_case_types
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_imc_calc_app/screens_lab/app_configuration_screen.dart';
-import 'package:my_imc_calc_app/screens_lab/app_user_profile_screen.dart';
 
-//######################################################################################
-//NOTE: TO DELETE AFTER VERIFY IF THE BASIC CODE LAYOUT HERE IS OK ON THE MAIN STUFF...
-//######################################################################################
-
-class HomeScreenOrig extends StatefulWidget {
-  const HomeScreenOrig({super.key});
-
-  @override
-  _HomeScreenOrigState createState() => _HomeScreenOrigState();
-}
-
-class _HomeScreenOrigState extends State<HomeScreenOrig> {
-  int _selectedIndex = 0;
-
-  final List<Widget> _pages = [
-    const TopicContentPointScreen(),
-    const AppUserProfileScreen(),
-    const AppConfigurationScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: CupertinoTabBar(
-        currentIndex: _selectedIndex,
-        height: 65,
-        iconSize:45,
-        onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.news_solid),
-            label: "TEMAS",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person_3_fill),
-            label: "RELAÇÕES",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.gear_alt_fill),
-            label: "PERFIL",
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// 📝 Tela Principal - Lista de Conteúdos cadastrados ou compartilhados pelos usuários
-class TopicContentPointScreen extends StatelessWidget {
-  const TopicContentPointScreen({super.key});
+/// 📝 Main Screen - This will Be a List of register contents or any stuff shared by a User...
+/// NOTE: REMEMBER!! REBUILD THIS SCREEN TO MATCH YOUR RESPECTIVE MODEL CLASS................ lib/modules/main_contents/topic/main_content_topic_model.dart
+class MainContentTopicScreen extends StatelessWidget {
+  const MainContentTopicScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -145,32 +88,6 @@ class TopicContentPointScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-/// 🔍 Tela de Pesquisa
-class UserProfileScreen_ORIG extends StatelessWidget {
-  const UserProfileScreen_ORIG({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(middle: Text("User Profile")),
-      child: Center(child: Text("User Content", style: TextStyle(fontSize: 20))),
-    );
-  }
-}
-
-/// 👤 Tela de Perfil
-class AppConfigurationScreen_ORIG extends StatelessWidget {
-  const AppConfigurationScreen_ORIG({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(middle: Text("Configuration")),
-      child: Center(child: Text("Profile for App Configuration", style: TextStyle(fontSize: 20))),
     );
   }
 }
