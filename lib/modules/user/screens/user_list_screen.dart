@@ -5,6 +5,10 @@ import 'package:my_imc_calc_app/util/error_messages.dart';
 import 'package:my_imc_calc_app/widgets/custom_cupertino_dialog_widget.dart';
 import 'package:provider/provider.dart';
 
+//######################################################################################
+//### NOTE: TO DO NEXT... ADD SOME KIND NAVIGATOR USING HORIZONTAL NAV CARDS FOR GET THE USER STUFF..
+//######################################################################################
+
 class UserListScreen extends StatelessWidget {
   const UserListScreen({super.key});
 
