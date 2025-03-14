@@ -19,9 +19,9 @@ class _HomeContentTabScreenState extends State<HomeContentTabScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const MainContentTopicScreen(),
-    const MainContentProfileScreen(),
-    const MainContentRelationScreen(),
+    const MainContentTopicScreen(), //###### TEMAS
+    const MainContentProfileScreen(), //#### RELAÇÕES
+    const MainContentRelationScreen(), //### PERFIL
   ];
 
   void _onItemTapped(int index) {
@@ -41,15 +41,15 @@ class _HomeContentTabScreenState extends State<HomeContentTabScreen> {
         onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.news_solid),
+            icon: Icon(CupertinoIcons.news_solid), // ################################## https://cupertino-icons.web.app
             label: "TEMAS",
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person_3_fill),
+            icon: Icon(CupertinoIcons.arrow_up_arrow_down_square), // ################## https://cupertino-icons.web.app
             label: "RELAÇÕES",
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.gear_alt_fill),
+            icon: Icon(CupertinoIcons.rectangle_stack_person_crop_fill), // ############ https://cupertino-icons.web.app
             label: "PERFIL",
           ),
         ],
