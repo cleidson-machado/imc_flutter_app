@@ -8,13 +8,25 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Modular.to.navigate('/home');
-          },
-          child: const Text('ir para a Home'),
-        ),
+      body: Column(
+        children: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Modular.to.navigate('/home');
+              },
+              child: const Text('ir para a Sales Page Profile - Bloc Test1'),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Modular.to.navigate('/home');
+              },
+              child: const Text('ir para a Admin Page - Bloc Test2'),
+            ),
+          ),
+        ],
       ),
     );
   }

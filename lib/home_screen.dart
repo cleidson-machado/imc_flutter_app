@@ -14,16 +14,23 @@ class HomeScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Modular.to.navigate('/login'); // Ir para Login
+                Modular.to.navigate('/sales-page'); // Go to Sales Page (free route)
               },
-              child: const Text('Ir para Login'),
+              child: const Text('Go to Sales Page - Free'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Modular.to.navigate('/home'); // Ir para Home (rota protegida)
+                Modular.to.navigate('/sales-page-profile'); // Go to Admin Page (free route)
               },
-              child: const Text('Ir para Home'),
+              child: const Text('Go to Sales Page Profile - Locked'),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Modular.to.navigate('/admin-page'); // Go to Admin Page (protect route)
+              },
+              child: const Text('Go to Admin Page - Locked'),
             ),
           ],
         ),
