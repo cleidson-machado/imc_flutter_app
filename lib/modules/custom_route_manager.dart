@@ -1,26 +1,24 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:my_imc_calc_app/modules/app_routes.dart';
 
 class CustomRouteManager {
-  static void setupRoutes(Map<String, Widget> routes, RouteManager r, {Map<String, List<RouteGuard>>? guards}) {
+  static void setupRoutes({
+    required Map<String, Widget> routes,
+    required RouteManager routeManager,
+    Map<String, List<RouteGuard>>? guards,
+    TransitionType defaultTransition = TransitionType.rightToLeftWithFade,
+    Duration defaultDuration = const Duration(milliseconds: 300),
+  }) {
     routes.forEach((path, widget) {
-      r.child(
+      routeManager.child(
         path,
         child: (context) => widget,
-        transition: path == '/' ? TransitionType.fadeIn : TransitionType.rightToLeftWithFade,
-        duration: const Duration(milliseconds: 300),
-        guards: guards?[path] ?? [], // Aplica guards se existirem
-      );
-    });
-  }
-
-  static void setupModules(Map<String, Module> modules, RouteManager r) {
-    modules.forEach((path, module) {
-      r.module(
-        path,
-        module: module,
-        transition: TransitionType.rightToLeft,
-        duration: const Duration(milliseconds: 300),
+        transition: path == AppRoutes.initial 
+            ? TransitionType.fadeIn 
+            : defaultTransition,
+        duration: defaultDuration,
+        guards: guards?[path] ?? [],
       );
     });
   }
