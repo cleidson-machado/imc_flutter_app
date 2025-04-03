@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AuthGuard extends RouteGuard {
-  AuthGuard() : super(redirectTo: 'access-denied');
+  AuthGuard() : super(redirectTo: '/access-denied');
 
   @override
   Future<bool> canActivate(String path, ModularRoute route) async {
