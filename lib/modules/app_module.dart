@@ -20,6 +20,7 @@ class AppModule extends Module {
       AppRoutes.accessDenied: const AccessDeniedPage(),
     };
 
+    //### HERE! WE HAVE AN IMPLICIT POLICY TO ALLOW NAVIGATION...
     CustomRouteManager.setupRoutes(
       routes: routes,
       routeManager: r,
