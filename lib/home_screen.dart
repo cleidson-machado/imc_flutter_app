@@ -23,8 +23,8 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                //Modular.to.navigate(AppRoutes.salesProfile); // Go to Admin Page (free route)
-                Modular.to.pushNamed(AppRoutes.salesProfile); // Go to Admin Page (free route)
+                //Modular.to.navigate(AppRoutes.salesProfile); // Go to Sales Profile Page (free route)
+                Modular.to.pushNamed(AppRoutes.salesProfile); // Go to Sales Profile Page (free route)
               },
               child: const Text('Go to Sales Page Profile - Locked'),
             ),
