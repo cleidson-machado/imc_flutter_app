@@ -1,0 +1,2 @@
+/Users/cleidson/MobileApps/Apps_Learn/App_Imc_Calc/my_imc_calc_app/android/app/.cxx/Debug/p566a662/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/cleidson/MobileApps/Apps_Learn/App_Imc_Calc/my_imc_calc_app/android/app/.cxx/Debug/p566a662/armeabi-v7a/CMakeFiles/rebuild_cache.dir

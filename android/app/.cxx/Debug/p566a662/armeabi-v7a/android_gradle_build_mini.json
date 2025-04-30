@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/cleidson/development/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/cleidson/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/cleidson/MobileApps/Apps_Learn/App_Imc_Calc/my_imc_calc_app/android/app/.cxx/Debug/p566a662/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/cleidson/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/cleidson/MobileApps/Apps_Learn/App_Imc_Calc/my_imc_calc_app/android/app/.cxx/Debug/p566a662/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
