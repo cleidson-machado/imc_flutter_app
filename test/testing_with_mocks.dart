@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_imc_calc_app/feature/counter/counter_view.dart';
-import 'package:my_imc_calc_app/feature/counter/counter_view_model.dart';
 
 import 'mocks/mocks.mocks.dart';
 
