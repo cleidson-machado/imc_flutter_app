@@ -30,4 +30,5 @@ dart pub run build_runner build --delete-conflicting-outputs
 dart pub run build_runner build
 ,,
 ### USA ESSE PARA GERAR O CÓDIGO VIA mockito!
+### MODIFICAR O ( test/mocks/mocks.dart ) PARA APONTAR PARA A VIEW_MODEL que precisa usar...
 -----

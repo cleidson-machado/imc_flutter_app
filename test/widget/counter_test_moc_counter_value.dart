@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_imc_calc_app/feature/counter/counter_view.dart';
 
-import 'mocks/mocks.mocks.dart';
+import '../mocks/mock_counter_view_model.dart';
 
 void main() {
   testWidgets('deve renderizar o contador com valor falso vindo do mock',
