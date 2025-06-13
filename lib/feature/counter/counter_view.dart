@@ -6,13 +6,18 @@ import 'package:provider/provider.dart';
 
 class CounterView extends StatelessWidget {
   final String title;
+  final CounterViewModel? viewModel; // ← Adicione este parâmetro opcional
 
-  const CounterView({super.key, required this.title});
+  const CounterView({
+    super.key, 
+    required this.title,
+    this.viewModel, // ← Parâmetro opcional para testes
+  });
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => CounterViewModel(),
+      create: (_) => viewModel ?? CounterViewModel(), // ← Use o mock se fornecido, senão crie novo
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -27,6 +32,7 @@ class CounterView extends StatelessWidget {
   }
 }
 
+// Resto do código permanece igual
 class CounterDisplay extends StatelessWidget {
   const CounterDisplay({super.key});
 
